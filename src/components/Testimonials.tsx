@@ -16,8 +16,8 @@ const Rooms = () => {
           />
           
           <button 
-            className="absolute bottom-4 right-4 bg-[#455c3e] text-white px-8 py-3 rounded-full 
-                       hover:bg-[#3a4e35] transition-all duration-300 font-kumbh text-sm"
+            className="absolute bottom-4 right-4 bg-[#455c3e] text-white px-10 py-4 rounded-full 
+                       hover:bg-[#3a4e35] transition-all duration-300 font-kumbh text-xs"
           >
             Conocer Más
           </button>
@@ -28,7 +28,7 @@ const Rooms = () => {
             Habitaciones
           </h2>
           
-          <p className="text-[#969696] mb-10 leading-relaxed font-kumbh font-light text-lg">
+          <p className="text-[#969696] mb-10 leading-relaxed font-kumbh font-light text-md">
             Cada una de nuestras exclusivas habitaciones ofrece vistas panorámicas al océano 
             Pacífico, donde el azul del mar se funde con el cielo en el horizonte. Diseñadas con 
             elegancia minimalista y elementos naturales, son su santuario personal de 
