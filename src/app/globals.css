@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: #1a2721;
+  --background: #EBEBEB;
+}
+
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+@font-face {
+  font-family: 'TAN-NIMBUS';
+  src: url('/fonts/TAN-NIMBUS.otf') format('opentype'),
+       url('/fonts/TAN-NIMBUS.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  font-family: "Montserrat", var(--font-nimbus), "Marcellus", sans-serif;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply border border-black px-6 py-2 rounded-full hover:bg-black hover:text-white transition-colors;
+  }
+}
+
+
+
+.diagonal-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; 
+  background: #F1ECE3;
+  clip-path: polygon(0 50%, 100% 100%, 0 100%);
+  z-index: 2;
+}
+
+.diagonal-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; 
+  background: #3D4F27;
+  clip-path: polygon(0 0, 100% 0, 100% 80%);
+  z-index: 2;
+}
