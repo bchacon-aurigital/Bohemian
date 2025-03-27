@@ -12,8 +12,9 @@ import Parallax2 from "@/components/Parallax2";
 import Parallax3 from "@/components/Parallax3";
 import Parallax4 from "@/components/Parallax4";
 import Spaces from "@/components/Spaces";
+import Rooms from "@/components/Rooms";
 
-import Testimonials from "@/components/Testimonials";
+
 import FAQ from "@/components/FAQ";
 import Events from "@/components/Events";
 import Footer from "@/components/Footer";
@@ -270,16 +271,19 @@ const Index = () => {
         <section id="Instructor">
           <Spaces />
         </section>
-        {
+        
         <section id="Testimonios">
-          <Testimonials />
-        </section>/*
-        <section id="Eventos">
-          <Events />
+          <Rooms />
         </section>
-        <section id="faq">
+
+   <section id="faq">
           <FAQ />
         </section>
+        
+       {/* <section id="Eventos">
+          <Events />
+        </section>
+     
         <Footer />*/}
       </div>
     </div>
