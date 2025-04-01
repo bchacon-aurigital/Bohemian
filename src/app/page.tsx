@@ -13,10 +13,11 @@ import Parallax3 from "@/components/Parallax3";
 import Parallax4 from "@/components/Parallax4";
 import Spaces from "@/components/Spaces";
 import Rooms from "@/components/Rooms";
-
-
 import FAQ from "@/components/FAQ";
 import Events from "@/components/Events";
+import Grid from "@/components/grid1";
+import SpecialEvents from "@/components/SpecialEvents";
+
 import Footer from "@/components/Footer";
 
 
@@ -35,6 +36,8 @@ const Index = () => {
   const Parallax2Ref = useRef(null);
   const Parallax3Ref = useRef(null);
   const Parallax4Ref = useRef(null);
+  const Parallax5Ref = useRef(null);
+
 
   const changeMedia = (newMedia: string, type: 'video' | 'image' = 'video') => {
     if (newMedia === activeMedia) return;
@@ -85,6 +88,9 @@ const Index = () => {
           if (entry.target === Parallax4Ref.current && entry.isIntersecting) {
             changeMedia("/parallax4.avif", 'image');
           }
+          if (entry.target === Parallax5Ref.current && entry.isIntersecting) {
+            changeMedia("/video1.webm");
+          }
         });
       },
       { threshold: 0, rootMargin: "80px" }
@@ -94,6 +100,8 @@ const Index = () => {
     if (Parallax2Ref.current) observer.observe(Parallax2Ref.current);
     if (Parallax3Ref.current) observer.observe(Parallax3Ref.current);
     if (Parallax4Ref.current) observer.observe(Parallax4Ref.current);
+    if (Parallax5Ref.current) observer.observe(Parallax5Ref.current);
+
 
     return () => observer.disconnect();
   }, []);
@@ -276,15 +284,28 @@ const Index = () => {
           <Rooms />
         </section>
 
-   <section id="faq">
+       <section id="faq">
           <FAQ />
         </section>
         
-       {/* <section id="Eventos">
+       <section id="Eventos">
           <Events />
         </section>
+
+
+        <section id="grid">
+          <Grid />
+        </section>
+
+        <section id="Eventos">
+          <SpecialEvents />
+        </section>
      
-        <Footer />*/}
+
+        <section id="about2" ref={Parallax5Ref}>
+          <Parallax1 />
+        </section>
+        <Footer/>
       </div>
     </div>
   );

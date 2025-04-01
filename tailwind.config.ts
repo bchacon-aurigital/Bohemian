@@ -11,6 +11,7 @@ const config: Config = {
       fontFamily: {
         tanNimbus: ['TAN-NIMBUS', 'sans-serif'], 
         kumbh: ['"Kumbh Sans"', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       colors: {
         primary: {

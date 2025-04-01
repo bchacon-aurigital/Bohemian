@@ -5,7 +5,6 @@ const ResortFeatures = () => {
     <section className="bg-[#3D4F27] py-16 text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-8">
         
-        {/* Terraza personal */}
         <div className="flex flex-col md:flex-row mb-24 items-center">
           <div className="md:w-1/2 md:pr-20 mb-8 md:mb-0">
             <h2 className="text-4xl mb-4 font-kumbh font-semibold">Terraza personal</h2>
@@ -43,7 +42,6 @@ const ResortFeatures = () => {
           </div>
         </div>
         
-        {/* Desayuno incluido */}
         <div className="flex flex-col md:flex-row mb-24 items-center">
           <div className="md:w-1/2 md:pr-20 mb-8 md:mb-0">
             <h2 className="text-4xl font-kumbh font-semibold mb-4">Desayuno incluido</h2>
@@ -63,7 +61,6 @@ const ResortFeatures = () => {
           </div>
         </div>
         
-        {/* Privacidad absoluta */}
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 md:order-2 md:pl-20 mb-8 md:mb-0 md:text-right md:flex md:flex-col md:items-end">
             <h2 className="text-4xl font-kumbh font-semibold mb-4">Privacidad absoluta</h2>

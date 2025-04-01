@@ -1,163 +1,147 @@
 import Image from "next/image";
-import { Link as ScrollLink } from "react-scroll";
-import { FaInstagram } from "react-icons/fa";
+import Link from "next/link";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { RiTiktokLine } from "react-icons/ri";
-import { FaWhatsapp } from "react-icons/fa6";
-
+import { TbPhoneCall, TbBrandBooking, TbBrandAirbnb } from "react-icons/tb";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#292E25] text-white">
-     <div className="container mx-auto px-14 ">
-  <div className="flex flex-col lg:flex-row text-center lg:text-start items-center gap-8 justify-between py-12">
-    <div>
-      <Image
-        src="/images/logo.png"
-        alt="Pranayama Logo"
-        width={240}
-        height={240}
-        className="mb-6 mx-auto md:mx-0"
-      />
-    </div>
-    <div>
-      <h4 className="font-semibold mb-4">Información</h4>
-      <ul className="space-y-2">
-        <li>
-          <ScrollLink
-            to="about"
-            smooth={true}
-            duration={500}
-            className="hover:text-gray-300"
-          >
-            Sobre Nosotros
-          </ScrollLink>
-        </li>
-        <li>
-          <ScrollLink
-            to="Pranayama"
-            smooth={true}
-            duration={500}
-            className="hover:text-gray-300"
-          >
-            Qué es Pranayama
-          </ScrollLink>
-        </li>
-        <li>
-          <ScrollLink
-            to="faq"
-            smooth={true}
-            duration={500}
-            className="hover:text-gray-300"
-          >
-            Tips & Preguntas
-          </ScrollLink>
-        </li>
-        <li>
-          <ScrollLink
-            to="Programa"
-            smooth={true}
-            duration={500}
-            className="hover:text-gray-300"
-          >
-            Beneficios de Pranayama
-          </ScrollLink>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <h4 className="font-semibold mb-4">Servicios</h4>
-      <ul className="space-y-2">
-        <li>
-          <ScrollLink
-            to="Programa"
-            smooth={true}
-            duration={500}
-            className="hover:text-gray-300"
-          >
-            Sesiones Personalizadas
-          </ScrollLink>
-        </li>
-        <li>
-          <ScrollLink
-            to="events"
-            smooth={true}
-            duration={500}
-            className="hover:text-gray-300"
-          >
-            Clases & Eventos
-          </ScrollLink>
-        </li>
-        <li>
-          <ScrollLink
-            to="tools"
-            smooth={true}
-            duration={500}
-            className="hover:text-gray-300"
-          >
-            Productos
-          </ScrollLink>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <h4 className="font-semibold mb-4">Redes Sociales</h4>
-      <div className="space-y-2 flex flex-col items-left lg:items-start text-xl">
-        <div className="flex items-center space-x-4">
-          <a
-            href="https://www.instagram.com/pranayamacostarica/"
-            className="hover:text-gray-300"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram />
-          </a>
-          <p>Instagram</p>
+    <footer className="relative bg-[#3D4F27] text-white overflow-hidden">
+      {/* Background patterns for mobile */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full lg:hidden">
+        <Image
+          src="/images/patron1.svg"
+          alt="Background Top"
+          layout="fill"
+          objectFit="contain"
+          objectPosition="center top"
+        />
+      </div>
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full sm:hidden">
+        <Image
+          src="/images/Patron2mobile.svg"
+          alt="Background Bottom"
+          layout="fill"
+          objectFit="contain"
+          objectPosition="center bottom"
+        />
+      </div>
+
+      <div className="hidden lg:block absolute left-0 top-0 w-2/3 h-full pointer-events-none">
+        <Image
+          src="/images/Patron1mobile.svg"
+          alt="Background pattern"
+          layout="fill"
+          objectFit="contain"
+          objectPosition="left center"
+        />
+      </div>
+      <div className="hidden lg:block absolute right-0 top-0 w-2/3 h-full pointer-events-none">
+        <Image
+          src="/images/patron2.svg"
+          alt="Background pattern"
+          layout="fill"
+          objectFit="contain"
+          objectPosition="right center"
+        />
+      </div>
+
+      <div className="container mx-auto px-6 md:px-12 relative z-10 py-6">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-12 text-center lg:text-left">
+          {/* Logo and tagline */}
+          <div className="flex-col items-center flex">
+            <div className="mb-6">
+              <Image
+                className="hidden lg:block"
+                src="/images/logofooter.svg"
+                alt="The Bohemian Logo"
+                width={160}
+                height={120}
+              />
+              <img
+                className="block lg:hidden h-full"
+                src="/images/logo.svg"
+                alt="The Bohemian Logo"
+              />
+            </div>
+            <p className="text-lg italic font-montserrat font-bold text-center hidden lg:block">
+              "Donde el lujo se encuentra<br />con la naturaleza"
+            </p>
+          </div>
+
+          {/* Información */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h3 className="text-xl font-light mb-6 font-tanNimbus">Información</h3>
+            <ul className="space-y-4">
+              <li>
+                <Link href="/habitaciones" className="hover:text-gray-300 transition font-montserrat">
+                  Habitaciones
+                </Link>
+              </li>
+              <li>
+                <Link href="/servicios" className="hover:text-gray-300 transition font-montserrat">
+                  Servicios
+                </Link>
+              </li>
+              <li>
+                <Link href="/restaurante" className="hover:text-gray-300 transition font-montserrat">
+                  Restaurante
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Agendar espacio */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h3 className="text-xl font-light mb-6 font-tanNimbus">Agendar Espacio</h3>
+            <ul className="space-y-4">
+              <li className="flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                <TbPhoneCall className="text-xl" />
+                <span>+506 8670 4978</span>
+              </li>
+              <li>
+                <Link href="/booking" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                  <TbBrandBooking className="text-xl" />
+                  Booking
+                </Link>
+              </li>
+              <li>
+                <Link href="/airbnb" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                  <TbBrandAirbnb className="text-xl" />
+                  Airbnb
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Redes Sociales */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h3 className="text-xl font-light mb-6 font-tanNimbus">Redes Sociales</h3>
+            <ul className="space-y-4">
+              <li>
+                <Link href="https://instagram.com" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                  <FaInstagram className="text-xl" /> Instagram
+                </Link>
+              </li>
+              <li>
+                <Link href="https://facebook.com" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                  <FaFacebook className="text-xl" /> Facebook
+                </Link>
+              </li>
+              <li>
+                <Link href="https://tiktok.com" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                  <RiTiktokLine className="text-xl" /> TikTok
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="flex items-center space-x-4">
-          <a
-            href="https://wa.link/1967vo"
-            className="hover:text-gray-300"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaWhatsapp />
-          </a>
-          <p>WhatsApp</p>
-        </div>
-        <div className="flex items-center space-x-4">
-          <a
-            href="https://www.tiktok.com/@ken.hca?lang=es"
-            target="_blank"
-            className="hover:text-gray-300"
-            rel="noopener noreferrer"
-          >
-            <RiTiktokLine />
-          </a>
-          <p>Tiktok</p>
+
+        {/* Copyright */}
+        <div className="mt-12 text-center md:text-right text-sm font-montserrat text-[#F1ECE3] font-extralight">
+          <p>© 2025 The Bohemian Lagarto. Todos los derechos reservados.</p>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<div className="w-full h-5 bg-[#2A5757]">
-  <a
-    href="https://aurigital.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex justify-center mx-auto w-full"
-  >
-    <p className="text-white uppercase text-[8px] text-center p-1 hover:text-[#28C0F5] ">
-      Design and Development by :
-    </p>
-    <img
-      src="/isotipo.avif"
-      alt="Design and Development by aurigital"
-      className="h-[20px] w-[20px]"
-    />
-  </a>
-</div>
-
     </footer>
   );
 }
