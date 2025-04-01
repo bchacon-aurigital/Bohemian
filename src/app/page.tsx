@@ -11,6 +11,7 @@ import Parallax1 from "@/components/Parallax1";
 import Parallax2 from "@/components/Parallax2";
 import Parallax3 from "@/components/Parallax3";
 import Parallax4 from "@/components/Parallax4";
+import Parallax5 from "@/components/Parallax5";
 import Spaces from "@/components/Spaces";
 import Rooms from "@/components/Rooms";
 import FAQ from "@/components/FAQ";
@@ -26,7 +27,7 @@ const Index = () => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  const [activeMedia, setActiveMedia] = useState("/default.webm");
+  const [activeMedia, setActiveMedia] = useState("/");
   const [previousMedia, setPreviousMedia] = useState("");
   const [mediaOpacity, setMediaOpacity] = useState(1);
   const [transitioningMedia, setTransitioningMedia] = useState(false);
@@ -121,7 +122,7 @@ const Index = () => {
               loop
               playsInline
               preload="auto"
-              poster="/poster.jpg"
+              poster="/images/Poster.avif"
               className="w-full h-full object-cover"
             >
               <source
@@ -303,7 +304,7 @@ const Index = () => {
      
 
         <section id="about2" ref={Parallax5Ref}>
-          <Parallax1 />
+          <Parallax5 />
         </section>
         <Footer/>
       </div>

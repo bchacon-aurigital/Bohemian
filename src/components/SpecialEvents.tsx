@@ -1,22 +1,52 @@
 import React, { useState } from 'react';
 
-const Carousel = ({ actividadesData }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [blink, setBlink] = useState(false);
+// Define the interface for each activity item
+interface ActividadData {
+  id: string;
+  title: string;
+  description: string;
+  buttonText: string;
+  image: string;
+  alt: string;
+  bgColor: string;
+  titleColor: string;
+  descriptionColor: string;
+  buttonBgColor: string;
+  buttonHoverBgColor: string;
+  buttonTextColor: string;
+  buttonHoverTextColor: string;
+  navButtonBgColor: string;
+  navButtonHoverBgColor: string;
+  navButtonTextColor: string;
+  navButtonHoverTextColor: string;
+  bulletActiveColor: string;
+  bulletInactiveColor: string;
+  textPrimaryColor: string;
+  textSecondaryColor: string;
+}
+
+// Define props interface for the Carousel component
+interface CarouselProps {
+  actividadesData: ActividadData[];
+}
+
+const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [blink, setBlink] = useState<boolean>(false);
 
   // Función que dispara el "parpadeo"
-  const triggerBlink = () => {
+  const triggerBlink = (): void => {
     setBlink(true);
     // Desactivamos el blink después de 200 ms
     setTimeout(() => setBlink(false), 200);
   };
 
-  const nextSlide = () => {
+  const nextSlide = (): void => {
     triggerBlink();
     setCurrentSlide((prev) => (prev === actividadesData.length - 1 ? 0 : prev + 1));
   };
 
-  const prevSlide = () => {
+  const prevSlide = (): void => {
     triggerBlink();
     setCurrentSlide((prev) => (prev === 0 ? actividadesData.length - 1 : prev - 1));
   };
@@ -41,7 +71,7 @@ const Carousel = ({ actividadesData }) => {
           className={`flex transition-transform duration-500 ease-in-out -mx-4 ${blink ? 'blink' : ''}`}
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
-          {actividadesData.map((actividad, index) => (
+          {actividadesData.map((actividad: ActividadData, index: number) => (
             <div
               key={actividad.id}
               className="w-full flex-shrink-0 flex-col relative px-4"
@@ -140,7 +170,7 @@ const Carousel = ({ actividadesData }) => {
       
       {/* Bullets para navegación */}
       <div className="flex justify-center mt-4 space-x-2">
-        {actividadesData.map((actividad, index) => (
+        {actividadesData.map((actividad: ActividadData, index: number) => (
           <button
             key={index}
             onClick={() => {
@@ -176,9 +206,9 @@ const Carousel = ({ actividadesData }) => {
   );
 };
 
-const Events = () => {
+const Events: React.FC = () => {
   // Datos para el carrusel de actividades especiales basados en las imágenes proporcionadas
-  const actividadesData = [
+  const actividadesData: ActividadData[] = [
     {
       id: "01",
       title: "Bodas de Ensueño",
