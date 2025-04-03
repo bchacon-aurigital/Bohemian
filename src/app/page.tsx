@@ -14,18 +14,22 @@ import Parallax4 from "@/components/Parallax4";
 import Parallax5 from "@/components/Parallax5";
 import Spaces from "@/components/Spaces";
 import Rooms from "@/components/Rooms";
-import FAQ from "@/components/FAQ";
+import FAQ from "@/components/ResortFeatures";
 import Events from "@/components/Events";
 import Grid from "@/components/grid1";
 import SpecialEvents from "@/components/SpecialEvents";
+import LoadingScreen from "@/components/LoadingScreen";
 
 import Footer from "@/components/Footer";
 
-
-const Index = () => {
+const HomePage = () => {
+  
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [contentOpacity, setContentOpacity] = useState(0);
 
   const [activeMedia, setActiveMedia] = useState("/");
   const [previousMedia, setPreviousMedia] = useState("");
@@ -39,6 +43,10 @@ const Index = () => {
   const Parallax4Ref = useRef(null);
   const Parallax5Ref = useRef(null);
 
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    setContentOpacity(1);
+  };
 
   const changeMedia = (newMedia: string, type: 'video' | 'image' = 'video') => {
     if (newMedia === activeMedia) return;
@@ -109,7 +117,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative">
-      <div className="fixed inset-0 z-0 overflow-hidden">
+      {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
+      
+      <div 
+        className="fixed inset-0 z-0 overflow-hidden transition-opacity duration-1000"
+        style={{ opacity: contentOpacity }}
+      >
         <div 
           className="absolute inset-0 transition-opacity duration-1000 ease-in-out" 
           style={{ opacity: mediaOpacity }}
@@ -169,19 +182,22 @@ const Index = () => {
         )}
       </div>
 
-      <div className="relative z-10">
+      <div 
+        className="relative z-10 transition-opacity duration-1000"
+        style={{ opacity: contentOpacity }}
+      >
         <Navbar />
-        <section id="hero">
+        <section id="Inicio">
           <Hero />
         </section>
-        <section id="Pranayama">
+        <section id="">
           <WelcomeSection />
         </section>
-        <section id="about" ref={Parallax1Ref}>
+        <section id="" ref={Parallax1Ref}>
           <Parallax1 />
         </section>
         
-        <section className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]">
+        <section id="" className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]">
           <div className="px-4 sm:px-6 lg:px-8 py-[12%] md:py-[8%] max-w-7xl mx-auto text-white">
             <div
               data-aos="fade-up"
@@ -209,11 +225,11 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="Programa" ref={Parallax2Ref}>
+        <section id="" ref={Parallax2Ref}>
           <Parallax2 />
         </section>
 
-        <section className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#F1ECE3]">
+        <section id="" className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#F1ECE3]">
           <div className="px-4 sm:px-6 lg:px-8 py-[12%] md:py-[8%]  max-w-7xl mx-auto text-black">
             <div
               data-aos="fade-up"
@@ -242,11 +258,11 @@ const Index = () => {
         </section>
 
 
-        <section id="tools" ref={Parallax3Ref}>
+        <section id="" ref={Parallax3Ref}>
           <Parallax3 />
         </section>
 
-        <section className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]">
+        <section id="" className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]">
         <div className="px-4 sm:px-6 lg:px-8 py-[12%] md:py-[8%] max-w-7xl mx-auto text-white">
           <div
             data-aos="fade-up"
@@ -273,43 +289,41 @@ const Index = () => {
         </div>
       </section>
 
-        <section id="Events" ref={Parallax4Ref}>
+        <section id="" ref={Parallax4Ref}>
           <Parallax4 />
         </section>
 
-        <section id="Instructor">
+        <section id="">
           <Spaces />
         </section>
         
-        <section id="Testimonios">
+        <section id="Habitaciones">
           <Rooms />
         </section>
 
-       <section id="faq">
+        <section id="Servicios">
           <FAQ />
         </section>
         
-       <section id="Eventos">
+        <section id="">
           <Events />
         </section>
 
-
-        <section id="grid">
+        <section id="Eventos">
           <Grid />
         </section>
 
-        <section id="Eventos">
+        <section id="">
           <SpecialEvents />
         </section>
-     
 
-        <section id="about2" ref={Parallax5Ref}>
+        <section id="Contacto" ref={Parallax5Ref}>
           <Parallax5 />
         </section>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
 };
 
-export default Index;
+export default HomePage;

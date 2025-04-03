@@ -57,7 +57,7 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
         <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4">
           <div>
             <div className={`text-lg font-kumbh ${actividadesData[currentSlide].textSecondaryColor}`}>Eventos</div>
-            <h1 className={`text-4xl font-kumbh font-semibold ${actividadesData[currentSlide].textPrimaryColor}`}>Actividades especiales</h1>
+            <h2 className={`text-4xl font-kumbh font-semibold ${actividadesData[currentSlide].textPrimaryColor}`}>Actividades especiales</h2>
           </div>
           <div className={`md:text-right text-lg mt-6 lg:mt-0 md:text-md font-kumbh w-full md:w-[514px] ${actividadesData[currentSlide].textSecondaryColor}`}>
             Desde bodas frente al mar hasta celebraciones privadas, transformamos tus eventos en experiencias extraordinarias, diseñadas con elegancia y exclusividad.

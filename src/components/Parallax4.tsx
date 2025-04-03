@@ -1,15 +1,13 @@
 import { FaArrowRight } from "react-icons/fa";
 
-
-export default function Parallax4() {
-
+const EventsSection = () => {
   return (
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden diagonal-bottom diagonal-top">
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-tanNimbus">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-tanNimbus">
             Baila con <br className="hidden md:inline" /> las olas
-          </h1>
+          </h2>
           <p className="text-lg md:text-2xl font-medium font-kumbh">
             Música electrónica en un <br /> escenario natural único
           </p>
@@ -48,4 +46,6 @@ export default function Parallax4() {
       </section>
     </>
   );
-}
+};
+
+export default EventsSection;

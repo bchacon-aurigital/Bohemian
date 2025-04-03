@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-// Optimización de precarga de medios
 const useMediaPreloader = (mediaFiles: string[]) => {
   const [preloadedMedia, setPreloadedMedia] = useState<{[key: string]: boolean}>({});
 
@@ -38,9 +37,7 @@ const useMediaPreloader = (mediaFiles: string[]) => {
   return preloadedMedia;
 };
 
-// En tu componente principal
 const Index = () => {
-  // Lista de todos los medios a precargar
   const mediaToPreload = [
     "/default.webm", 
     "/video1.webm", 
@@ -49,10 +46,8 @@ const Index = () => {
     "/parallax4.avif"
   ];
 
-  // Usar el hook de precarga
   const preloadedMedia = useMediaPreloader(mediaToPreload);
 
-  // El resto de tu código de componente...
 };
 
 export default Index;

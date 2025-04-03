@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-export default function Parallax3() {
+const WellnessSection = () => {
   return (
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-tanNimbus">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-tanNimbus">
             Encuentra tu <br className="hidden md:inline" /> equilibrio
-          </h1>
+          </h2>
           <p className="text-lg md:text-2xl font-medium font-kumbh">
             Espacios para reconectar con <br /> cuerpo y mente
           </p>
@@ -17,4 +17,6 @@ export default function Parallax3() {
       </section>
     </>
   );
-}
+};
+
+export default WellnessSection;

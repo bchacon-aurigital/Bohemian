@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-export default function Parallax2() {
+const ProgramSection = () => {
   return (
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-tanNimbus">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-tanNimbus">
           Sumérgete en  <br className="hidden md:inline" /> la belleza
-          </h1>
+          </h2>
           <p className="text-lg md:text-2xl font-semibold font-kumbh">
           Naturaleza y confort en<br /> perfecta armonía
           </p>
@@ -17,4 +17,6 @@ export default function Parallax2() {
       </section>
     </>
   );
-}
+};
+
+export default ProgramSection;

@@ -74,17 +74,17 @@ export default function Footer() {
             <h3 className="text-xl font-light mb-6 font-tanNimbus">Información</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/habitaciones" className="hover:text-gray-300 transition font-montserrat">
+                <Link href="/rooms" className="hover:text-gray-300 transition font-montserrat">
                   Habitaciones
                 </Link>
               </li>
               <li>
-                <Link href="/servicios" className="hover:text-gray-300 transition font-montserrat">
+                <Link href="/#Servicios" className="hover:text-gray-300 transition font-montserrat">
                   Servicios
                 </Link>
               </li>
               <li>
-                <Link href="/restaurante" className="hover:text-gray-300 transition font-montserrat">
+                <Link href="/restaurant" className="hover:text-gray-300 transition font-montserrat">
                   Restaurante
                 </Link>
               </li>
@@ -100,16 +100,26 @@ export default function Footer() {
                 <span>+506 8670 4978</span>
               </li>
               <li>
-                <Link href="/booking" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                <a 
+                  href="https://www.booking.com/hotel/cr/the-bohemian-lagarto.es.html" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat"
+                >
                   <TbBrandBooking className="text-xl" />
                   Booking
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/airbnb" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                <a 
+                  href="https://www.airbnb.co.cr/rooms/887930834340083085" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat"
+                >
                   <TbBrandAirbnb className="text-xl" />
                   Airbnb
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -119,19 +129,34 @@ export default function Footer() {
             <h3 className="text-xl font-light mb-6 font-tanNimbus">Redes Sociales</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="https://instagram.com" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                <a 
+                  href="https://www.instagram.com/bohemianlagarto/?hl=en" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat"
+                >
                   <FaInstagram className="text-xl" /> Instagram
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="https://facebook.com" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                <a 
+                  href="https://www.facebook.com/BohemianLagarto" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat"
+                >
                   <FaFacebook className="text-xl" /> Facebook
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="https://tiktok.com" className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat">
+                <a 
+                  href="https://tiktok.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition flex items-center justify-center lg:justify-start gap-2 font-montserrat"
+                >
                   <RiTiktokLine className="text-xl" /> TikTok
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -141,6 +166,23 @@ export default function Footer() {
         <div className="mt-12 text-center md:text-right text-sm font-montserrat text-[#F1ECE3] font-extralight">
           <p>© 2025 The Bohemian Lagarto. Todos los derechos reservados.</p>
         </div>
+      </div>
+
+      <div className="w-full h-5 bg-[#041818]">
+        <a
+          href="https://aurigital.com"
+          target="_blank"
+          className="flex justify-center mx-auto w-full"
+        >
+          <p className="text-white uppercase text-[8px] text-center p-1 hover:text-[#28C0F5] ">
+            Design and Development by :
+          </p>
+          <img
+            src="/isotipo.avif"
+            alt="Design and Development by aurigital"
+            className="h-[20px] w-[20px]"
+          />
+        </a>
       </div>
     </footer>
   );

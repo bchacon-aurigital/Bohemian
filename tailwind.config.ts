@@ -33,6 +33,20 @@ const config: Config = {
           "2xl": "6rem",
         },
       },
+      animation: {
+        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'progress': 'progress 2s linear infinite',
+      },
+      keyframes: {
+        pulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '.5' },
+        },
+        progress: {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' },
+        },
+      },
     },
   },
   plugins: [],

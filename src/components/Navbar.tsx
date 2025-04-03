@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,12 +9,12 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navSections = [
-    "Inicio",
-    "Habitaciones",
-    "Restaurante",
-    "Servicios",
-    "Eventos",
-    "Contacto",
+    { name: "Inicio", href: "/" },
+    { name: "Habitaciones", href: "/rooms" },
+    { name: "Restaurante", href: "/restaurant" },
+    { name: "Servicios", href: "/#Servicios" },
+    { name: "Eventos", href: "/#Eventos" },
+    { name: "Contacto", href: "/#Contacto" },
   ];
 
   const reservationSection = "Contacto";
@@ -23,9 +25,15 @@ export default function Navbar() {
         className={`fixed w-full text-white z-50 transition-all duration-300 bg-[#3D4F27]`}
       >
         <div className="container mx-auto px-5 py-3 flex justify-between items-center relative font-kumbh">
-          <a href="/" className="lg:hidden text-xl sm:text-2xl font-semibold font-tanNimbus">
-           B
-          </a>
+          <Link href="/" className="lg:hidden">
+            <Image
+              src="/images/logo.svg"
+              alt="Bohemian Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
+          </Link>
 
           <button
             className="lg:hidden text-white mx-2 focus:outline-none relative w-6 h-6"
@@ -51,15 +59,25 @@ export default function Navbar() {
 
           <div className="hidden lg:block space-x-8 font-[200]">
             {navSections.map((item) => (
-              <ScrollLink
-                key={item}
-                to={item}
-                smooth={true}
-                duration={500}
-                className="cursor-pointer"
-              >
-                {item}
-              </ScrollLink>
+              item.href.startsWith('/') ? (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="cursor-pointer"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <ScrollLink
+                  key={item.name}
+                  to={item.href.replace('/#', '')}
+                  smooth={true}
+                  duration={500}
+                  className="cursor-pointer"
+                >
+                  {item.name}
+                </ScrollLink>
+              )
             ))}
           </div>
 
@@ -85,16 +103,27 @@ export default function Navbar() {
       >
         <div className="flex flex-col lg:hidden space-y-8 justify-center items-center h-full">
           {navSections.map((item) => (
-            <ScrollLink
-              key={item}
-              to={item}
-              onClick={toggleMenu}
-              smooth={true}
-              duration={500}
-              className="cursor-pointer"
-            >
-              {item}
-            </ScrollLink>
+            item.href.startsWith('/') ? (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={toggleMenu}
+                className="cursor-pointer"
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <ScrollLink
+                key={item.name}
+                to={item.href.replace('/#', '')}
+                onClick={toggleMenu}
+                smooth={true}
+                duration={500}
+                className="cursor-pointer"
+              >
+                {item.name}
+              </ScrollLink>
+            )
           ))}
           <ScrollLink
             to={reservationSection}

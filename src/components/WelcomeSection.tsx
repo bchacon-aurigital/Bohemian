@@ -14,9 +14,9 @@ export default function WelcomeSection() {
             <p className="text-lg font-light text-gray-800 mb-2">
               Bienvenido a
             </p>
-            <h1 className="text-4xl text-gray-900 mb-6 leading-tight font-tanNimbus">
+            <h2 className="text-4xl text-gray-900 mb-6 leading-tight font-tanNimbus">
               The Bohemian Lagarto.
-            </h1>
+            </h2>
           </div>
 
           <div className="col-span-5 space-y-6 text-gray-700 leading-relaxed font-kumbh">

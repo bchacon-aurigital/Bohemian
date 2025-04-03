@@ -1,4 +1,9 @@
 User-agent: *
-Disallow: 
+Allow: /
+Allow: /rooms
+Allow: /restaurant
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
 
-Sitemap: https://www.tusitio.com/sitemap.xml
+Sitemap: https://bohemiancr.com/sitemap.xml

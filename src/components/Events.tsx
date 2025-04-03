@@ -46,7 +46,7 @@ const Carousel = () => {
         <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4">
           <div>
             <div className="text-[#969696] text-lg font-kumbh">Gastronomía</div>
-            <h1 className="text-4xl font-kumbh font-semibold text-[#3D4F27]">La Joya de Lagarto</h1>
+            <h2 className="text-4xl font-kumbh font-semibold text-[#3D4F27]">La Joya de Lagarto</h2>
           </div>
           <div className="md:text-right text-lg mt-6 lg:mt-0 md:text-md font-kumbh w-full md:w-[474px] text-[#969696]">
             Disfrute de una experiencia gastronómica extraordinaria mientras contempla el horizonte infinito, con el sonido de las olas como única banda sonora.
