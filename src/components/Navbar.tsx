@@ -63,7 +63,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="cursor-pointer"
+                  className="cursor-pointer font-tanNimbus"
                 >
                   {item.name}
                 </Link>
@@ -108,7 +108,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 onClick={toggleMenu}
-                className="cursor-pointer"
+                className="cursor-pointer font-kumbh"
               >
                 {item.name}
               </Link>
@@ -119,7 +119,7 @@ export default function Navbar() {
                 onClick={toggleMenu}
                 smooth={true}
                 duration={500}
-                className="cursor-pointer"
+                className="cursor-pointer font-tanNimbus"
               >
                 {item.name}
               </ScrollLink>
@@ -129,7 +129,7 @@ export default function Navbar() {
             to={reservationSection}
             smooth={true}
             duration={500}
-            className="lg:hidden"
+            className="lg:hidden "
           >
             <button
               onClick={toggleMenu}

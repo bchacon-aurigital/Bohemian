@@ -11,15 +11,15 @@ interface ScrollBentoBoxProps {
 
 const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
     return (
-        <div className="space-y-4 gap-4">
+        <div className="space-y-4">
             <div 
-                className="grid grid-cols-6 gap-4"
+                className="grid grid-cols-1 md:grid-cols-6 gap-4"
                 data-aos="fade-up"
                 data-aos-duration="1000"
                 data-aos-offset="200"
             >
                 {/* Primera imagen (colspan 3) */}
-                <div className="col-span-3">
+                <div className="col-span-1 md:col-span-3">
                     <div className="aspect-[4/3] rounded-lg overflow-hidden">
                         <img 
                             src={images[0].src}
@@ -30,7 +30,7 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
                 </div>
 
                 {/* Segunda imagen (colspan 3) */}
-                <div className="col-span-3">
+                <div className="col-span-1 md:col-span-3">
                     <div className="aspect-[4/3] rounded-lg overflow-hidden">
                         <img 
                             src={images[1].src}
@@ -41,8 +41,8 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
                 </div>
 
                 {/* Imagen grande (colspan 6) */}
-                <div className="col-span-6">
-                    <div className="aspect-[21/9] rounded-lg overflow-hidden">
+                <div className="col-span-1 md:col-span-6">
+                    <div className="aspect-[16/9] md:aspect-[21/9] rounded-lg overflow-hidden">
                         <img 
                             src={images[2].src}
                             alt={images[2].alt}
@@ -55,9 +55,9 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
                 {[3, 4, 5].map((index) => (
                     <div 
                         key={`img-${index}`}
-                        className="col-span-2"
+                        className="col-span-1 md:col-span-2"
                     >
-                        <div className="aspect-[3/2] rounded-lg overflow-hidden">
+                        <div className="aspect-[4/3] md:aspect-[3/2] rounded-lg overflow-hidden">
                             <img 
                                 src={images[index].src}
                                 alt={images[index].alt}
@@ -70,14 +70,14 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
 
             {/* Grupo adicional de imágenes */}
             <div 
-                className="grid grid-cols-6 gap-4 mt-4"
+                className="grid grid-cols-1 md:grid-cols-6 gap-4"
                 data-aos="fade-up"
                 data-aos-duration="1000"
                 data-aos-offset="200"
                 data-aos-delay="100"
             >
                 {/* Primera imagen (colspan 3) */}
-                <div className="col-span-3">
+                <div className="col-span-1 md:col-span-3">
                     <div className="aspect-[4/3] rounded-lg overflow-hidden">
                         <img 
                             src={images[6].src}
@@ -88,7 +88,7 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
                 </div>
 
                 {/* Segunda imagen (colspan 3) */}
-                <div className="col-span-3">
+                <div className="col-span-1 md:col-span-3">
                     <div className="aspect-[4/3] rounded-lg overflow-hidden">
                         <img 
                             src={images[7].src}
@@ -99,8 +99,8 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
                 </div>
 
                 {/* Imagen grande (colspan 6) */}
-                <div className="col-span-6">
-                    <div className="aspect-[21/9] rounded-lg overflow-hidden">
+                <div className="col-span-1 md:col-span-6">
+                    <div className="aspect-[16/9] md:aspect-[21/9] rounded-lg overflow-hidden">
                         <img 
                             src={images[8].src}
                             alt={images[8].alt}

@@ -52,11 +52,11 @@ export default function RoomsPage() {
       <Navbar />
       <main className="pt-20">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-[2fr_3fr] gap-8 items-start px-8 py-6">
-            <div className="sticky top-24">
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8 items-start px-4 md:px-8 py-6">
+            <div className="lg:sticky lg:top-24">
               <RoomDetails {...roomDetails} />
             </div>
-            <div>
+            <div className="mt-8 lg:mt-0">
               <ScrollBentoBox images={roomImages} />
             </div>
           </div>
