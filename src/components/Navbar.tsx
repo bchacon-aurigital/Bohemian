@@ -63,7 +63,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="cursor-pointer font-tanNimbus"
+                  className="cursor-pointer "
                 >
                   {item.name}
                 </Link>
