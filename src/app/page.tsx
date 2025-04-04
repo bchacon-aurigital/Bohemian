@@ -98,7 +98,7 @@ const HomePage = () => {
             changeMedia("/parallax4.avif", 'image');
           }
           if (entry.target === Parallax5Ref.current && entry.isIntersecting) {
-            changeMedia("/video1.webm");
+            changeMedia("/last_video.mp4");
           }
         });
       },
