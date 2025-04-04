@@ -16,20 +16,18 @@ const RoomsPage = () => {
     });
   }, []);
 
-  // Datos de ejemplo para el ScrollBentoBox
   const roomImages = [
-    { src: "/parallax4.avif", alt: "Habitación de lujo con vista al mar" },
-    { src: "/parallax4.avif", alt: "Suite presidencial con terraza" },
-    { src: "/parallax4.avif", alt: "Vista panorámica de la habitación" },
-    { src: "/parallax4.avif", alt: "Baño de lujo" },
-    { src: "/parallax4.avif", alt: "Área de descanso" },
-    { src: "/parallax4.avif", alt: "Terraza privada" },
-    { src: "/parallax4.avif", alt: "Dormitorio principal" },
-    { src: "/parallax4.avif", alt: "Vista al océano" },
-    { src: "/parallax4.avif", alt: "Sala de estar" }
+    { src: "/images/restaurantpage1.avif", alt: "Habitación de lujo con vista al mar" },
+    { src: "/images/restaurantpage2.avif", alt: "Suite presidencial con terraza" },
+    { src: "/images/restaurantpage3.avif", alt: "Vista panorámica de la habitación" },
+    { src: "/images/restaurantpage4.avif", alt: "Baño de lujo" },
+    { src: "/images/restaurantpage5.avif", alt: "Área de descanso" },
+    { src: "/images/restaurantpage6.avif", alt: "Terraza privada" },
+    { src: "/images/restaurantpage7.avif", alt: "Dormitorio principal" },
+    { src: "/images/restaurantpage8.avif", alt: "Vista al océano" },
+    { src: "/images/restaurantpage9.avif", alt: "Sala de estar" }
   ];
 
-  // Datos de ejemplo para RoomDetails
   const roomDetails = {
     title: "La Joya de Lagarto",
     subtitle: "Restaurante",

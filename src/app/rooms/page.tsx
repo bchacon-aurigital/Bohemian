@@ -16,20 +16,18 @@ export default function RoomsPage() {
     });
   }, []);
 
-  // Datos de ejemplo para el ScrollBentoBox
   const roomImages = [
-    { src: "/parallax4.avif", alt: "Habitación de lujo con vista al mar" },
-    { src: "/parallax4.avif", alt: "Suite presidencial con terraza" },
-    { src: "/parallax4.avif", alt: "Vista panorámica de la habitación" },
-    { src: "/parallax4.avif", alt: "Baño de lujo" },
-    { src: "/parallax4.avif", alt: "Área de descanso" },
-    { src: "/parallax4.avif", alt: "Terraza privada" },
-    { src: "/parallax4.avif", alt: "Dormitorio principal" },
-    { src: "/parallax4.avif", alt: "Vista al océano" },
-    { src: "/parallax4.avif", alt: "Sala de estar" }
+    { src: "/images/roomspage1.avif", alt: "Habitación de lujo con vista al mar" },
+    { src: "/images/roomspage2.avif", alt: "Suite presidencial con terraza" },
+    { src: "/images/roomspage3.avif", alt: "Vista panorámica de la habitación" },
+    { src: "/images/roomspage4.avif", alt: "Baño de lujo" },
+    { src: "/images/roomspage5.avif", alt: "Área de descanso" },
+    { src: "/images/roomspage6.avif", alt: "Terraza privada" },
+    { src: "/images/roomspage7.avif", alt: "Dormitorio principal" },
+    { src: "/images/roomspage8.avif", alt: "Vista al océano" },
+    { src: "/images/roomspage9.avif", alt: "Sala de estar" }
   ];
 
-  // Datos de ejemplo para RoomDetails
   const roomDetails = {
     title: "Habitación Deluxe",
     subtitle: "Alojamiento",

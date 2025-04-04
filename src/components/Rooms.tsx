@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { IoExpand } from "react-icons/io5";
 
-
 const Rooms = () => {
+  const [activeImage, setActiveImage] = useState('/images/rooms.avif');
+  const [activeButton, setActiveButton] = useState(0);
+
+  const handleButtonClick = (index: number, image: string) => {
+    setActiveImage(image);
+    setActiveButton(index);
+  };
+
   return (
     <section className="w-full py-16 bg-[#F1ECE3] font-kumbh">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col md:flex-row gap-8">
         
         <div className="w-full md:w-1/2 relative">
           <img 
-            src="/parallax4.avif" 
+            src={activeImage} 
             alt="Vista aérea de habitaciones junto al océano Pacífico" 
-            className="w-full h-full rounded-lg object-cover"
+            className="w-full h-full rounded-lg object-cover transition-all duration-500"
           />
           
           <button 
             className="absolute bottom-4 right-4 bg-[#455c3e] text-white px-10 py-4 rounded-full 
-                       hover:bg-[#3a4e35] transition-all duration-300 font-kumbh text-xs"
+                       hover:bg-[#3a4e35] transition-all duration-300 font-kumbh text-lg"
           >
             Conocer Más
           </button>
@@ -44,12 +51,18 @@ const Rooms = () => {
                     Vistas panorámicas<br />al océano Pacífico
                   </h3>
                 </div>
-                <a 
-                  href="#" 
-                  className="bg-[#455c3e] p-1 rounded-lg inline-block"
+                <button 
+                  onClick={() => handleButtonClick(0, '/images/rooms.avif')}
+                  className={`p-1 rounded-lg inline-block transition-all duration-300 ${
+                    activeButton === 0 ? 'bg-[#455c3e]' : 'bg-[#C2C3B4]'
+                  }`}
                 >
-                  <IoExpand  className="text-white font-bold" size={30} />
-                </a>
+                  {activeButton === 0 ? (
+                    <IoExpand className="text-white font-bold" size={30} />
+                  ) : (
+                    <ArrowUpRight className="text-[#69755C]" size={30} />
+                  )}
+                </button>
               </div>
             </div>
             
@@ -61,12 +74,18 @@ const Rooms = () => {
                     Diseñadas con elegancia<br />minimalista
                   </h3>
                 </div>
-                <a 
-                  href="#" 
-                  className="bg-[#C2C3B4] p-1 rounded-lg inline-block"
+                <button 
+                  onClick={() => handleButtonClick(1, '/images/rooms2.avif')}
+                  className={`p-1 rounded-lg inline-block transition-all duration-300 ${
+                    activeButton === 1 ? 'bg-[#455c3e]' : 'bg-[#C2C3B4]'
+                  }`}
                 >
-                  <ArrowUpRight className="text-[#69755C]" size={30} />
-                </a>
+                  {activeButton === 1 ? (
+                    <IoExpand className="text-white font-bold" size={30} />
+                  ) : (
+                    <ArrowUpRight className="text-[#69755C]" size={30} />
+                  )}
+                </button>
               </div>
             </div>
             
@@ -78,12 +97,18 @@ const Rooms = () => {
                     Completamente equipadas<br />para tus necesidades
                   </h3>
                 </div>
-                <a 
-                  href="#" 
-                  className="bg-[#C2C3B4] p-1 rounded-lg inline-block"
+                <button 
+                  onClick={() => handleButtonClick(2, '/images/rooms3.avif')}
+                  className={`p-1 rounded-lg inline-block transition-all duration-300 ${
+                    activeButton === 2 ? 'bg-[#455c3e]' : 'bg-[#C2C3B4]'
+                  }`}
                 >
-                  <ArrowUpRight className="text-[#69755C]" size={30} />
-                </a>
+                  {activeButton === 2 ? (
+                    <IoExpand className="text-white font-bold" size={30} />
+                  ) : (
+                    <ArrowUpRight className="text-[#69755C]" size={30} />
+                  )}
+                </button>
               </div>
             </div>
           </div>

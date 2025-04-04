@@ -5,10 +5,10 @@ const Spaces = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   
   const images = [
-    "/parallax4.avif", 
-    "/Fortaleza.avif", 
-    "/parallax4.avif",
-    "/parallax4.avif", 
+    "/images/spaces1.avif", 
+    "/images/spaces1.avif", 
+    "/images/spaces2.avif",
+    "/images/spaces3.avif", 
   ];
 
   const handleImageSelect = (index: number) => {

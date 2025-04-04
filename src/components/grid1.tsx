@@ -61,8 +61,8 @@ const Activities = ({
             subtitle: "Bajo reservación anticipada",
             description1: "Recorre la orilla del mar mientras el sol se despide en el horizonte.",
             description2: "Una experiencia mágica llena de conexión y libertad para las parejas.",
-            image1: "/parallax4.avif",
-            image2: "/parallax4.avif",
+            image1: "/images/Activities1.avif",
+            image2: "/images/Activities2.avif",
             altText1: "Mujer con caballo en la playa",
             altText2: "Pareja con caballo en la playa"
         },
@@ -71,8 +71,8 @@ const Activities = ({
             subtitle: "Excursiones guiadas semanalmente",
             description1: "Adéntrate en la belleza virgen del bosque tropical.",
             description2: "Descubre cascadas escondidas y deja que la naturaleza te guíe.",
-            image1: "/parallax4.avif",
-            image2: "/parallax4.avif",
+            image1: "/images/Activities3.avif",
+            image2: "/images/Activities4.avif",
             altText1: "Sendero en el bosque",
             altText2: "Sendero"
         },
@@ -81,8 +81,8 @@ const Activities = ({
             subtitle: "Mejor temporada: de diciembre a mayo",
             description1: "Vive tu propia aventura con experiencias privadas.",
             description2: "Encuentra toda clase de fauna y flora, desde monos juguetones hasta majestuosos tucanes.",
-            image1: "/parallax4.avif",
-            image2: "/parallax4.avif",
+            image1: "/images/Activities5.avif",
+            image2: "/images/Activities6.avif",
             altText1: "Arbol",
             altText2: "Sendero"
         },
@@ -91,47 +91,15 @@ const Activities = ({
             subtitle: "Bajo reservación anticipada",
             description1: "Encuentra especies exóticas en su hábitat natural.",
             description2: "Disfruta desde navegación por el océano, hasta exploraciones en islas cercanas.",
-            image1: "/parallax4.avif",
-            image2: "/parallax4.avif",
+            image1: "/images/Activities7.avif",
+            image2: "/images/Activities8.avif",
             altText1: "Sendero",
             altText2: "Sendero"
         }
     ];
 
-    // Default relaxation activities
-    const defaultRelaxationActivities = [
-        {
-            title: "Yoga frente al mar",
-            subtitle: "Inicia tu día con sesiones revitalizantes",
-            description: "Clases en la mañana",
-            image: "/parallax4.avif",
-            badge: "Clases en la mañana"
-        },
-        {
-            title: "Infinity pool",
-            subtitle: "Sumérgete en la serenidad del agua",
-            description: "Acceso para huéspedes",
-            image: "/parallax4.avif",
-            badge: "Acceso para huéspedes"
-        },
-        {
-            title: "Lectura en hamaca",
-            subtitle: "Para desconectar y sumergirse en un buen libro",
-            description: "Disponible todo el día",
-            image: "/parallax4.avif",
-            badge: "Disponible todo el día"
-        },
-        {
-            title: "Meditación guiada",
-            subtitle: "Encuentra armonía interna",
-            description: "Sesiones privadas y grupales",
-            image: "/parallax4.avif",
-            badge: "Sesiones privadas y grupales"
-        }
-    ];
 
     const activitiesToRender = activities.length > 0 ? activities : defaultActivities;
-    const relaxationActivitiesToRender = relaxationActivities.length > 0 ? relaxationActivities : defaultRelaxationActivities;
 
     return (
         <>

@@ -16,7 +16,7 @@ const ResortFeatures = () => {
           </div>
           <div className="md:w-3/4">
             <img 
-              src="/parallax4.avif" 
+              src="/images/ResortFeatures1.avif" 
               alt="Terraza personal" 
               className="rounded-lg shadow-lg w-full h-auto object-cover  aspect-[16/8]"
             />
@@ -35,7 +35,7 @@ const ResortFeatures = () => {
           </div>
           <div className="md:w-3/4 md:order-1">
             <img 
-              src="/parallax4.avif" 
+              src="/images/ResortFeatures2.avif" 
               alt="Diseño contemporáneo" 
               className="rounded-lg shadow-lg w-full h-auto object-cover aspect-video"
             />
@@ -54,7 +54,7 @@ const ResortFeatures = () => {
           </div>
           <div className="md:w-3/4">
             <img 
-              src="/parallax4.avif" 
+              src="/images/ResortFeatures3.avif" 
               alt="Desayuno incluido" 
               className="rounded-lg shadow-lg w-full h-auto object-cover aspect-video"
             />
@@ -73,7 +73,7 @@ const ResortFeatures = () => {
           </div>
           <div className="md:w-3/4 md:order-1">
             <img 
-              src="/parallax4.avif" 
+              src="/images/ResortFeatures4.avif" 
               alt="Privacidad absoluta" 
               className="rounded-lg shadow-lg w-full h-auto object-cover aspect-video "
             />
