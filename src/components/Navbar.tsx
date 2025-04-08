@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showLangDropdown, setShowLangDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleLangDropdown = () => setShowLangDropdown(!showLangDropdown);
+
+  // Cerrar dropdown al hacer clic fuera de él
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowLangDropdown(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const navSections = [
     { name: "Inicio", href: "/" },
@@ -63,7 +80,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="cursor-pointer "
+                  className="cursor-pointer"
                 >
                   {item.name}
                 </Link>
@@ -81,16 +98,34 @@ export default function Navbar() {
             ))}
           </div>
 
-          <ScrollLink
-            to={reservationSection}
-            smooth={true}
-            duration={500}
-            className="hidden lg:block"
-          >
-            <button className="border border-white text-white hover:bg-white hover:text-black duration-500 px-6 lg:px-8 py-2 rounded-full text-sm lg:text-base font-[200] hover:font-[300] font-kumbh">
+          <div className="hidden lg:block relative" ref={dropdownRef}>
+            <button 
+              onClick={toggleLangDropdown}
+              className="border border-white text-white hover:bg-white hover:text-black duration-500 px-6 lg:px-8 py-2 rounded-full text-sm lg:text-base font-[200] hover:font-[300] font-kumbh flex items-center"
+            >
               Reservar Ahora
+              <ChevronDown className="ml-2 h-4 w-4" />
             </button>
-          </ScrollLink>
+            
+            {showLangDropdown && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                <a 
+                  href="https://reservations.orbebooking.com/Search/Init/Sa63l/es" 
+                  target="_blank"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Español
+                </a>
+                <a 
+                  href="https://reservations.orbebooking.com/Search/Init/Sa63l/en" 
+                  target="_blank"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  English
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
 
@@ -125,19 +160,26 @@ export default function Navbar() {
               </ScrollLink>
             )
           ))}
-          <ScrollLink
-            to={reservationSection}
-            smooth={true}
-            duration={500}
-            className="lg:hidden "
-          >
-            <button
-              onClick={toggleMenu}
-              className="border border-white text-white hover:bg-[#7B8E6A] hover:border-[#7B8E6A] duration-200 px-6 lg:px-8 py-2 lg:py-3 rounded-full text-sm lg:text-base"
-            >
-              Reservar Ahora
-            </button>
-          </ScrollLink>
+          
+          <div className="flex flex-col items-center space-y-3">
+            <div className="text-sm text-white/80 font-kumbh">Reservar Ahora</div>
+            <div className="flex space-x-4">
+              <a 
+                href="https://reservations.orbebooking.com/Search/Init/Sa63l/es"
+                target="_blank"
+                className="border border-white text-white hover:bg-[#7B8E6A] hover:border-[#7B8E6A] duration-200 px-6 py-2 rounded-full text-sm"
+              >
+                ES
+              </a>
+              <a 
+                href="https://reservations.orbebooking.com/Search/Init/Sa63l/en"
+                target="_blank"
+                className="border border-white text-white hover:bg-[#7B8E6A] hover:border-[#7B8E6A] duration-200 px-6 py-2 rounded-full text-sm"
+              >
+                EN
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </>
