@@ -19,19 +19,17 @@ import Events from "@/components/Events";
 import Grid from "@/components/grid1";
 import SpecialEvents from "@/components/SpecialEvents";
 import LoadingScreen from "@/components/LoadingScreen";
-
 import BookingWidget from "@/components/BookingWidget";
-
 import Footer from "@/components/Footer";
 
 const HomePage = () => {
-  
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
   const [isLoading, setIsLoading] = useState(true);
   const [contentOpacity, setContentOpacity] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const [activeMedia, setActiveMedia] = useState("/");
   const [previousMedia, setPreviousMedia] = useState("");
@@ -44,6 +42,20 @@ const HomePage = () => {
   const Parallax3Ref = useRef(null);
   const Parallax4Ref = useRef(null);
   const Parallax5Ref = useRef(null);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -112,7 +124,6 @@ const HomePage = () => {
     if (Parallax3Ref.current) observer.observe(Parallax3Ref.current);
     if (Parallax4Ref.current) observer.observe(Parallax4Ref.current);
     if (Parallax5Ref.current) observer.observe(Parallax5Ref.current);
-
 
     return () => observer.disconnect();
   }, []);
@@ -189,6 +200,10 @@ const HomePage = () => {
         style={{ opacity: contentOpacity }}
       >
         <Navbar />
+        
+        {/* Componente BookingWidget sólo en móvil */}
+        {isMobile && <BookingWidget mode="mobile" />}
+        
         <section id="Inicio">
           <Hero />
         </section>
@@ -265,31 +280,31 @@ const HomePage = () => {
         </section>
 
         <section id="" className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]">
-        <div className="px-4 sm:px-6 lg:px-8 py-[12%] md:py-[8%] max-w-7xl mx-auto text-white">
-          <div
-            data-aos="fade-up"
-            className="grid lg:grid-cols-8 gap-8 items-start"
-          >
-            <div className="col-span-3">
-              <h2 className="text-4xl text-white mb-2 leading-none font-tanNimbus">
-                Bienestar
-              </h2>
-              <h2 className="text-4xl text-white mb-6 leading-tight font-tanNimbus">
-                Integral
-              </h2>
-            </div>
+          <div className="px-4 sm:px-6 lg:px-8 py-[12%] md:py-[8%] max-w-7xl mx-auto text-white">
+            <div
+              data-aos="fade-up"
+              className="grid lg:grid-cols-8 gap-8 items-start"
+            >
+              <div className="col-span-3">
+                <h2 className="text-4xl text-white mb-2 leading-none font-tanNimbus">
+                  Bienestar
+                </h2>
+                <h2 className="text-4xl text-white mb-6 leading-tight font-tanNimbus">
+                  Integral
+                </h2>
+              </div>
 
-            <div className="col-span-5 space-y-6 text-white leading-relaxed font-kumbh">
-              <p className="text-base md:text-2xl font-medium mb-8">
-                Descubre un espacio diseñado para la relajación y la renovación. Con el mar a tu alrededor y naturaleza en cada rincón, reconéctate contigo mismo a través del ejercicio, la meditación y la tranquilidad absoluta. Aquí, cada momento es una oportunidad para el bienestar y la transformación.                </p>
-              <button className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
-                Ver Más
-                <FaArrowRight />
-              </button>
+              <div className="col-span-5 space-y-6 text-white leading-relaxed font-kumbh">
+                <p className="text-base md:text-2xl font-medium mb-8">
+                  Descubre un espacio diseñado para la relajación y la renovación. Con el mar a tu alrededor y naturaleza en cada rincón, reconéctate contigo mismo a través del ejercicio, la meditación y la tranquilidad absoluta. Aquí, cada momento es una oportunidad para el bienestar y la transformación.</p>
+                <button className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
+                  Ver Más
+                  <FaArrowRight />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
         <section id="" ref={Parallax4Ref}>
           <Parallax4 />
@@ -322,8 +337,6 @@ const HomePage = () => {
         <section id="Contacto" ref={Parallax5Ref}>
           <Parallax5 />
         </section>
-        {/* Widget de reserva flotante */}
-        <BookingWidget />
         <Footer />
       </div>
     </div>

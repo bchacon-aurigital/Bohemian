@@ -1,29 +1,28 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import BookingWidget from "./BookingWidget";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showLangDropdown, setShowLangDropdown] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const toggleLangDropdown = () => setShowLangDropdown(!showLangDropdown);
-
-  // Cerrar dropdown al hacer clic fuera de él
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check if device is mobile
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setShowLangDropdown(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener('resize', checkMobile);
     };
   }, []);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   const navSections = [
     { name: "Inicio", href: "/" },
@@ -34,14 +33,12 @@ export default function Navbar() {
     { name: "Contacto", href: "/#Contacto" },
   ];
 
-  const reservationSection = "Contacto";
-
   return (
     <>
-      <nav
-        className={`fixed w-full text-white z-50 transition-all duration-300 bg-[#3D4F27]`}
-      >
-        <div className="container mx-auto px-5 py-3 flex justify-between items-center relative font-kumbh">
+      <nav className="fixed w-full text-white z-50 transition-all duration-300 bg-[#3D4F27]">
+        {/* Contenedor principal del navbar - Una sola línea */}
+        <div className="container mx-auto px-5 py-5 flex items-center justify-between relative font-kumbh">
+          {/* Logo para móvil */}
           <Link href="/" className="lg:hidden">
             <Image
               src="/images/logo.svg"
@@ -52,8 +49,9 @@ export default function Navbar() {
             />
           </Link>
 
+          {/* Botón de menú para móvil */}
           <button
-            className="lg:hidden text-white mx-2 focus:outline-none relative w-6 h-6"
+            className="lg:hidden text-white mx-2 focus:outline-none relative w-6 h-6 z-50"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -74,7 +72,8 @@ export default function Navbar() {
             />
           </button>
 
-          <div className="hidden lg:block space-x-8 font-[200]">
+          {/* Enlaces de navegación para desktop */}
+          <div className="hidden lg:flex space-x-8 font-[200]">
             {navSections.map((item) => (
               item.href.startsWith('/') ? (
                 <Link
@@ -98,37 +97,14 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden lg:block relative" ref={dropdownRef}>
-            <button 
-              onClick={toggleLangDropdown}
-              className="border border-white text-white hover:bg-white hover:text-black duration-500 px-6 lg:px-8 py-2 rounded-full text-sm lg:text-base font-[200] hover:font-[300] font-kumbh flex items-center"
-            >
-              Reservar Ahora
-              <ChevronDown className="ml-2 h-4 w-4" />
-            </button>
-            
-            {showLangDropdown && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                <a 
-                  href="https://reservations.orbebooking.com/Search/Init/Sa63l/es" 
-                  target="_blank"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Español
-                </a>
-                <a 
-                  href="https://reservations.orbebooking.com/Search/Init/Sa63l/en" 
-                  target="_blank"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  English
-                </a>
-              </div>
-            )}
+          {/* Widget de reserva en el navbar para desktop */}
+          <div className="hidden lg:block">
+            <BookingWidget mode="navbar" />
           </div>
         </div>
       </nav>
 
+      {/* Menú móvil expandible */}
       <div
         className={`lg:hidden fixed inset-0 bg-[#1a2721] text-white transform transition-all duration-300 ease-in-out z-40 ${
           isOpen
