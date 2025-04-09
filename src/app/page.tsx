@@ -20,6 +20,8 @@ import Grid from "@/components/grid1";
 import SpecialEvents from "@/components/SpecialEvents";
 import LoadingScreen from "@/components/LoadingScreen";
 
+import BookingWidget from "@/components/BookingWidget";
+
 import Footer from "@/components/Footer";
 
 const HomePage = () => {
@@ -320,6 +322,8 @@ const HomePage = () => {
         <section id="Contacto" ref={Parallax5Ref}>
           <Parallax5 />
         </section>
+        {/* Widget de reserva flotante */}
+        <BookingWidget />
         <Footer />
       </div>
     </div>
