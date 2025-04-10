@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, Globe2, Users, X } from 'lucide-react';
 
 interface BookingWidgetProps {
@@ -12,6 +12,43 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
   const [children, setChildren] = useState(0);
   const [selectedLang, setSelectedLang] = useState<'es' | 'en'>('es');
   const [isOpen, setIsOpen] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
+  const [showCheckInModal, setShowCheckInModal] = useState(false);
+  const [showCheckOutModal, setShowCheckOutModal] = useState(false);
+  
+  // Detectar si es un dispositivo iOS
+  useEffect(() => {
+    const detectIOS = () => {
+      const userAgent = navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod/.test(userAgent);
+    };
+    setIsIOS(detectIOS());
+  }, []);
+  
+  const formatDateForDisplay = (dateString: string) => {
+    if (!dateString) return '';
+    
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('es-ES', { 
+        day: '2-digit', 
+        month: '2-digit', 
+        year: 'numeric' 
+      });
+    } catch (e) {
+      return '';
+    }
+  };
+  
+  const handleDateSelect = (dateStr: string, type: 'checkin' | 'checkout') => {
+    if (type === 'checkin') {
+      setCheckIn(dateStr);
+      setShowCheckInModal(false);
+    } else {
+      setCheckOut(dateStr);
+      setShowCheckOutModal(false);
+    }
+  };
   
   const handleReservation = () => {
     // Si hay fechas seleccionadas, construir URL con parámetros
@@ -40,6 +77,183 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
     }
   };
 
+  // Componente personalizado de selector de fecha para iOS
+  const DateSelector = ({ 
+    visible, 
+    onClose, 
+    onSelect, 
+    label 
+  }: { 
+    visible: boolean; 
+    onClose: () => void; 
+    onSelect: (date: string) => void;
+    label: string;
+  }) => {
+    const [selectedDate, setSelectedDate] = useState('');
+    const [currentMonth, setCurrentMonth] = useState(new Date());
+    
+    const daysInMonth = (month: number, year: number) => {
+      return new Date(year, month + 1, 0).getDate();
+    };
+    
+    const generateCalendar = () => {
+      const year = currentMonth.getFullYear();
+      const month = currentMonth.getMonth();
+      const firstDay = new Date(year, month, 1).getDay();
+      const days = daysInMonth(month, year);
+      
+      // Ajustar para que la semana empiece el lunes (0 = lunes, 6 = domingo)
+      const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1;
+      
+      const calendar = [];
+      let dayCount = 1;
+      
+      // Nombres de días de la semana
+      calendar.push(['L', 'M', 'X', 'J', 'V', 'S', 'D']);
+      
+      // Generar semanas
+      let week = Array(7).fill('');
+      
+      // Rellenar espacios vacíos al inicio
+      for (let i = 0; i < adjustedFirstDay; i++) {
+        week[i] = '';
+      }
+      
+      // Rellenar días
+      for (let i = adjustedFirstDay; i < 7; i++) {
+        week[i] = dayCount.toString();
+        dayCount++;
+      }
+      
+      calendar.push([...week]);
+      
+      // Resto de semanas
+      while (dayCount <= days) {
+        week = Array(7).fill('');
+        for (let i = 0; i < 7 && dayCount <= days; i++) {
+          week[i] = dayCount.toString();
+          dayCount++;
+        }
+        calendar.push([...week]);
+      }
+      
+      return calendar;
+    };
+    
+    const calendar = generateCalendar();
+    
+    const handleDateClick = (day: string) => {
+      if (!day) return;
+      
+      const year = currentMonth.getFullYear();
+      const month = currentMonth.getMonth() + 1;
+      const formattedMonth = month < 10 ? `0${month}` : month;
+      const formattedDay = parseInt(day) < 10 ? `0${day}` : day;
+      
+      const dateStr = `${year}-${formattedMonth}-${formattedDay}`;
+      setSelectedDate(dateStr);
+    };
+    
+    const handlePrevMonth = () => {
+      setCurrentMonth(prev => {
+        const newDate = new Date(prev);
+        newDate.setMonth(prev.getMonth() - 1);
+        return newDate;
+      });
+    };
+    
+    const handleNextMonth = () => {
+      setCurrentMonth(prev => {
+        const newDate = new Date(prev);
+        newDate.setMonth(prev.getMonth() + 1);
+        return newDate;
+      });
+    };
+    
+    const confirmSelection = () => {
+      if (selectedDate) {
+        onSelect(selectedDate);
+      }
+    };
+    
+    if (!visible) return null;
+    
+    return (
+      <div className="fixed inset-0 bg-black/50 z-[10000] flex items-center justify-center">
+        <div className="bg-white rounded-lg w-[90%] max-w-md p-4">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-medium text-[#3D4F27]">{label}</h3>
+            <button onClick={onClose} className="text-gray-500">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          
+          <div className="text-center mb-4">
+            <div className="flex justify-between items-center mb-2">
+              <button 
+                onClick={handlePrevMonth}
+                className="p-2 rounded-full hover:bg-gray-100"
+              >
+                &lt;
+              </button>
+              <div className="font-medium">
+                {currentMonth.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}
+              </div>
+              <button 
+                onClick={handleNextMonth}
+                className="p-2 rounded-full hover:bg-gray-100"
+              >
+                &gt;
+              </button>
+            </div>
+            
+            <table className="w-full border-collapse">
+              <thead>
+                <tr>
+                  {calendar[0].map((day, i) => (
+                    <th key={i} className="py-2 text-center text-sm font-medium text-gray-600">
+                      {day}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {calendar.slice(1).map((week, weekIndex) => (
+                  <tr key={weekIndex}>
+                    {week.map((day, dayIndex) => {
+                      const dateStr = day ? `${currentMonth.getFullYear()}-${(currentMonth.getMonth() + 1).toString().padStart(2, '0')}-${day.padStart(2, '0')}` : '';
+                      const isSelected = dateStr === selectedDate;
+                      
+                      return (
+                        <td 
+                          key={dayIndex} 
+                          className={`text-center p-2 ${!day ? '' : 'cursor-pointer hover:bg-gray-100'} ${isSelected ? 'bg-[#3D4F27] text-white rounded-full' : ''}`}
+                          onClick={() => day && handleDateClick(day)}
+                        >
+                          {day}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <div className="flex justify-end">
+            <button 
+              onClick={confirmSelection}
+              className="bg-[#3D4F27] text-white px-4 py-2 rounded-full text-sm font-medium"
+              disabled={!selectedDate}
+            >
+              Confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   // Renderizado para la versión móvil (botón flotante + panel expandible)
   if (mode === 'mobile') {
     return (
@@ -48,7 +262,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
         {!isOpen && (
           <button 
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-5 right-5 z-50 bg-[#3D4F27] text-white rounded-full p-4 shadow-lg"
+            className="fixed bottom-5 right-5 z-50 bg-[#3D4F27] text-white rounded-full p-4 shadow-lg flex items-center justify-center"
             style={{ zIndex: 9999 }}
           >
             <Calendar className="w-6 h-6" />
@@ -89,29 +303,53 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
             {/* Check-in */}
             <div className="mb-4">
               <label className="text-xs text-gray-500 mb-1 font-kumbh">Check-in</label>
-              <div className="flex items-center gap-2 p-2 border border-gray-200 rounded-lg">
-                <Calendar className="text-[#3D4F27] w-5 h-5" />
-                <input 
-                  type="date" 
-                  value={checkIn}
-                  onChange={(e) => setCheckIn(e.target.value)}
-                  className="w-full bg-transparent text-gray-700 focus:outline-none font-kumbh"
-                />
-              </div>
+              {isIOS ? (
+                <div 
+                  className="flex items-center gap-2 p-2 border border-gray-200 rounded-lg"
+                  onClick={() => setShowCheckInModal(true)}
+                >
+                  <Calendar className="text-[#3D4F27] w-5 h-5" />
+                  <div className="w-full text-gray-700 font-kumbh">
+                    {checkIn ? formatDateForDisplay(checkIn) : 'Seleccionar fecha'}
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2 p-2 border border-gray-200 rounded-lg">
+                  <Calendar className="text-[#3D4F27] w-5 h-5" />
+                  <input 
+                    type="date" 
+                    value={checkIn}
+                    onChange={(e) => setCheckIn(e.target.value)}
+                    className="w-full bg-transparent text-gray-700 focus:outline-none font-kumbh"
+                  />
+                </div>
+              )}
             </div>
             
             {/* Check-out */}
             <div className="mb-4">
               <label className="text-xs text-gray-500 mb-1 font-kumbh">Check-out</label>
-              <div className="flex items-center gap-2 p-2 border border-gray-200 rounded-lg">
-                <Calendar className="text-[#3D4F27] w-5 h-5" />
-                <input 
-                  type="date" 
-                  value={checkOut}
-                  onChange={(e) => setCheckOut(e.target.value)}
-                  className="w-full bg-transparent text-gray-700 focus:outline-none font-kumbh"
-                />
-              </div>
+              {isIOS ? (
+                <div 
+                  className="flex items-center gap-2 p-2 border border-gray-200 rounded-lg"
+                  onClick={() => setShowCheckOutModal(true)}
+                >
+                  <Calendar className="text-[#3D4F27] w-5 h-5" />
+                  <div className="w-full text-gray-700 font-kumbh">
+                    {checkOut ? formatDateForDisplay(checkOut) : 'Seleccionar fecha'}
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2 p-2 border border-gray-200 rounded-lg">
+                  <Calendar className="text-[#3D4F27] w-5 h-5" />
+                  <input 
+                    type="date" 
+                    value={checkOut}
+                    onChange={(e) => setCheckOut(e.target.value)}
+                    className="w-full bg-transparent text-gray-700 focus:outline-none font-kumbh"
+                  />
+                </div>
+              )}
             </div>
             
             {/* Huéspedes */}
@@ -146,10 +384,25 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
             {/* Botón de reserva */}
             <button 
               onClick={handleReservation}
-              className="w-full bg-[#3D4F27] text-white py-3 rounded-full font-kumbh hover:bg-[#2a371b] transition-colors duration-300"
+              className="w-full bg-[#3D4F27] text-white py-3 rounded-full font-kumbh hover:bg-[#2a371b] transition-colors duration-300 flex items-center justify-center"
             >
               Reservar Ahora
             </button>
+            
+            {/* Modales personalizados para iOS */}
+            <DateSelector 
+              visible={showCheckInModal} 
+              onClose={() => setShowCheckInModal(false)} 
+              onSelect={(date) => handleDateSelect(date, 'checkin')}
+              label="Seleccionar fecha de llegada"
+            />
+            
+            <DateSelector 
+              visible={showCheckOutModal} 
+              onClose={() => setShowCheckOutModal(false)} 
+              onSelect={(date) => handleDateSelect(date, 'checkout')}
+              label="Seleccionar fecha de salida"
+            />
           </div>
         )}
       </>
@@ -224,7 +477,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
       {/* Botón de reserva */}
       <button 
         onClick={handleReservation}
-        className="bg-[#3D4F27] text-white px-3 py-1 rounded-full font-kumbh text-xs hover:bg-[#2a371b] transition-colors duration-300"
+        className="bg-[#3D4F27] text-white px-3 py-1 rounded-full font-kumbh text-xs hover:bg-[#2a371b] transition-colors duration-300 flex items-center justify-center"
       >
         Reservar
       </button>

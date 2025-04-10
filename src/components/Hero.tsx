@@ -26,11 +26,17 @@ export default function Hero() {
             esperan en el paraíso costarricense.
           </p>
           
-          <div className="flex flex-row gap-2">
-            <a  href="https://reservations.orbebooking.com/Search/Init/Sa63l/es" className="w-full sm:w-auto bg-white text-gray-800 sm:px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh">
+          <div className="flex flex-col sm:flex-row gap-3 w-full">
+            <a 
+              href="https://reservations.orbebooking.com/Search/Init/Sa63l/es" 
+              className="w-full sm:w-auto bg-white text-gray-800 sm:px-8 py-3 rounded-full text-center text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh"
+            >
               Reservar Ahora
             </a>
-           <a href="/rooms" className="w-full sm:w-auto border border-white text-white sm:px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
+            <a 
+              href="/rooms" 
+              className="w-full sm:w-auto border border-white text-white sm:px-8 py-3 rounded-full text-center text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh"
+            >
               Conocer Más
             </a>
           </div>
