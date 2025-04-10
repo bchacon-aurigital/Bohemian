@@ -37,11 +37,13 @@ const Spaces = () => {
             <p className="text-[#969696] font-light mb-4">
               Nuestras instalaciones han sido diseñadas para quienes buscan exclusividad, confort y conexión con el entorno.
             </p>
-            <button 
-              className="bg-[#4a6148] font-extralight font-kumbh text-xs hover:bg-[#3c4e3a] text-[#F1ECE3] rounded-full px-8 py-3 w-fit transition-colors duration-500"
-            >
-              Ver espacios
-            </button>
+            <div className="flex justify-center mt-8">
+              <a 
+                href="/spaces"
+                className="bg-[#3D4F27] text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#2C3B1C] font-kumbh">
+                Ver espacios
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-3 gap-2">

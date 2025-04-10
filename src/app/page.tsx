@@ -14,7 +14,7 @@ import Parallax4 from "@/components/Parallax4";
 import Parallax5 from "@/components/Parallax5";
 import Spaces from "@/components/Spaces";
 import Rooms from "@/components/Rooms";
-import FAQ from "@/components/ResortFeatures";
+import ResortFeatures from "@/components/ResortFeatures";
 import Events from "@/components/Events";
 import Grid from "@/components/grid1";
 import SpecialEvents from "@/components/SpecialEvents";
@@ -30,12 +30,41 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [contentOpacity, setContentOpacity] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
+  const [activeSection, setActiveSection] = useState(0);
+  
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  const [activeMedia, setActiveMedia] = useState("/");
-  const [previousMedia, setPreviousMedia] = useState("");
-  const [mediaOpacity, setMediaOpacity] = useState(1);
-  const [transitioningMedia, setTransitioningMedia] = useState(false);
-  const [mediaType, setMediaType] = useState<'video' | 'image'>('video');
+  const mediaResources = [
+    { 
+      src: "/video1.webm",
+      safariSrc: "/video1.mp4",
+      type: "video", 
+      poster: "/images/poster1.avif"
+    },
+    { 
+      src: "/video2.webm",
+      safariSrc: "/video2.mp4",
+      type: "video", 
+      poster: "/images/poster2.avif"
+    },
+    { 
+      src: "/video3.webm",
+      safariSrc: "/video3.mp4",
+      type: "video", 
+      poster: "/images/poster3.avif"
+    },
+    { 
+      src: "/parallax4.avif", 
+      type: "image"
+    },
+    { 
+      src: "/last_video.mp4",
+      safariSrc: "/last_video.mp4",
+      type: "video", 
+      poster: "/images/poster5.avif"
+    }
+  ];
 
   const Parallax1Ref = useRef(null);
   const Parallax2Ref = useRef(null);
@@ -43,17 +72,95 @@ const HomePage = () => {
   const Parallax4Ref = useRef(null);
   const Parallax5Ref = useRef(null);
 
-  // Check if device is mobile
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const playVideo = async (video: HTMLVideoElement) => {
+      try {
+        video.currentTime = 0;
+        await video.play();
+      } catch (error) {
+        console.warn('Error playing video:', error);
+      }
+    };
+
+    const pauseOtherVideos = (currentIndex: number) => {
+      videoRefs.current.forEach((video, index) => {
+        if (video && index !== currentIndex) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
+    };
+
+    const currentVideo = videoRefs.current[activeSection];
+    if (currentVideo && mediaResources[activeSection].type === 'video') {
+      pauseOtherVideos(activeSection);
+      playVideo(currentVideo);
+    }
+  }, [activeSection]);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      const isMobileView = window.innerWidth < 768;
+      setIsMobile(isMobileView);
+      
+      const ua = navigator.userAgent.toLowerCase();
+      const isSafariBrowser = 
+        (ua.includes('safari') && !ua.includes('chrome')) ||
+        (ua.includes('iphone') || ua.includes('ipad'));
+      setIsSafari(isSafariBrowser);
     };
     
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
     
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => {
+            const refs = [
+              Parallax1Ref.current,
+              Parallax2Ref.current,
+              Parallax3Ref.current,
+              Parallax4Ref.current,
+              Parallax5Ref.current
+            ];
+            
+            const index = refs.findIndex(ref => ref === entry.target);
+            if (index !== -1) {
+              setActiveSection(index);
+            }
+          }, 150); // 150ms debounce
+        });
+      },
+      { 
+        threshold: 0.4,
+        rootMargin: "-10% 0px -10% 0px" 
+      }
+    );
+
+    const refs = [
+      Parallax1Ref.current,
+      Parallax2Ref.current,
+      Parallax3Ref.current,
+      Parallax4Ref.current,
+      Parallax5Ref.current
+    ];
+
+    refs.forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
+
     return () => {
-      window.removeEventListener('resize', checkMobile);
+      observer.disconnect();
+      clearTimeout(timeoutId);
     };
   }, []);
 
@@ -62,137 +169,53 @@ const HomePage = () => {
     setContentOpacity(1);
   };
 
-  const changeMedia = (newMedia: string, type: 'video' | 'image' = 'video') => {
-    if (newMedia === activeMedia) return;
-  
-    setTransitioningMedia(true);
-    setPreviousMedia(activeMedia);
-    setMediaType(type);
-    setMediaOpacity(0);
-  
-    setTimeout(() => {
-      if (type === 'video') {
-        const tempVideo = document.createElement('video');
-        tempVideo.src = newMedia;
-        tempVideo.muted = true;
-        tempVideo.playsInline = true;
-        tempVideo.oncanplaythrough = () => {
-          setActiveMedia(newMedia);
-          setMediaOpacity(1);
-          setTransitioningMedia(false);
-        };
-        tempVideo.load();
-      } else {
-        const img = new Image();
-        img.src = newMedia;
-        img.onload = () => {
-          setActiveMedia(newMedia);
-          setMediaOpacity(1);
-          setTransitioningMedia(false);
-        };
-      }
-    }, 500);
-  };
-  
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === Parallax1Ref.current && entry.isIntersecting) {
-            changeMedia("/video1.webm");
-          }
-          if (entry.target === Parallax2Ref.current && entry.isIntersecting) {
-            changeMedia("/video2.webm");
-          }
-          if (entry.target === Parallax3Ref.current && entry.isIntersecting) {
-            changeMedia("/video3.webm");
-          }
-          if (entry.target === Parallax4Ref.current && entry.isIntersecting) {
-            changeMedia("/parallax4.avif", 'image');
-          }
-          if (entry.target === Parallax5Ref.current && entry.isIntersecting) {
-            changeMedia("/last_video.mp4");
-          }
-        });
-      },
-      { threshold: 0, rootMargin: "80px" }
-    );
-
-    if (Parallax1Ref.current) observer.observe(Parallax1Ref.current);
-    if (Parallax2Ref.current) observer.observe(Parallax2Ref.current);
-    if (Parallax3Ref.current) observer.observe(Parallax3Ref.current);
-    if (Parallax4Ref.current) observer.observe(Parallax4Ref.current);
-    if (Parallax5Ref.current) observer.observe(Parallax5Ref.current);
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="min-h-screen relative">
       {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
       
       <div 
-        className="fixed inset-0 z-0 overflow-hidden transition-opacity duration-1000"
+        className="fixed inset-0 z-0 overflow-hidden"
         style={{ opacity: contentOpacity }}
       >
-        <div 
-          className="absolute inset-0 transition-opacity duration-1000 ease-in-out" 
-          style={{ opacity: mediaOpacity }}
-        >
-          {mediaType === 'video' ? (
-            <video
-              key={activeMedia}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster="/images/Poster.avif"
-              className="w-full h-full object-cover"
-            >
-              <source
-                src={activeMedia}
-                type={activeMedia.endsWith(".webm") ? "video/webm" : "video/mp4"}
-              />
-            </video>
-          ) : (
-            <img
-              src={activeMedia}
-              alt="Parallax background"
-              className="w-full h-full object-cover"
-            />
-          )}
-        </div>
-        
-        {transitioningMedia && previousMedia && (
+        {mediaResources.map((media, index) => (
           <div 
-            className="absolute inset-0 transition-opacity duration-1000 ease-in-out" 
-            style={{ opacity: 1 - mediaOpacity }}
+            key={media.src}
+            className="absolute inset-0 transition-opacity duration-700 ease-in-out" 
+            style={{ 
+              zIndex: activeSection === index ? 10 : 1,
+              opacity: activeSection === index ? 1 : 0,
+              visibility: Math.abs(activeSection - index) <= 1 ? 'visible' : 'hidden'
+            }}
           >
-            {mediaType === 'video' ? (
+            {media.type === 'image' ? (
+              <img
+                src={media.src}
+                alt="Background"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            ) : (
               <video
-                key={previousMedia}
-                autoPlay
+                ref={el => {
+                  if (el) videoRefs.current[index] = el;
+                }}
+                playsInline
+                webkit-playsinline="true"
+                x-webkit-airplay="deny"
                 muted
                 loop
-                playsInline
+                poster={media.poster}
                 className="w-full h-full object-cover"
+                preload="none"
               >
                 <source
-                  src={previousMedia}
-                  type={previousMedia.endsWith(".webm") ? "video/webm" : "video/mp4"}
+                  src={isSafari ? media.safariSrc : media.src}
+                  type={isSafari || media.src.endsWith('.mp4') ? 'video/mp4' : 'video/webm'}
                 />
               </video>
-            ) : (
-              <img
-                src={previousMedia}
-                alt="Previous background"
-                className="w-full h-full object-cover"
-              />
             )}
           </div>
-        )}
+        ))}
       </div>
 
       <div 
@@ -201,7 +224,6 @@ const HomePage = () => {
       >
         <Navbar />
         
-        {/* Componente BookingWidget sólo en móvil */}
         {isMobile && <BookingWidget mode="mobile" />}
         
         <section id="Inicio">
@@ -318,8 +340,8 @@ const HomePage = () => {
           <Rooms />
         </section>
 
-        <section id="Servicios">
-          <FAQ />
+        <section id="">
+          <ResortFeatures />
         </section>
         
         <section id="">
@@ -330,7 +352,7 @@ const HomePage = () => {
           <Grid />
         </section>
 
-        <section id="">
+        <section id="Servicios">
           <SpecialEvents />
         </section>
 

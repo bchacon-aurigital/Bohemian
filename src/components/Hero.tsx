@@ -27,12 +27,12 @@ export default function Hero() {
           </p>
           
           <div className="flex flex-row gap-2">
-            <button className="w-full sm:w-auto bg-white text-gray-800 sm:px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh">
+            <a  href="https://reservations.orbebooking.com/Search/Init/Sa63l/es" className="w-full sm:w-auto bg-white text-gray-800 sm:px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh">
               Reservar Ahora
-            </button>
-            <button className="w-full sm:w-auto border border-white text-white sm:px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
+            </a>
+           <a href="/rooms" className="w-full sm:w-auto border border-white text-white sm:px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
               Conocer Más
-            </button>
+            </a>
           </div>
         </div>
       </div>

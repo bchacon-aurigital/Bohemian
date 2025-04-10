@@ -43,7 +43,7 @@ const RoomsPage = () => {
     ],
     ctaButton: {
       text: "Reservar espacio",
-      onClick: () => console.log("Reservar clicked")
+      onClick: () => window.open("https://reservations.orbebooking.com/Search/Init/Sa63l/es", "_blank")
     }
   };
 

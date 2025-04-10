@@ -225,11 +225,11 @@ const Activities = ({
                             />
                             <div className="absolute inset-0 flex flex-col p-2">
                                 <div className="mt-6 ml-6">
-                                <div className="flex flex-row items-center justify-center gap-2 rounded-3xl font-kumbh bg-black backdrop-blur-sm p-2 text-sm w-52 text-white mb-3">
-                                        <FaUsers className='text-2xl'/> Acceso para huéspedes
+                                <div className="flex flex-row items-center justify-center gap-2 rounded-3xl font-kumbh bg-white backdrop-blur-sm p-2 text-xs w-52 text-black mb-3">
+                                        <FaUsers className='text-2xl'/> Sesiones privadas y grupales
                                     </div>
-                                    <h3 className="text-2xl font-medium text-black mb-1 font-kumbh">Meditación guiada</h3>
-                                    <p className="text-md font-kumbh font-light text-black">Encuentra armonía interior</p>
+                                    <h3 className="text-2xl font-medium text-white mb-1 font-kumbh">Meditación guiada</h3>
+                                    <p className="text-md font-kumbh font-light text-white w-56">Encuentra armonía interior</p>
                                 </div>
                                 <div className="flex-grow"></div>
                             </div>

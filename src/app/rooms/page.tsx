@@ -43,7 +43,7 @@ export default function RoomsPage() {
     ],
     ctaButton: {
       text: "Reservar habitación",
-      onClick: () => console.log("Reservar clicked")
+      onClick: () => window.open("https://reservations.orbebooking.com/Search/Init/Sa63l/es", "_blank")
     }
   };
 

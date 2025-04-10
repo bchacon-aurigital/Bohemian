@@ -78,7 +78,7 @@ export default function RootLayout({
     <html lang="es">
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
-        <link rel="preload" href="/images/Poster.avif" as="image" />
+        <link rel="preload" href="/images/logo.svg" as="image" />
         <link rel="preload" href="/parallax4.avif" as="image" />
         <link rel="preload" href="/video1.webm" as="video" type="video/webm" />
         <link rel="preload" href="/video2.webm" as="video" type="video/webm" />

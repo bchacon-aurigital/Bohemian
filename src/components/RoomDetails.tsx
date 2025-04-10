@@ -1,7 +1,9 @@
 import React from 'react';
-import { IoBedOutline, IoRestaurantOutline } from "react-icons/io5";
+import { IoBedOutline, IoRestaurantOutline, IoWineOutline } from "react-icons/io5";
 import { LuBath } from "react-icons/lu";
-import { MdKitchen, MdOutlineChair, MdCoffeeMaker } from "react-icons/md";
+import { MdKitchen, MdOutlineChair, MdCoffeeMaker, MdMusicNote } from "react-icons/md";
+import { FaUmbrellaBeach } from "react-icons/fa";
+import { BiFoodMenu } from "react-icons/bi";
 
 interface Amenity {
     icon: React.ReactNode;
@@ -30,7 +32,13 @@ const iconMap = {
     fridge: <MdKitchen className="w-6 h-6" />,
     sofa: <MdOutlineChair className="w-6 h-6" />,
     coffee: <MdCoffeeMaker className="w-6 h-6" />,
-    breakfast: <IoRestaurantOutline className="w-6 h-6" />
+    breakfast: <IoRestaurantOutline className="w-6 h-6" />,
+    food: <BiFoodMenu className="w-6 h-6" />,
+    bar: <IoWineOutline className="w-6 h-6" />,
+    wine: <IoWineOutline className="w-6 h-6" />,
+    terrace: <FaUmbrellaBeach className="w-6 h-6" />,
+    music: <MdMusicNote className="w-6 h-6" />,
+    view: <FaUmbrellaBeach className="w-6 h-6" />
 };
 
 const RoomDetails: React.FC<RoomDetailsProps> = ({

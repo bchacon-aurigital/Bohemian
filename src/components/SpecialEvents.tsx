@@ -114,7 +114,7 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
                 <div className={`w-full ${actividad.bgColor} p-8 flex flex-col justify-center`}>
                   <h2 className={`text-2xl font-tanNimbus font-bold ${actividad.titleColor} mb-4`}>{actividad.title}</h2>
                   <p className={`${actividad.descriptionColor} font-kumbh text-sm mb-8`}>{actividad.description}</p>
-                  <button className={`${actividad.buttonBgColor} ${actividad.buttonTextColor} font-kumbh px-6 py-3 rounded-full text-sm w-fit transition-all duration-300 hover:${actividad.buttonHoverBgColor} hover:${actividad.buttonHoverTextColor}`}>
+                  <button className={`${actividad.buttonBgColor} ${actividad.buttonTextColor} font-kumbh px-6 py-3 rounded-full text-sm w-fit transition-all duration-300 hover:${actividad.buttonHoverBgColor} hover:${actividad.buttonHoverTextColor}`} onClick={() => window.open("https://reservations.orbebooking.com/Search/Init/Sa63l/es", "_blank")}>
                     {actividad.buttonText}
                   </button>
                 </div>
@@ -126,7 +126,7 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
                 <div className={`w-2/5 ${actividad.bgColor} p-12 flex flex-col justify-center`}>
                   <h2 className={`text-2xl font-tanNimbus font-bold ${actividad.titleColor} mb-4`}>{actividad.title}</h2>
                   <p className={`${actividad.descriptionColor} font-kumbh text-sm mb-8`}>{actividad.description}</p>
-                  <button className={`${actividad.buttonBgColor} ${actividad.buttonTextColor} font-kumbh px-6 py-3 rounded-full text-sm w-fit transition-all duration-300 hover:${actividad.buttonHoverBgColor} hover:${actividad.buttonHoverTextColor}`}>
+                  <button className={`${actividad.buttonBgColor} ${actividad.buttonTextColor} font-kumbh px-6 py-3 rounded-full text-sm w-fit transition-all duration-300 hover:${actividad.buttonHoverBgColor} hover:${actividad.buttonHoverTextColor}`} onClick={() => window.open("https://reservations.orbebooking.com/Search/Init/Sa63l/es", "_blank")}>
                     {actividad.buttonText}
                   </button>
                 </div>
@@ -283,7 +283,7 @@ const Events: React.FC = () => {
       title: "Eventos Corporativos",
       description: "Fusiona negocios y placer en un escenario inspirador, ideal para encuentros exclusivos, incentivos y lanzamientos memorables.",
       buttonText: "Apartar espacio",
-      image: "/images/Events1.avif",
+      image: "/images/Events4.avif",
       alt: "Pareja en la playa durante una propuesta, similar a la imagen de bodas",
       bgColor: "bg-[#3D4F27]", // Color verde oscuro proporcionado para mantener coherencia con la imagen
       titleColor: "text-white",

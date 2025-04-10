@@ -5,8 +5,9 @@ const EventsSection = () => {
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden diagonal-bottom diagonal-top">
         <div className="relative z-10 text-center text-white px-4">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-tanNimbus">
-            Baila con <br className="hidden md:inline" /> las olas
+          <h2 className="text-4xl md:text-6xl font-bold leading-tight font-tanNimbus">
+            <span className="inline md:block md:mb-4">Baila con</span>
+            <span className="inline md:block">las olas</span>
           </h2>
           <p className="text-lg md:text-2xl font-medium font-kumbh">
             Música electrónica en un <br /> escenario natural único

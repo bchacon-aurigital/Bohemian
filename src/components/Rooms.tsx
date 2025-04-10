@@ -22,12 +22,12 @@ const Rooms = () => {
             className="w-full h-full rounded-lg object-cover transition-all duration-500"
           />
           
-          <button 
+          <a href="/rooms"
             className="absolute bottom-4 right-4 bg-[#455c3e] text-white px-10 py-4 rounded-full 
                        hover:bg-[#3a4e35] transition-all duration-300 font-kumbh text-lg"
           >
             Conocer Más
-          </button>
+          </a>
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">

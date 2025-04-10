@@ -5,11 +5,12 @@ const ProgramSection = () => {
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="relative z-10 text-center text-white px-4">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-tanNimbus">
-          Sumérgete en  <br className="hidden md:inline" /> la belleza
+          <h2 className="text-4xl md:text-6xl font-bold leading-tight font-tanNimbus">
+            <span className="inline md:block mb-6">Sumérgete en</span>
+            <span className="inline md:block">la belleza</span>
           </h2>
           <p className="text-lg md:text-2xl font-semibold font-kumbh">
-          Naturaleza y confort en<br /> perfecta armonía
+            Naturaleza y confort en<br /> perfecta armonía
           </p>
         </div>
 
