@@ -158,51 +158,51 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
   
   // Renderizado para la versión navbar (en una sola línea)
   return (
-    <div className="flex items-center bg-white rounded-lg px-4 py-2 shadow-sm">
+    <div className="flex items-center bg-white rounded-lg px-3 py-1.5 shadow-sm">
       {/* Selector de idioma */}
-      <div className="border-r border-gray-200 pr-3 mr-3">
+      <div className="border-r border-gray-200 pr-2 mr-2">
         <select 
           value={selectedLang}
           onChange={(e) => setSelectedLang(e.target.value as 'es' | 'en')}
-          className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-sm"
+          className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-xs"
         >
-          <option value="es">Español</option>
-          <option value="en">English</option>
+          <option value="es">ES</option>
+          <option value="en">EN</option>
         </select>
       </div>
       
       {/* Check-in */}
-      <div className="flex items-center mr-4">
-        <Calendar className="text-[#3D4F27] w-4 h-4 mr-1" />
+      <div className="flex items-center mr-2 scale-90">
+        <Calendar className="text-[#3D4F27] w-3 h-3 mr-1" />
         <input 
           type="date" 
           value={checkIn}
           onChange={(e) => setCheckIn(e.target.value)}
-          className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-sm w-32"
+          className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-xs w-28"
           placeholder="Check-in"
         />
       </div>
       
       {/* Check-out */}
-      <div className="flex items-center mr-4">
-        <Calendar className="text-[#3D4F27] w-4 h-4 mr-1" />
+      <div className="flex items-center mr-2 scale-90">
+        <Calendar className="text-[#3D4F27] w-3 h-3 mr-1" />
         <input 
           type="date" 
           value={checkOut}
           onChange={(e) => setCheckOut(e.target.value)}
-          className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-sm w-32"
+          className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-xs w-28"
           placeholder="Check-out"
         />
       </div>
       
       {/* Huéspedes */}
-      <div className="flex items-center mr-4">
-        <Users className="text-[#3D4F27] w-4 h-4 mr-1" />
+      <div className="flex items-center mr-2 scale-90">
+        <Users className="text-[#3D4F27] w-3 h-3 mr-1" />
         <div className="flex items-center">
           <select 
             value={adults}
             onChange={(e) => setAdults(parseInt(e.target.value))}
-            className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-sm"
+            className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-xs"
           >
             {[1, 2, 3, 4, 5, 6].map(num => (
               <option key={num} value={num}>{num}A</option>
@@ -212,7 +212,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
           <select 
             value={children}
             onChange={(e) => setChildren(parseInt(e.target.value))}
-            className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-sm"
+            className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-xs"
           >
             {[0, 1, 2, 3, 4].map(num => (
               <option key={num} value={num}>{num}N</option>
@@ -224,9 +224,9 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
       {/* Botón de reserva */}
       <button 
         onClick={handleReservation}
-        className="bg-[#3D4F27] text-white px-4 py-1 rounded-full font-kumbh text-sm hover:bg-[#2a371b] transition-colors duration-300"
+        className="bg-[#3D4F27] text-white px-3 py-1 rounded-full font-kumbh text-xs hover:bg-[#2a371b] transition-colors duration-300"
       >
-        Reservar Ahora
+        Reservar
       </button>
     </div>
   );

@@ -38,8 +38,8 @@ export default function Navbar() {
       <nav className="fixed w-full text-white z-50 transition-all duration-300 bg-[#3D4F27]">
         {/* Contenedor principal del navbar - Una sola línea */}
         <div className="container mx-auto px-5 py-5 flex items-center justify-between relative font-kumbh">
-          {/* Logo para móvil */}
-          <Link href="/" className="lg:hidden">
+          {/* Logo */}
+          <Link href="/" className="lg:flex-shrink-0">
             <Image
               src="/images/logo.svg"
               alt="Bohemian Logo"
@@ -48,6 +48,36 @@ export default function Navbar() {
               className="w-10 h-10"
             />
           </Link>
+
+          {/* Enlaces de navegación para desktop */}
+          <div className="hidden lg:flex mx-8 space-x-12 font-[200] flex-grow justify-center">
+            {navSections.map((item) => (
+              item.href.startsWith('/') ? (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="cursor-pointer hover:text-gray-200 transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <ScrollLink
+                  key={item.name}
+                  to={item.href.replace('/#', '')}
+                  smooth={true}
+                  duration={500}
+                  className="cursor-pointer hover:text-gray-200 transition-colors"
+                >
+                  {item.name}
+                </ScrollLink>
+              )
+            ))}
+          </div>
+
+          {/* Widget de reserva en el navbar para desktop */}
+          <div className="hidden lg:block flex-shrink-0 ml-4">
+            <BookingWidget mode="navbar" />
+          </div>
 
           {/* Botón de menú para móvil */}
           <button
@@ -71,36 +101,6 @@ export default function Navbar() {
               }`}
             />
           </button>
-
-          {/* Enlaces de navegación para desktop */}
-          <div className="hidden lg:flex space-x-8 font-[200]">
-            {navSections.map((item) => (
-              item.href.startsWith('/') ? (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="cursor-pointer"
-                >
-                  {item.name}
-                </Link>
-              ) : (
-                <ScrollLink
-                  key={item.name}
-                  to={item.href.replace('/#', '')}
-                  smooth={true}
-                  duration={500}
-                  className="cursor-pointer"
-                >
-                  {item.name}
-                </ScrollLink>
-              )
-            ))}
-          </div>
-
-          {/* Widget de reserva en el navbar para desktop */}
-          <div className="hidden lg:block">
-            <BookingWidget mode="navbar" />
-          </div>
         </div>
       </nav>
 
