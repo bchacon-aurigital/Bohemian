@@ -255,7 +255,7 @@ const HomePage = () => {
                 <p className="text-base md:text-2xl font-medium mb-8">
                   Redescubran la magia de estar juntos en un entorno diseñado para el amor. Despierten con el sonido de las olas, contemplen atardeceres espectaculares desde su habitación y disfruten de cenas íntimas bajo las estrellas. El romance no es un extra, es nuestra esencia.
                 </p>
-                <button className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
+                <button onClick={() => window.open("/rooms", "_blank")} className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
                   Ver Más
                   <FaArrowRight />
                 </button>
@@ -287,10 +287,10 @@ const HomePage = () => {
                 <p className="text-base md:text-2xl font-medium mb-8">
                   Sumérgete en la belleza natural de Costa Rica. Nuestras instalaciones se integran perfectamente con el paisaje, permitiéndote disfrutar de la exuberante vegetación tropical y el océano desde cada rincón, donde el atardecer pinta el cielo con colores indescriptibles, convirtiendo cada día en una experiencia inolvidable.              
                 </p>
-                <button className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-black text-black px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white hover:border-[#3D4F27] font-kumbh">
+                <a href="#espacios" className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-black text-black px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white hover:border-[#3D4F27] font-kumbh">
                   Ver Más
                   <FaArrowRight />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -319,10 +319,10 @@ const HomePage = () => {
               <div className="col-span-5 space-y-6 text-white leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
                   Descubre un espacio diseñado para la relajación y la renovación. Con el mar a tu alrededor y naturaleza en cada rincón, reconéctate contigo mismo a través del ejercicio, la meditación y la tranquilidad absoluta. Aquí, cada momento es una oportunidad para el bienestar y la transformación.</p>
-                <button className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
+                <a href="#Eventos"  className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
                   Ver Más
                   <FaArrowRight />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -332,7 +332,7 @@ const HomePage = () => {
           <Parallax4 />
         </section>
 
-        <section id="">
+        <section id="espacios">
           <Spaces />
         </section>
         

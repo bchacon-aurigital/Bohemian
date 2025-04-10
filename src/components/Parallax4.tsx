@@ -37,10 +37,6 @@ const EventsSection = () => {
               <p className="text-base md:text-2xl font-medium mb-8">
                 Vive la fusión de la naturaleza y la música en nuestros eventos exclusivos de música electrónica, donde artistas de renombre traen sonidos vibrantes a este rincón remoto de Costa Rica, creando una atmósfera única. Baila bajo las estrellas y sumérgete en una experiencia sensorial incomparable.
               </p>
-              <button className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-black text-black px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white hover:border-[#3D4F27] font-kumbh">
-                Ver Más
-                <FaArrowRight />
-              </button>
             </div>
           </div>
         </div>

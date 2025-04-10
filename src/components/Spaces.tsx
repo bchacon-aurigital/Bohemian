@@ -39,7 +39,7 @@ const Spaces = () => {
             </p>
             <div className="flex justify-center mt-8">
               <a 
-                href="/spaces"
+                href="/rooms"
                 className="bg-[#3D4F27] text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#2C3B1C] font-kumbh">
                 Ver espacios
               </a>
