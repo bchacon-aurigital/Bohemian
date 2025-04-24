@@ -10,7 +10,6 @@ import WelcomeSection from "@/components/WelcomeSection";
 import Parallax1 from "@/components/Parallax1";
 import Parallax2 from "@/components/Parallax2";
 import Parallax3 from "@/components/Parallax3";
-import Parallax4 from "@/components/Parallax4";
 import Parallax5 from "@/components/Parallax5";
 import Spaces from "@/components/Spaces";
 import Rooms from "@/components/Rooms";
@@ -55,10 +54,6 @@ const HomePage = () => {
       poster: "/images/poster3.avif"
     },
     { 
-      src: "/parallax4.avif", 
-      type: "image"
-    },
-    { 
       src: "/last_video.mp4",
       safariSrc: "/last_video.mp4",
       type: "video", 
@@ -69,7 +64,6 @@ const HomePage = () => {
   const Parallax1Ref = useRef(null);
   const Parallax2Ref = useRef(null);
   const Parallax3Ref = useRef(null);
-  const Parallax4Ref = useRef(null);
   const Parallax5Ref = useRef(null);
 
   useEffect(() => {
@@ -129,7 +123,6 @@ const HomePage = () => {
               Parallax1Ref.current,
               Parallax2Ref.current,
               Parallax3Ref.current,
-              Parallax4Ref.current,
               Parallax5Ref.current
             ];
             
@@ -137,7 +130,7 @@ const HomePage = () => {
             if (index !== -1) {
               setActiveSection(index);
             }
-          }, 150); // 150ms debounce
+          }, 150); 
         });
       },
       { 
@@ -150,7 +143,6 @@ const HomePage = () => {
       Parallax1Ref.current,
       Parallax2Ref.current,
       Parallax3Ref.current,
-      Parallax4Ref.current,
       Parallax5Ref.current
     ];
 
@@ -328,10 +320,6 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="" ref={Parallax4Ref}>
-          <Parallax4 />
-        </section>
-
         <section id="espacios">
           <Spaces />
         </section>
@@ -343,17 +331,17 @@ const HomePage = () => {
         <section id="">
           <ResortFeatures />
         </section>
-        
-        <section id="">
-          <Events />
+
+        <section id="Servicios">
+          <SpecialEvents />
         </section>
 
         <section id="Eventos">
           <Grid />
         </section>
-
-        <section id="Servicios">
-          <SpecialEvents />
+        
+        <section id="">
+          <Events />
         </section>
 
         <section id="Contacto" ref={Parallax5Ref}>

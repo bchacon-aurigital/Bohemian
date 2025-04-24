@@ -73,3 +73,18 @@ html, body {
   clip-path: polygon(0 0, 100% 0, 100% 80%);
   z-index: 2;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out forwards;
+}

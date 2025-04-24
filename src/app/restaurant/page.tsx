@@ -5,10 +5,10 @@ import "aos/dist/aos.css";
 
 import Navbar from "@/components/Navbar";
 import ScrollBentoBox from "@/components/ScrollBentoBox";
-import RoomDetails from "@/components/RoomDetails";
+import RestaurantDetails from "@/components/RestaurantDetails";
 import Footer from "@/components/Footer";
 
-const RoomsPage = () => {
+const RestaurantPage = () => {
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -28,18 +28,13 @@ const RoomsPage = () => {
     { src: "/images/restaurantpage9.avif", alt: "Sala de estar" }
   ];
 
-  const roomDetails = {
+  const restaurantDetailsData = {
     title: "La Joya de Lagarto",
     subtitle: "Restaurante",
     secondaryText: "Coctelería - Bar - Restaurante",
     description: "Sumérgete en el lujo, la comodidad y la serenidad de nuestras exclusivas habitaciones. Cada espacio ha sido diseñado para ofrecer una experiencia única, fusionando elegancia y el encanto natural de nuestro entorno.",
     amenities: [
-      { icon: "bed" as const, text: "1 Habitación" },
-      { icon: "bath" as const, text: "1 Baño" },
-      { icon: "fridge" as const, text: "Nevera" },
-      { icon: "sofa" as const, text: "Sofá Cama" },
-      { icon: "coffee" as const, text: "Cafetera" },
-      { icon: "breakfast" as const, text: "Desayuno gratuito" }
+      { icon: "breakfast" as const, text: "Desayuno Incluido Cada Mañana" }
     ],
     ctaButton: {
       text: "Reservar espacio",
@@ -57,7 +52,7 @@ const RoomsPage = () => {
               <ScrollBentoBox images={roomImages} />
             </div>
             <div className="sticky top-24">
-              <RoomDetails {...roomDetails} />
+              <RestaurantDetails {...restaurantDetailsData} />
             </div>
           </div>
         </div>
@@ -67,4 +62,4 @@ const RoomsPage = () => {
   );
 };
 
-export default RoomsPage; 
+export default RestaurantPage;

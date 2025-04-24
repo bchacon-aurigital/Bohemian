@@ -86,16 +86,6 @@ const Activities = ({
             altText1: "Arbol",
             altText2: "Sendero"
         },
-        {
-            title: "Excursiones personalizadas",
-            subtitle: "Bajo reservación anticipada",
-            description1: "Encuentra especies exóticas en su hábitat natural.",
-            description2: "Disfruta desde navegación por el océano, hasta exploraciones en islas cercanas.",
-            image1: "/images/Activities7.avif",
-            image2: "/images/Activities8.avif",
-            altText1: "Sendero",
-            altText2: "Sendero"
-        }
     ];
 
 
@@ -103,57 +93,10 @@ const Activities = ({
 
     return (
         <>
-            <section className="bg-[#0D0D0D] text-white py-16 px-4 md:px-8 lg:px-16">
+
+<section className="bg-[#0D0D0D] text-white py-16 px-4 md:px-8 lg:px-16">
                 <div className="max-w-screen-xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between mb-10 pb-8 border-b border-[#484848]">
-                        <div className="mb-6 md:mb-0">
-                            <div className="text-[#969696] text-lg font-kumbh mb-2">Actividades</div>
-                            <h2 className="text-4xl max-w-sm font-tanNimbus leading-tight">Para todos nuestros clientes</h2>
-                        </div>
-                        <div className="text-lg mt-6 lg:mt-0 md:text-md font-kumbh w-full md:w-[412px] text-[#969696]">
-                            Desde la adrenalina del océano hasta la serenidad del entorno natural, cada experiencia está cuidadosamente creada para satisfacer tus deseos.          </div>
-                    </div>
-
-                    {activitiesToRender.map((activity, index) => (
-                        <div key={index} className="mb-16 pb-8 border-b border-[#484848] last:border-0">
-                            <div className="flex flex-col lg:flex-row gap-8">
-                                <div className="lg:w-1/5">
-                                    <h3 className="text-3xl font-kumbh font-semibold mb-2">{activity.title}</h3>
-                                    <p className="text-sm font-kumbh max-w-[140px] text-[#606060]">{activity.subtitle}</p>
-                                </div>
-
-                                <div className="lg:flex-1 flex flex-col lg:flex-row gap-8">
-                                    <div className="lg:flex-[44]">
-                                        <p className="text-lg max-w-sm font-kumbh text-[#AEAEAE] mb-6 h-12">{activity.description1}</p>
-                                        <div className="h-72 w-full">
-                                            <img
-                                                src={activity.image1}
-                                                alt={activity.altText1}
-                                                className="w-full h-full rounded-md object-cover"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="lg:flex-[56]">
-                                        <p className="text-lg max-w-md font-kumbh text-[#AEAEAE] mb-6 h-12">{activity.description2}</p>
-                                        <div className="h-72 w-full">
-                                            <img
-                                                src={activity.image2}
-                                                alt={activity.altText2}
-                                                className="w-full h-full rounded-md object-cover"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <section className="bg-[#0D0D0D] text-white py-16 px-4 md:px-8 lg:px-16">
-                <div className="max-w-screen-xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between mb-10 py-8 border-t border-b border-[#484848]">
+                    <div className="flex flex-col md:flex-row justify-between mb-10 py-8 border-b border-[#484848]">
                         <div className="mb-6 md:mb-0">
                             <div className="text-[#969696] text-lg font-kumbh mb-2">Actividades</div>
                             <h2 className="text-4xl max-w-md font-tanNimbus leading-tight">Para quienes buscan relajación</h2>
@@ -237,6 +180,55 @@ const Activities = ({
                     </div>
                 </div>
             </section>
+
+            <section className="bg-[#0D0D0D] text-white py-16 px-4 md:px-8 lg:px-16">
+                <div className="max-w-screen-xl mx-auto">
+                    <div className="flex flex-col md:flex-row justify-between mb-10 pb-8 border-b border-[#484848]">
+                        <div className="mb-6 md:mb-0">
+                            <div className="text-[#969696] text-lg font-kumbh mb-2">Actividades</div>
+                            <h2 className="text-4xl max-w-sm font-tanNimbus leading-tight">Para todos nuestros clientes</h2>
+                        </div>
+                        <div className="text-lg mt-6 lg:mt-0 md:text-md font-kumbh w-full md:w-[412px] text-[#969696]">
+                            Desde la adrenalina del océano hasta la serenidad del entorno natural, cada experiencia está cuidadosamente creada para satisfacer tus deseos.          </div>
+                    </div>
+
+                    {activitiesToRender.map((activity, index) => (
+                        <div key={index} className="mb-16 pb-8 border-b border-[#484848] last:border-0">
+                            <div className="flex flex-col lg:flex-row gap-8">
+                                <div className="lg:w-1/5">
+                                    <h3 className="text-3xl font-kumbh font-semibold mb-2">{activity.title}</h3>
+                                    <p className="text-sm font-kumbh max-w-[140px] text-[#606060]">{activity.subtitle}</p>
+                                </div>
+
+                                <div className="lg:flex-1 flex flex-col lg:flex-row gap-8">
+                                    <div className="lg:flex-[44]">
+                                        <p className="text-lg max-w-sm font-kumbh text-[#AEAEAE] mb-6 h-12">{activity.description1}</p>
+                                        <div className="h-72 w-full">
+                                            <img
+                                                src={activity.image1}
+                                                alt={activity.altText1}
+                                                className="w-full h-full rounded-md object-cover"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="lg:flex-[56]">
+                                        <p className="text-lg max-w-md font-kumbh text-[#AEAEAE] mb-6 h-12">{activity.description2}</p>
+                                        <div className="h-72 w-full">
+                                            <img
+                                                src={activity.image2}
+                                                alt={activity.altText2}
+                                                className="w-full h-full rounded-md object-cover"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
         </>
     );
 };

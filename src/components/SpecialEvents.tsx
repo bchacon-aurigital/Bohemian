@@ -25,7 +25,6 @@ interface ActividadData {
   textSecondaryColor: string;
 }
 
-// Define props interface for the Carousel component
 interface CarouselProps {
   actividadesData: ActividadData[];
 }
@@ -34,10 +33,8 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [blink, setBlink] = useState<boolean>(false);
 
-  // Función que dispara el "parpadeo"
   const triggerBlink = (): void => {
     setBlink(true);
-    // Desactivamos el blink después de 200 ms
     setTimeout(() => setBlink(false), 200);
   };
 
@@ -66,7 +63,6 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
       </div>
       
       <div className="relative px-4 py-10">
-        {/* Aplicamos la clase blink si blink == true */}
         <div
           className={`flex transition-transform duration-500 ease-in-out -mx-4 ${blink ? 'blink' : ''}`}
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -76,9 +72,7 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
               key={actividad.id}
               className="w-full flex-shrink-0 flex-col relative px-4"
             >
-              {/* Versión móvil - columnas apiladas */}
               <div className="flex flex-col md:hidden">
-                {/* Imagen en la parte superior para móvil */}
                 <div className="w-full relative">
                   <img 
                     src={actividad.image} 
@@ -86,7 +80,6 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
                     className="w-full h-64 object-cover"
                   />
                   
-                  {/* Flechas de navegación superpuestas en la imagen */}
                   <div className="absolute bottom-4 right-4 flex space-x-2">
                     <button
                       onClick={prevSlide}
@@ -110,9 +103,8 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
                   </div>
                 </div>
                 
-                {/* Contenido debajo de la imagen para móvil */}
                 <div className={`w-full ${actividad.bgColor} p-8 flex flex-col justify-center`}>
-                  <h2 className={`text-2xl font-tanNimbus font-bold ${actividad.titleColor} mb-4`}>{actividad.title}</h2>
+                  <h2 className={`text-2xl font-tanNimbus font-normal ${actividad.titleColor} mb-4`}>{actividad.title}</h2>
                   <p className={`${actividad.descriptionColor} font-kumbh text-sm mb-8`}>{actividad.description}</p>
                   <button className={`${actividad.buttonBgColor} ${actividad.buttonTextColor} font-kumbh px-6 py-3 rounded-full text-sm w-fit transition-all duration-300 hover:${actividad.buttonHoverBgColor} hover:${actividad.buttonHoverTextColor}`} onClick={() => window.open("https://reservations.orbebooking.com/Search/Init/Sa63l/es", "_blank")}>
                     {actividad.buttonText}
@@ -120,9 +112,7 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
                 </div>
               </div>
               
-              {/* Versión desktop - columnas lado a lado */}
               <div className="hidden md:flex">
-                {/* Columna izquierda con contenido */}
                 <div className={`w-2/5 ${actividad.bgColor} p-12 flex flex-col justify-center`}>
                   <h2 className={`text-2xl font-tanNimbus font-bold ${actividad.titleColor} mb-4`}>{actividad.title}</h2>
                   <p className={`${actividad.descriptionColor} font-kumbh text-sm mb-8`}>{actividad.description}</p>
@@ -131,7 +121,6 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
                   </button>
                 </div>
                 
-                {/* Columna derecha con imagen */}
                 <div className="w-3/5 relative">
                   <img 
                     src={actividad.image} 
@@ -139,7 +128,6 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
                     className="w-full h-full object-cover"
                   />
                   
-                  {/* Flechas de navegación superpuestas en la imagen */}
                   <div className="absolute bottom-4 right-4 flex space-x-2">
                     <button
                       onClick={prevSlide}
@@ -168,7 +156,6 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
         </div>
       </div>
       
-      {/* Bullets para navegación */}
       <div className="flex justify-center mt-4 space-x-2">
         {actividadesData.map((actividad: ActividadData, index: number) => (
           <button
@@ -185,7 +172,6 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
         ))}
       </div>
 
-      {/* CSS para el "pequeño parpadeo" */}
       <style jsx>{`
         .blink {
           animation: blink-animation 0.2s linear;
@@ -207,16 +193,15 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
 };
 
 const Events: React.FC = () => {
-  // Datos para el carrusel de actividades especiales basados en las imágenes proporcionadas
   const actividadesData: ActividadData[] = [
     {
       id: "01",
-      title: "Bodas de Ensueño",
-      description: "Nuestro equipo especializado transformará su visión en una ceremonia íntima e inolvidable en uno de los escenarios naturales más bellos de Costa Rica.",
+      title: "Bodas Destino",
+      description: "Imagine intercambiar votos con los pies en la arena y el océano como testigo, donde nuestro equipo especializado transformará su visión en una ceremonia íntima e inolvidable en uno de los escenarios naturales más bellos de Costa Rica.",
       buttonText: "Apartar espacio",
       image: "/images/Events1.avif",
       alt: "Pareja en una playa durante una propuesta de matrimonio",
-      bgColor: "bg-[#3D4F27]", // Color verde oscuro proporcionado
+      bgColor: "bg-[#53603f]", 
       titleColor: "text-white",
       descriptionColor: "text-white",
       buttonBgColor: "bg-white",
@@ -234,12 +219,12 @@ const Events: React.FC = () => {
     },
     {
       id: "02",
-      title: "Aniversarios",
-      description: "Celebra el amor y los años compartidos con una velada mágica frente al mar, diseñada para ser tan única como tu historia.",
+      title: "Luxury Buyouts",
+      description: "Convierta nuestro santuario en su residencia privada temporal, donde cada rincón, cada servicio y cada atardecer pertenece únicamente a usted y sus invitados. Una experiencia incomparable de libertad absoluta, privacidad sin compromisos y atención personalizada que redefine el concepto de lujo.",
       buttonText: "Apartar espacio",
       image: "/images/Events2.avif",
-      alt: "Celebración de aniversario en una piscina con bebidas",
-      bgColor: "bg-[#0D0D0D]", // Color negro proporcionado
+      alt: "Pareja camniando por the bohemian lagarto",
+      bgColor: "bg-[#0D0D0D]",
       titleColor: "text-white",
       descriptionColor: "text-white",
       buttonBgColor: "bg-white",
@@ -257,12 +242,12 @@ const Events: React.FC = () => {
     },
     {
       id: "03",
-      title: "Reuniones Familiares",
-      description: "Reencuéntrate con los tuyos en un entorno paradisíaco, donde cada instante se convierte en un recuerdo invaluable.",
+      title: "Eventos Corporativos",
+      description: "Fusione negocios y placer en un escenario inspirador, ideal para encuentros exclusivos, incentivos y lanzamientos memorables. Un entorno donde las grandes ideas florecen naturalmente, lejos de las distracciones cotidianas.",
       buttonText: "Apartar espacio",
       image: "/images/Events3.avif",
-      alt: "Grupo familiar conversando en la playa durante el atardecer",
-      bgColor: "bg-[#C1B7A3]", // Color beige proporcionado
+      alt: "Grupo cooporativo conversando",
+      bgColor: "bg-[#C1B7A3]",
       titleColor: "text-[#766E5E]",
       descriptionColor: "text-[#766E5E]",
       buttonBgColor: "bg-[#766E5E]",
@@ -280,12 +265,12 @@ const Events: React.FC = () => {
     },
     {
       id: "04",
-      title: "Eventos Corporativos",
-      description: "Fusiona negocios y placer en un escenario inspirador, ideal para encuentros exclusivos, incentivos y lanzamientos memorables.",
+      title: "Retiros de Bienestar",
+      description: "Sumérjase en un viaje transformativo en conexión profunda con la naturaleza y su ser interior. Nuestros retiros especializados, desde ceremonias ancestrales con plantas sagradas hasta ayunos terapéuticos y prácticas holísticas, ofrecen un espacio seguro para la reconexión espiritual y la sanación bajo la guía de facilitadores expertos.",
       buttonText: "Apartar espacio",
       image: "/images/Events4.avif",
-      alt: "Pareja en la playa durante una propuesta, similar a la imagen de bodas",
-      bgColor: "bg-[#3D4F27]", // Color verde oscuro proporcionado para mantener coherencia con la imagen
+      alt: "Mujer en la playa con atardecer",
+      bgColor: "bg-[#53603f]", 
       titleColor: "text-white",
       descriptionColor: "text-white",
       buttonBgColor: "bg-white",

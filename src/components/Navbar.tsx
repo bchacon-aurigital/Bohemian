@@ -8,7 +8,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
-  // Check if device is mobile
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -36,20 +35,17 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed w-full text-white z-50 transition-all duration-300 bg-[#3D4F27]">
-        {/* Contenedor principal del navbar - Una sola línea */}
-        <div className="container mx-auto px-5 py-5 flex items-center justify-between relative font-kumbh">
-          {/* Logo */}
+        <div className="container mx-auto px-5 py-1 flex items-center justify-between relative font-kumbh">
           <Link href="/" className="lg:flex-shrink-0">
             <Image
-              src="/images/logo.svg"
+              src="/images/tb-logo-blanco.svg"
               alt="Bohemian Logo"
-              width={40}
-              height={40}
-              className="w-10 h-10"
+              width={120}
+              height={90}
+              className="w-36 h-24"
             />
           </Link>
 
-          {/* Enlaces de navegación para desktop */}
           <div className="hidden lg:flex mx-8 space-x-12 font-[200] flex-grow justify-center">
             {navSections.map((item) => (
               item.href.startsWith('/') ? (
@@ -74,12 +70,10 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Widget de reserva en el navbar para desktop */}
           <div className="hidden lg:block flex-shrink-0 ml-4">
             <BookingWidget mode="navbar" />
           </div>
 
-          {/* Botón de menú para móvil */}
           <button
             className="lg:hidden text-white mx-2 focus:outline-none relative w-6 h-6 z-50"
             onClick={toggleMenu}
@@ -104,7 +98,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Menú móvil expandible */}
       <div
         className={`lg:hidden fixed inset-0 bg-[#1a2721] text-white transform transition-all duration-300 ease-in-out z-40 ${
           isOpen
