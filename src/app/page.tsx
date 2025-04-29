@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import dynamic from "next/dynamic";
 import { FaArrowRight } from "react-icons/fa";
 
 import Navbar from "@/components/Navbar";
@@ -11,15 +12,44 @@ import Parallax1 from "@/components/Parallax1";
 import Parallax2 from "@/components/Parallax2";
 import Parallax3 from "@/components/Parallax3";
 import Parallax5 from "@/components/Parallax5";
-import Spaces from "@/components/Spaces";
-import Rooms from "@/components/Rooms";
-import ResortFeatures from "@/components/ResortFeatures";
-import Events from "@/components/Events";
-import Grid from "@/components/grid1";
-import SpecialEvents from "@/components/SpecialEvents";
+
+const Spaces = dynamic(() => import("@/components/Spaces"), {
+  loading: () => <div className="h-screen"></div>,
+  ssr: true
+});
+
+const Rooms = dynamic(() => import("@/components/Rooms"), {
+  loading: () => <div className="h-screen"></div>,
+  ssr: true
+});
+
+const ResortFeatures = dynamic(() => import("@/components/ResortFeatures"), {
+  loading: () => <div className="h-screen"></div>,
+  ssr: true
+});
+
+const Events = dynamic(() => import("@/components/Events"), {
+  loading: () => <div className="h-screen"></div>,
+  ssr: true
+});
+
+const Grid = dynamic(() => import("@/components/grid1"), {
+  loading: () => <div className="h-screen"></div>,
+  ssr: true
+});
+
+const SpecialEvents = dynamic(() => import("@/components/SpecialEvents"), {
+  loading: () => <div className="h-screen"></div>,
+  ssr: true
+});
+
 import LoadingScreen from "@/components/LoadingScreen";
 import BookingWidget from "@/components/BookingWidget";
-import Footer from "@/components/Footer";
+
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <div className="h-32"></div>,
+  ssr: true
+});
 
 const HomePage = () => {
   useEffect(() => {
@@ -31,32 +61,32 @@ const HomePage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isSafari, setIsSafari] = useState(false);
   const [activeSection, setActiveSection] = useState(0);
-  
+
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const mediaResources = [
-    { 
+    {
       src: "/video1.webm",
       safariSrc: "/video1.mp4",
-      type: "video", 
+      type: "video",
       poster: "/images/poster1.avif"
     },
-    { 
+    {
       src: "/video2.webm",
       safariSrc: "/video2.mp4",
-      type: "video", 
+      type: "video",
       poster: "/images/poster2.avif"
     },
-    { 
+    {
       src: "/video3.webm",
       safariSrc: "/video3.mp4",
-      type: "video", 
+      type: "video",
       poster: "/images/poster3.avif"
     },
-    { 
+    {
       src: "/last_video.mp4",
       safariSrc: "/last_video.mp4",
-      type: "video", 
+      type: "video",
       poster: "/images/poster5.avif"
     }
   ];
@@ -96,14 +126,14 @@ const HomePage = () => {
     const checkDevice = () => {
       const isMobileView = window.innerWidth < 768;
       setIsMobile(isMobileView);
-      
+
       const ua = navigator.userAgent.toLowerCase();
-      const isSafariBrowser = 
+      const isSafariBrowser =
         (ua.includes('safari') && !ua.includes('chrome')) ||
         (ua.includes('iphone') || ua.includes('ipad'));
       setIsSafari(isSafariBrowser);
     };
-    
+
     checkDevice();
     window.addEventListener('resize', checkDevice);
     return () => window.removeEventListener('resize', checkDevice);
@@ -111,7 +141,7 @@ const HomePage = () => {
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -124,18 +154,18 @@ const HomePage = () => {
                 Parallax3Ref.current,
                 Parallax5Ref.current
               ];
-              
+
               const index = refs.findIndex(ref => ref === entry.target);
               if (index !== -1) {
                 setActiveSection(index);
               }
-            }, 100); 
+            }, 100);
           }
         });
       },
-      { 
-        threshold: [0.1, 0.2, 0.3, 0.4], 
-        rootMargin: "-5% 0px -5% 0px" 
+      {
+        threshold: [0.1, 0.2, 0.3, 0.4],
+        rootMargin: "-5% 0px -5% 0px"
       }
     );
 
@@ -165,16 +195,16 @@ const HomePage = () => {
   return (
     <div className="min-h-screen relative">
       {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
-      
-      <div 
+
+      <div
         className="fixed inset-0 z-0 overflow-hidden"
         style={{ opacity: contentOpacity }}
       >
         {mediaResources.map((media, index) => (
-          <div 
+          <div
             key={media.src}
-            className="absolute inset-0 transition-opacity duration-700 ease-in-out" 
-            style={{ 
+            className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+            style={{
               zIndex: activeSection === index ? 10 : 1,
               opacity: activeSection === index ? 1 : 0,
               visibility: Math.abs(activeSection - index) <= 1 ? 'visible' : 'hidden'
@@ -211,14 +241,14 @@ const HomePage = () => {
         ))}
       </div>
 
-      <div 
+      <div
         className="relative z-10 transition-opacity duration-1000"
         style={{ opacity: contentOpacity }}
       >
         <Navbar />
-        
+
         {isMobile && <BookingWidget mode="mobile" />}
-        
+
         <section id="Inicio">
           <Hero />
         </section>
@@ -228,7 +258,7 @@ const HomePage = () => {
         <section id="" ref={Parallax1Ref}>
           <Parallax1 />
         </section>
-        
+
         <section id="" className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]">
           <div className="px-4 sm:px-6 lg:px-8 py-[12%] md:py-[8%] max-w-7xl mx-auto text-white">
             <div
@@ -278,7 +308,7 @@ const HomePage = () => {
 
               <div className="col-span-5 space-y-6 text-black leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
-                  Sumérgete en la belleza natural de Costa Rica. Nuestras instalaciones se integran perfectamente con el paisaje, permitiéndote disfrutar de la exuberante vegetación tropical y el océano desde cada rincón, donde el atardecer pinta el cielo con colores indescriptibles, convirtiendo cada día en una experiencia inolvidable.              
+                  Sumérgete en la belleza natural de Costa Rica. Nuestras instalaciones se integran perfectamente con el paisaje, permitiéndote disfrutar de la exuberante vegetación tropical y el océano desde cada rincón, donde el atardecer pinta el cielo con colores indescriptibles, convirtiendo cada día en una experiencia inolvidable.
                 </p>
                 <a href="#espacios" className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-black text-black px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white hover:border-[#3D4F27] font-kumbh">
                   Ver Más
@@ -312,7 +342,7 @@ const HomePage = () => {
               <div className="col-span-5 space-y-6 text-white leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
                   Descubre un espacio diseñado para la relajación y la renovación. Con el mar a tu alrededor y naturaleza en cada rincón, reconéctate contigo mismo a través del ejercicio, la meditación y la tranquilidad absoluta. Aquí, cada momento es una oportunidad para el bienestar y la transformación.</p>
-                <a href="#Eventos"  className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
+                <a href="#Eventos" className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
                   Ver Más
                   <FaArrowRight />
                 </a>
@@ -324,7 +354,7 @@ const HomePage = () => {
         <section id="espacios">
           <Spaces />
         </section>
-        
+
         <section id="Habitaciones">
           <Rooms />
         </section>
@@ -340,7 +370,7 @@ const HomePage = () => {
         <section id="Eventos">
           <Grid />
         </section>
-        
+
         <section id="">
           <Events />
         </section>
