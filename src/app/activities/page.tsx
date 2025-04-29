@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import Navbar from "@/components/Navbar";
-import ScrollBentoBox from "@/components/ScrollBentoBox";
-import RoomDetails from "@/components/RoomDetails";
+import Navbar from "@/components/Navbar2";
+import ResortPromotion from "@/components/ResortPromotion";
+import MarketingSection from "@/components/MarketingSection";
+import EventContactForm from "@/components/EventContactForm";
 import Footer from "@/components/Footer";
 
 const RoomsPage = () => {
@@ -16,50 +17,101 @@ const RoomsPage = () => {
     });
   }, []);
 
-  const roomImages = [
-    { src: "/images/restaurantpage1.avif", alt: "Habitación de lujo con vista al mar" },
-    { src: "/images/restaurantpage2.avif", alt: "Suite presidencial con terraza" },
-    { src: "/images/restaurantpage3.avif", alt: "Vista panorámica de la habitación" },
-    { src: "/images/restaurantpage4.avif", alt: "Baño de lujo" },
-    { src: "/images/restaurantpage5.avif", alt: "Área de descanso" },
-    { src: "/images/restaurantpage6.avif", alt: "Terraza privada" },
-    { src: "/images/restaurantpage7.avif", alt: "Dormitorio principal" },
-    { src: "/images/restaurantpage8.avif", alt: "Vista al océano" },
-    { src: "/images/restaurantpage9.avif", alt: "Sala de estar" }
-  ];
+  const weddingData = {
+    category: "Bodas Destino",
+    title: "Un compromiso hasta la eternidad",
+    description: "Imagine el sonido de las olas como música de fondo mientras camina hacia el altar, el sol descendiendo en el horizonte pintando el cielo con tonalidades doradas, y sus seres queridos reunidos en uno de los escenarios naturales más impresionantes de Costa Rica.",
+    imageUrl: "/images/weddingData.avif",
+    features: [
+      {
+        iconSrc: "/images/iconosActividades/weddingData1.svg",
+        text: "Ceremonias íntimas en la playa con vistas panorámicas al océano, con espacios versátiles para recepciones, desde elegantes cenas a la luz de las velas hasta celebraciones bajo las estrellas."
+      },
+      {
+        iconSrc: "/images/iconosActividades/weddingData2.svg",
+        text: "Coordinación personalizada para cada detalle de su día especial, desde alojamiento exclusivo para la pareja y sus invitados, hasta menús personalizados creados por nuestro chef ejecutivo."
+      },
+      {
+        iconSrc: "/images/iconosActividades/weddingData3.svg",
+        text: "Servicios de fotografía y video que capturan la magia del entorno natural, además de opciones de decoración que complementan la belleza natural del lugar."
+      }
+    ]
+  };
 
-  const roomDetails = {
-    title: "La Joya de Lagarto",
-    subtitle: "Restaurante",
-    secondaryText: "Coctelería - Bar - Restaurante",
-    description: "Sumérgete en el lujo, la comodidad y la serenidad de nuestras exclusivas habitaciones. Cada espacio ha sido diseñado para ofrecer una experiencia única, fusionando elegancia y el encanto natural de nuestro entorno.",
-    amenities: [
-      { icon: "bed" as const, text: "1 Habitación" },
-      { icon: "bath" as const, text: "1 Baño" },
-      { icon: "fridge" as const, text: "Nevera" },
-      { icon: "sofa" as const, text: "Sofá Cama" },
-      { icon: "coffee" as const, text: "Cafetera" },
-      { icon: "breakfast" as const, text: "Desayuno gratuito" }
-    ],
-    ctaButton: {
-      text: "Reservar espacio",
-      onClick: () => window.open("https://reservations.orbebooking.com/Search/Init/Sa63l/es", "_blank")
-    }
+  const luxuryData = {
+    category: "Luxury buyots",
+    title: "Su residencia privada frente al mar",
+    description: "Experimente la libertad absoluta de tener The Bohemian Lagarto completamente para usted. Cada rincón, cada servicio y cada atardecer pertenecen exclusivamente a usted y sus invitados.",
+    imageUrl: "/images/luxuryData.avif",
+    features: [
+      {
+        iconSrc: "/images/iconosActividades/luxuryData1.svg",
+        text: "Exclusividad total de todas las instalaciones del hotel, con una personalización completa de servicios, horarios y experiencias."
+      },
+      {
+        iconSrc: "/images/iconosActividades/luxuryData2.svg",
+        text: "Equipo dedicado a su disposición las 24 horas, con la flexibilidad para transformar espacios según sus necesidades. Desde menús gastronómicos personalizados hasta actividades y experiencias adaptadas a sus preferencias."
+      },
+      {
+        iconSrc: "/images/iconosActividades/luxuryData3.svg",
+        text: "Privacidad garantizada en 13 kilómetros de playa virgen, con una coordinación de transporte privado para todos los invitados."
+      }
+    ]
+  };
+
+  const wellnessData = {
+    category: "Retiros de Bienestar",
+    title: "Un viaje de transformación interior",
+    description: "En la fusión perfecta entre la sabiduría ancestral y el poder regenerador de la naturaleza costarricense, ofrecemos experiencias transformativas diseñadas para reconectar con su esencia más profunda.",
+    imageUrl: "/images/wellnessData.avif",
+    features: [
+      {
+        iconSrc: "/images/iconosActividades/wellnessData1.svg",
+        text: "Ceremonias ancestrales guiadas por facilitadores expertos con plantas sagradas, programas de ayuno terapéutico y desintoxicación."
+      },
+      {
+        iconSrc: "/images/iconosActividades/wellnessData2.svg",
+        text: "Contamos con retiros de silencio y meditación profunda, prácticas de yoga al amanecer frente al océano, talleres de alimentación consciente y nutrición regenerativas y terapias energéticas y corporales."
+      },
+      {
+        iconSrc: "/images/iconosActividades/wellnessData3.svg",
+        text: "Espacios para la integración y reflexión personal, con alojamiento en habitaciones diseñadas para complementar la experiencia de sanación."
+      }
+    ]
+  };
+
+  const corporateData = {
+    category: "Eventos Corporativos",
+    title: "Inspiración que fluye naturalmente",
+    description: "Transforme sus reuniones de trabajo en experiencias productivas y memorables. Lejos del ruido urbano y las distracciones cotidianas, The Bohemian Lagarto ofrece un entorno donde las grandes ideas emergen con la misma naturalidad que las olas del océano.",
+    imageUrl: "/images/corporateData.avif",
+    features: [
+      {
+        iconSrc: "/images/iconosActividades/corporateData1.svg",
+        text: "Espacios versátiles para sesiones de trabajo, presentaciones y talleres, contando con equipamiento audiovisual de última generación y conectividad de alta velocidad en un entorno."
+      },
+      {
+        iconSrc: "/images/iconosActividades/corporateData2.svg",
+        text: "Actividades de team building que aprovechan nuestro entorno natural, donde tu equipo puede disfrutar de nuestros servicios de coffee break con productos orgánicos locales."
+      },
+      {
+        iconSrc: "/images/iconosActividades/corporateData3.svg",
+        text: "Comidas ejecutivas diseñadas para mantener la energía y la concentración y opciones para combinar trabajo y bienestar con sesiones de yoga o meditación."
+      }
+    ]
   };
 
   return (
     <div className="min-h-screen bg-[#F1ECE3]">
       <Navbar />
-      <main className="pt-20">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-[3fr_2fr] gap-8 items-start px-8 py-6">
-            <div>
-              <ScrollBentoBox images={roomImages} />
-            </div>
-            <div className="sticky top-24">
-              <RoomDetails {...roomDetails} />
-            </div>
-          </div>
+      <main className="pt-24">
+        <ResortPromotion />
+        <div className="flex flex-col space-y-24 p-4">
+          <MarketingSection {...weddingData} imagePosition="right" />
+          <MarketingSection {...luxuryData} />
+          <MarketingSection {...wellnessData} imagePosition="right" />
+          <MarketingSection {...corporateData} />
+          <EventContactForm />
         </div>
       </main>
       <Footer />

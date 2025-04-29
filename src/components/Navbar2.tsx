@@ -34,18 +34,18 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed w-full text-white z-50 transition-all duration-300 bg-[#3D4F27]">
-        <div className="container mx-auto px-5 py-1 flex items-center justify-between relative font-kumbh">
+      <nav className="fixed w-full text-black z-50 transition-all duration-300 bg-[#F1ECE3] ">
+        <div className="container mx-auto px-5 py-1 flex items-center justify-between relative font-kumbh border-b border-[#979797]">
           <Link href="/" className="lg:flex-shrink-0">
-<Image
-              src="/images/tb-logo-blanco.svg"
+            <Image
+              src="/images/BOHEMIAN_logo-01.svg"
               alt="Bohemian Logo"
               width={120}
               height={90}
               className="w-36 h-24 hidden lg:block"
             />
             <Image
-              src="/images/MobileLogo2.svg"
+              src="/images/MobileLogo.svg"
               alt="Bohemian Logo"
               width={120}
               height={90}
@@ -59,7 +59,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="cursor-pointer hover:text-gray-200 transition-colors"
+                  className="cursor-pointer hover:font-bold  transition-all"
                 >
                   {item.name}
                 </Link>
@@ -82,22 +82,22 @@ export default function Navbar() {
           </div>
 
           <button
-            className="lg:hidden text-white mx-2 focus:outline-none relative w-6 h-6 z-50"
+            className="lg:hidden text-black mx-2 focus:outline-none relative w-6 h-6 z-50"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
             <span
-              className={`absolute w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+              className={`absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out ${
                 isOpen ? "rotate-45 top-2.5" : "top-1"
               }`}
             />
             <span
-              className={`absolute w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+              className={`absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out ${
                 isOpen ? "opacity-0" : "top-2.5"
               }`}
             />
             <span
-              className={`absolute w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+              className={`absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out ${
                 isOpen ? "-rotate-45 top-2.5" : "top-4"
               }`}
             />
