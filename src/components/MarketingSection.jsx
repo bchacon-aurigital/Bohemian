@@ -11,7 +11,6 @@ const MarketingSection = ({
   className = "",
   imagePosition = "left"
 }) => {
-  // Initialize AOS
   useEffect(() => {
     AOS.init({
       duration: 800,

@@ -115,27 +115,27 @@ const HomePage = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          
-          clearTimeout(timeoutId);
-          timeoutId = setTimeout(() => {
-            const refs = [
-              Parallax1Ref.current,
-              Parallax2Ref.current,
-              Parallax3Ref.current,
-              Parallax5Ref.current
-            ];
-            
-            const index = refs.findIndex(ref => ref === entry.target);
-            if (index !== -1) {
-              setActiveSection(index);
-            }
-          }, 150); 
+          if (entry.intersectionRatio > 0.1) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+              const refs = [
+                Parallax1Ref.current,
+                Parallax2Ref.current,
+                Parallax3Ref.current,
+                Parallax5Ref.current
+              ];
+              
+              const index = refs.findIndex(ref => ref === entry.target);
+              if (index !== -1) {
+                setActiveSection(index);
+              }
+            }, 100); 
+          }
         });
       },
       { 
-        threshold: 0.4,
-        rootMargin: "-10% 0px -10% 0px" 
+        threshold: [0.1, 0.2, 0.3, 0.4], 
+        rootMargin: "-5% 0px -5% 0px" 
       }
     );
 
@@ -160,6 +160,7 @@ const HomePage = () => {
     setIsLoading(false);
     setContentOpacity(1);
   };
+
 
   return (
     <div className="min-h-screen relative">
