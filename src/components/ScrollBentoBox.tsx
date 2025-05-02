@@ -30,9 +30,9 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
     };
 
     return (
-        <div className="space-y-4">
+        <div className="space-y-1">
             <div
-                className="grid grid-cols-1 md:grid-cols-6 gap-4"
+                className="grid grid-cols-1 md:grid-cols-6 gap-1"
                 data-aos="fade-up"
                 data-aos-duration="1000"
                 data-aos-offset="200"
@@ -72,7 +72,7 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
             {/* Solo mostrar grupos adicionales si hay suficientes imágenes */}
             {images.length > 6 && (
                 <div
-                    className="grid grid-cols-1 md:grid-cols-6 gap-4"
+                    className="grid grid-cols-1 md:grid-cols-6 gap-1"
                     data-aos="fade-up"
                     data-aos-duration="1000"
                     data-aos-offset="200"
@@ -103,10 +103,8 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
             {images.length > 9 && (
 
                 <div
-                    className="col-span-1 md:col-span-6 grid grid-cols-1 md:grid-cols-3 gap-4"
+                    className="col-span-1 md:col-span-6 grid grid-cols-1 md:grid-cols-3 gap-1"
                     data-aos="fade-up"
-                    data-aos-duration="1000"
-                    data-aos-offset="200"
                 >
                     {[9, 10, 11].map((index) => index < images.length && (
                         <div
@@ -122,7 +120,7 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
                 </div>)}
 
             {images.length > 12 && (
-                <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-6 gap-1" data-aos="fade-up">
                     <div className="col-span-1 md:col-span-3">
                         <div className="aspect-[4/3] rounded-lg overflow-hidden">
                             {renderImage(12)}

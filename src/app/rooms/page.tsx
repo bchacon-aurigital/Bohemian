@@ -61,7 +61,7 @@ export default function RoomsPage() {
             <div className="lg:sticky lg:top-24">
               <RoomDetails showAccordion={true} />
             </div>
-            <div className="mt-8 lg:mt-0">
+            <div className="mt-8 lg:mt-0 py-2">
               <ScrollBentoBox images={roomImages} />
             </div>
           </div>

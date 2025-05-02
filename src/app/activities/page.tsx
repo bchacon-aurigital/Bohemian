@@ -49,11 +49,11 @@ const RoomsPage = () => {
         text: "Exclusividad total de todas las instalaciones del hotel, con una personalización completa de servicios, horarios y experiencias."
       },
       {
-        iconSrc: "/images/iconosActividades/luxuryData2.svg",
+        iconSrc: "/images/iconosActividades/luxuryData3.svg",
         text: "Equipo dedicado a su disposición las 24 horas, con la flexibilidad para transformar espacios según sus necesidades. Desde menús gastronómicos personalizados hasta actividades y experiencias adaptadas a sus preferencias."
       },
       {
-        iconSrc: "/images/iconosActividades/luxuryData3.svg",
+        iconSrc: "/images/iconosActividades/luxuryData2.svg",
         text: "Privacidad garantizada en 13 kilómetros de playa virgen, con una coordinación de transporte privado para todos los invitados."
       }
     ]

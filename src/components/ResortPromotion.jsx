@@ -7,24 +7,21 @@ const ResortPromotion = () => {
                 <div className="relative min-h-[30rem] md:min-h-[65vh]">
                     <div
                         className="absolute inset-0 bg-cover bg-[position:80%_center] md:bg-center rounded-xl"
-                        style={{ backgroundImage: "url('/images/Grid1Activities2.avif')" }}
+                        style={{ backgroundImage: "url('/images/Grid2Activities.avif')" }}
                     ></div>
 
-                    <div className="absolute bottom-8 left-8 z-20 text-black pr-4">
-                        <h2 className="text-[1.2rem] md:text-[1.9rem] font-kumbh font-medium leading-none max-w-[10rem] sm:max-w-md">
+                    <div className="absolute bottom-8 left-8 z-20 text-white pr-4">
+                        <h2 className="text-[1.2rem] md:text-[1.9rem] font-kumbh font-medium leading-none max-w-md sm:max-w-md">
                             Donde los momentos extraordinarios se convierten en recuerdos eternos
                         </h2>
-                        <p className="text-xs md:text-sm font-kumbh py-3 max-w-[10rem] sm:max-w-md">
+                        <p className="text-xs md:text-sm font-kumbh py-3 max-w-md sm:max-w-md">
                             Nuestro paraíso exclusivo, enmarcado por el océano Pacífico y la exuberante
                             naturaleza costarricense, se transforma en el lienzo perfecto para sus
                             celebraciones más importantes.
                         </p>
 
                         <div className="flex space-x-4">
-                        <button className="bg-black text-[#728F4D] px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ease-in-out hover:bg-[#3D4F27] hover:text-[#f0ede4]">
-                                Reservar Ahora
-                            </button>
-                            <button className="hidden md:block bg-[#728F4D] text-black border-2 border-black hover:border-transparent px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ease-in-out hover:bg-[#f0ede4] hover:text-[#728F4D]">
+                        <button className="bg-white text-black px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ease-in-out hover:bg-[#3D4F27] hover:text-[#f0ede4]">
                                 Reservar Ahora
                             </button>
                         </div>
@@ -38,7 +35,6 @@ const ResortPromotion = () => {
                         className="absolute inset-0 bg-cover bg-center rounded-xl"
                         style={{
                             backgroundImage: "url('/images/Grid1Activities.avif')",
-                            filter: "grayscale(100%)"
                         }}
                     ></div>
 
