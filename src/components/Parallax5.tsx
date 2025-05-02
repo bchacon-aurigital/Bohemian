@@ -11,12 +11,18 @@ const AboutSection2 = () => {
           <p className="text-lg md:text-2xl font-medium font-kumbh">
             No esperes mas y guarda tu <br /> lugar hoy mismo
           </p>
-          <div className="flex justify-center mt-6">
-            <a
+          <div className="flex flex-col sm:flex-row gap-3 mt-6">
+          <a
               href="https://reservations.orbebooking.com/Search/Init/Sa63l/es"
-              className="w-64 bg-white text-gray-800 py-3 rounded-full text-center text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh"
+              className="w-full sm:w-auto bg-[#44391A] text-white sm:px-8 py-3 rounded-full text-center text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh"
             >
               Reservar Ahora
+            </a>
+            <a
+              href="/#seccion1"
+              className="w-full sm:w-auto border border-white bg-white text-[#44391A] sm:px-8 py-3 rounded-full text-center text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-[#3D4F27] font-kumbh"
+            >
+              Conocer Más
             </a>
           </div>
         </div>
