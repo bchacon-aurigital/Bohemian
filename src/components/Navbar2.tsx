@@ -26,7 +26,7 @@ export default function Navbar() {
   const navSections = [
     { name: "Inicio", href: "/" },
     { name: "Habitaciones", href: "/rooms" },
-    { name: "Restaurante", href: "/restaurant" },
+   /* { name: "Restaurante", href: "/restaurant" },*/
     { name: "Servicios", href: "/activities" },
     { name: "Eventos", href: "/#Eventos" },
     { name: "Contacto", href: "/#Contacto" },

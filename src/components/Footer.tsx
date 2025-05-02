@@ -84,9 +84,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/restaurant" className="hover:text-gray-300 transition font-montserrat">
+              {/*  <Link href="/restaurant" className="hover:text-gray-300 transition font-montserrat">
                   Restaurante
-                </Link>
+                </Link>*/}
               </li>
             </ul>
           </div>

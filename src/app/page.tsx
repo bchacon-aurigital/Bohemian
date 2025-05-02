@@ -28,10 +28,10 @@ const ResortFeatures = dynamic(() => import("@/components/ResortFeatures"), {
   ssr: true
 });
 
-const Events = dynamic(() => import("@/components/Events"), {
+/*const Events = dynamic(() => import("@/components/Events"), {
   loading: () => <div className="h-screen"></div>,
   ssr: true
-});
+});*/
 
 const Grid = dynamic(() => import("@/components/grid1"), {
   loading: () => <div className="h-screen"></div>,
@@ -255,7 +255,7 @@ const HomePage = () => {
         <section id="">
           <WelcomeSection />
         </section>
-        <section id="" ref={Parallax1Ref}>
+        <section id="seccion1" ref={Parallax1Ref}>
           <Parallax1 />
         </section>
 
@@ -371,9 +371,9 @@ const HomePage = () => {
           <Grid />
         </section>
 
-        <section id="">
+       {/* <section id="">
           <Events />
-        </section>
+        </section>*/}
 
         <section id="Contacto" ref={Parallax5Ref}>
           <Parallax5 />

@@ -2,6 +2,7 @@ import React from 'react';
 import { MdOutlineWbSunny } from "react-icons/md";
 import { FaUsers } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa6";
+import { LuLeaf } from "react-icons/lu";
 
 
 // Custom Badge component to replace the imported one
@@ -57,34 +58,44 @@ const Activities = ({
 }: ActivitiesProps) => {
     const defaultActivities = [
         {
-            title: "Paseos a caballo al atardecer",
-            subtitle: "Bajo reservación anticipada",
-            description1: "Recorre la orilla del mar mientras el sol se despide en el horizonte.",
-            description2: "Una experiencia mágica llena de conexión y libertad para las parejas.",
+            title: "Surf",
+            subtitle: "+20 playas cercanas donde puedes disfrutar de las olas.",
+            description1: "Somos criaturas de la noche que recargan energía bajo el sol...",
+            description2: "Perseguimos las olas y escapamos del concreto para encontrar paz.",
             image1: "/images/Activities1.avif",
             image2: "/images/Activities2.avif",
-            altText1: "Mujer con caballo en la playa",
-            altText2: "Pareja con caballo en la playa"
+            altText1: "Surf",
+            altText2: "Surf"
         },
         {
-            title: "Exploración de senderos",
-            subtitle: "Excursiones guiadas semanalmente",
-            description1: "Adéntrate en la belleza virgen del bosque tropical.",
-            description2: "Descubre cascadas escondidas y deja que la naturaleza te guíe.",
+            title: "Pesca Artesanal",
+            subtitle: "Tan fresco como es posible.",
+            description1: "Donde el océano se encuentra con la tradición, las manos encuentran propósito...",
+            description2: "En la quietud del agua, encontramos ritmo, paciencia y conexión.",
             image1: "/images/Activities3.avif",
             image2: "/images/Activities4.avif",
-            altText1: "Sendero en el bosque",
-            altText2: "Sendero"
+            altText1: "Mar",
+            altText2: "Barcos pesca"
         },
         {
             title: "Observación de vida silvestre",
             subtitle: "Mejor temporada: de diciembre a mayo",
-            description1: "Vive tu propia aventura con experiencias privadas.",
-            description2: "Encuentra toda clase de fauna y flora, desde monos juguetones hasta majestuosos tucanes.",
+            description1: "Caminamos con suavidad y somos testigos de la vida en su forma más pura...",
+            description2: "Y es en la naturaleza donde más nos sentimos nosotros mismos.",
             image1: "/images/Activities5.avif",
             image2: "/images/Activities6.avif",
             altText1: "Arbol",
             altText2: "Sendero"
+        },
+        {
+            title: "Paseos a caballo al atardecer",
+            subtitle: "Bajo reservación anticipada",
+            description1: "Galopamos donde el océano se une con el cielo, persiguiendo la libertad...",
+            description2: "La orilla se convierte en nuestro camino, el viento en nuestra guía, y el momento en algo infinito.",
+            image1: "/images/Activities7.avif",
+            image2: "/images/Activities8.avif",
+            altText1: "Mujer con caballo en la playa",
+            altText2: "Pareja con caballo en la playa"
         },
     ];
 
@@ -116,10 +127,10 @@ const Activities = ({
                             <div className="absolute inset-0 flex flex-col p-2">
                                 <div className="mt-6 ml-6">
                                     <div className="flex flex-row items-center justify-center gap-2 rounded-3xl font-kumbh bg-white backdrop-blur-sm p-2 text-sm w-52 text-black mb-3">
-                                        <MdOutlineWbSunny className='text-2xl'/> Clases en la mañana
+                                        <MdOutlineWbSunny className='text-2xl'/> 5 minutos de distancia
                                     </div>
-                                    <h3 className="text-2xl font-medium text-white mb-1 font-kumbh">Yoga frente al mar</h3>
-                                    <p className="text-md font-kumbh font-light text-white">Inicia tu día con sesiones revitalizantes</p>
+                                    <h3 className="text-2xl font-medium text-white mb-1 font-kumbh">Entrena frente al mar</h3>
+                                    <p className="text-md font-kumbh font-light text-white">Inicia el día agradeciendo todo lo que tu cuerpo puede hacer.</p>
                                 </div>
                                 <div className="flex-grow"></div>
                             </div>
@@ -152,7 +163,7 @@ const Activities = ({
                             <div className="absolute inset-0 flex items-center justify-center p-6">
                                 <div className="text-center z-10 flex flex-col justify-center items-center">
                                   <div className="flex flex-row items-center justify-center gap-2 rounded-3xl font-kumbh bg-white backdrop-blur-sm p-2 text-sm w-52 text-black mb-3">
-                                        <MdOutlineWbSunny className='text-2xl'/> Disponible todo el día
+                                        <LuLeaf className='text-2xl'/> Disponible todo el día
                                     </div>
                                     <h3 className="text-2xl font-medium text-white mb-1 font-kumbh">Lectura en hamaca</h3>
                                     <p className="text-md font-kumbh font-light text-white w-64">Para desconectar y sumergirte en un buen libro</p>
@@ -168,11 +179,11 @@ const Activities = ({
                             />
                             <div className="absolute inset-0 flex flex-col p-2">
                                 <div className="mt-6 ml-6">
-                                <div className="flex flex-row items-center justify-center gap-2 rounded-3xl font-kumbh bg-white backdrop-blur-sm p-2 text-xs w-52 text-black mb-3">
-                                        <FaUsers className='text-2xl'/> Sesiones privadas y grupales
+                                <div className="flex flex-row items-center justify-center gap-2 rounded-3xl font-kumbh bg-white backdrop-blur-sm p-2 text-xs w-44 text-black mb-3">
+                                        <MdOutlineWbSunny className='text-2xl'/> Todos los días
                                     </div>
-                                    <h3 className="text-2xl font-medium text-white mb-1 font-kumbh">Meditación guiada</h3>
-                                    <p className="text-md font-kumbh font-light text-white w-56">Encuentra armonía interior</p>
+                                    <h3 className="text-2xl font-medium text-white mb-1 font-kumbh">Atardeceres impresionantes</h3>
+                                    <p className="text-md font-kumbh font-light text-white w-64">Desde la piscina, el restaurante o tu propia habitación.</p>
                                 </div>
                                 <div className="flex-grow"></div>
                             </div>
@@ -186,10 +197,11 @@ const Activities = ({
                     <div className="flex flex-col md:flex-row justify-between mb-10 pb-8 border-b border-[#484848]">
                         <div className="mb-6 md:mb-0">
                             <div className="text-[#969696] text-lg font-kumbh mb-2">Actividades</div>
-                            <h2 className="text-4xl max-w-sm font-tanNimbus leading-tight">Para todos nuestros clientes</h2>
+                            <h2 className="text-4xl max-w-sm font-tanNimbus leading-tight">Experiencia local</h2>
                         </div>
                         <div className="text-lg mt-6 lg:mt-0 md:text-md font-kumbh w-full md:w-[412px] text-[#969696]">
-                            Desde la adrenalina del océano hasta la serenidad del entorno natural, cada experiencia está cuidadosamente creada para satisfacer tus deseos.          </div>
+                        Desde la adrenalina del océano hasta la serenidad del entorno natural, te harán sentir la experiencia local. 
+                                 </div>
                     </div>
 
                     {activitiesToRender.map((activity, index) => (
