@@ -1,5 +1,5 @@
 {
-  "name": "pranayama",
+  "name": "bohemian",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "aos": "^3.0.0-beta.6",
     "geist": "^1.3.1",
     "lucide-react": "^0.475.0",

@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faAirbnb, faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { faBed } from '@fortawesome/free-solid-svg-icons';
 
 export default function Hero() {
   return (
@@ -22,6 +25,29 @@ export default function Hero() {
 
       <div className="relative z-10 min-h-screen flex flex-col justify-center px-6 sm:px-8 md:px-12 lg:px-20">
         <div className="max-w-xl ml-0 mx-auto md:ml-auto md:mx-0">
+          <div className="social-icons">
+            <a
+              href="https://www.instagram.com/bohemianlagarto"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            <a
+              href="https://www.airbnb.co.cr/rooms/887930834340083085"
+              target="_blank"
+              aria-label="Airbnb"
+            >
+              <FontAwesomeIcon icon={faAirbnb} />
+            </a>
+            <a
+              href="https://www.facebook.com/BohemianLagarto"
+              target="_blank"
+              aria-label="Facebook"
+            >
+              <FontAwesomeIcon icon={faFacebookF} />
+            </a>
+          </div>
           <h1 className="text-white text-5xl md:text-6xl xl:text-8xl space-y-4 mb-4 font-tanNimbus font-medium text-right">
             <span className="block">Escapa.</span>
             <span className="block">Reconecta.</span>
@@ -29,8 +55,10 @@ export default function Hero() {
           </h1>
 
           <p className="text-white text-[1.25rem] mb-8 text-right font-kumbh font-light leading-tight">
-          En el corazon de 13 kilometros de playa virgen. <br />The Bohemian Lagarto te invita a un retiro de lujo intimo,
-          donde el alma encuentra refugio y la naturaleza abraza cada despertar.
+            En el corazón de 13 kilómetros de playa virgen,{" "}
+            <br className="hidden md:flex" /> The Bohemian Lagarto te invita a
+            un retiro de lujo íntimo, donde el alma encuentra refugio y la
+            naturaleza abraza cada despertar.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 w-full items-end justify-end">

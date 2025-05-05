@@ -21,16 +21,12 @@ export default function WelcomeSection() {
 
           <div className="col-span-5 space-y-6 text-gray-700 leading-relaxed font-kumbh">
             <p className="text-base md:text-4xl font-semibold">
-              Mas que un hotel boutique, The Bohemian Lagarto es un santuario
-              para almas libres. A pasos de una playa inmaculada, creamos
-              experiencias que despiertan la esencia bohemia: la conexion
-              genuina, la libertad de ser y la belleza simple de cada momento.
+            Más que un hotel boutique, The Bohemian Lagarto es un santuario para almas libres. A pasos de una playa inmaculada, creamos experiencias que despiertan la esencia bohemia: la conexión genuina, la libertad de ser y la belleza simple de cada momento.
             </p>
             <p className="text-base md:text-sm max-w-[36rem]">
               "Somos criaturas de la noche que recargan bajo el sol. Encontramos
               la paz en las olas y en la vastedad de la naturaleza." <br />
-              En cada estancia, el lujo autentico y la naturaleza se entrelazan
-              para ofrecerte mas que un descanso: una transformacion.
+              En cada estancia, el lujo auténtico y la naturaleza se entrelazan para ofrecerte más que un descanso: una transformación.
             </p>
           </div>
         </div>

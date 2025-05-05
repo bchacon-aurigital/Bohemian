@@ -325,9 +325,7 @@ const HomePage = () => {
 
               <div className="col-span-5 space-y-6 text-black leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
-                  Sumergete en un mundo donde el oceano y la jungla son tus
-                  anfitriones. Disfruta del atardecer que pinta el cielo, de
-                  senderos escondidos y de la energia vibrante de Playa Lagarto.
+                Sumérgete en un mundo donde el océano y la jungla son tus anfitriones. Disfruta del atardecer que pinta el cielo, de senderos escondidos y de la energía vibrante de Playa Lagarto.
                 </p>
                 <button
                   onClick={() => window.open("/activities")}
@@ -365,9 +363,7 @@ const HomePage = () => {
 
               <div className="col-span-5 space-y-6 text-white leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
-                  Cuerpo, mente y espiritu en perfecta armonia. A traves de la
-                  meditacion, el yoga y los rituales holisticos, cada instante
-                  es una oportunidad para reconectar contigo mismo.
+                Cuerpo, mente y espíritu en perfecta armonía. A través de la meditación, el yoga y los rituales holísticos, cada instante es una oportunidad para reconectar contigo mismo.
                 </p>
                 <button
                   onClick={() => window.open("/activities")}

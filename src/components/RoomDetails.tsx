@@ -60,7 +60,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
     // Datos de las habitaciones para el acordeón
     const roomTypes: RoomType[] = [
         {
-            title: "Habitación Deluxe",
+            title: "Suite Deluxe",
             capacity: "Espacio 1-3 personas",
             amenities: [
                 { icon: 'bath', text: 'Baño Privado' },
@@ -75,7 +75,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
             ]
         },
         {
-            title: "Habitación Deluxe con cama extragrande",
+            title: "Suite Deluxe con cama extragrande",
             capacity: "Espacio 1-3 personas",
             amenities: [
                 { icon: 'bath', text: 'Baño Privado' },
@@ -90,7 +90,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
             ]
         },
         {
-            title: "Habitación Cuádruple con vistas al mar",
+            title: "Suite Cuádruple con vistas al mar",
             capacity: "Espacio 2-4 personas",
             amenities: [
                 { icon: 'bath', text: 'Baño Privado' },
@@ -116,9 +116,9 @@ const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
             <div className="bg-[#F1ECE3] p-6 md:p-8 lg:p-10 max-w-4xl mx-auto">
                 <div className="mb-8">
                     <h3 className="text-[#969696] text-lg font-kumbh mb-1">Instalaciones</h3>
-                    <h2 className="text-[#3D4F27] text-4xl font-kumbh mb-6 font-bold">Nuestras Suites</h2>
+                    <h2 className="text-[#3D4F27] text-4xl font-kumbh mb-6 font-bold">Tu refugio en el paraíso</h2>
                     <p className="text-[#8D8372] font-kumbh leading-relaxed mb-6 ">
-                        Sumérgete en el lujo, la comodidad y la serenidad de nuestras exclusivas habitaciones. Cada espacio ha sido diseñado para ofrecer una experiencia única, fusionando elegancia y el encanto natural de nuestro entorno.
+                    Diseñadas bajo el concepto Boho Glam, nuestras habitaciones fusionan la estética minimalista con materiales naturales locales, ofreciendo privacidad absoluta, vistas panorámicas y terrazas privadas para contemplar la inmensidad del Pacífico.
                     </p>
                 </div>
 

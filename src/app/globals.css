@@ -75,6 +75,34 @@ html, body {
   z-index: 2;
 }
 
+.social-icons {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.social-icons a:hover {
+  background: #3D4F27;
+  border-color: #3D4F27;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
