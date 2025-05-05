@@ -28,7 +28,7 @@ export default function Navbar() {
     { name: "Habitaciones", href: "/rooms" },
    /* { name: "Restaurante", href: "/restaurant" },*/
     { name: "Servicios", href: "/activities" },
-    { name: "Eventos", href: "/#Eventos" },
+    { name: "Actividades", href: "/#Eventos" },
     { name: "Contacto", href: "/#Contacto" },
   ];
 

@@ -15,17 +15,17 @@ import Parallax5 from "@/components/Parallax5";
 
 const Spaces = dynamic(() => import("@/components/Spaces"), {
   loading: () => <div className="h-screen"></div>,
-  ssr: true
+  ssr: true,
 });
 
 const Rooms = dynamic(() => import("@/components/Rooms"), {
   loading: () => <div className="h-screen"></div>,
-  ssr: true
+  ssr: true,
 });
 
 const ResortFeatures = dynamic(() => import("@/components/ResortFeatures"), {
   loading: () => <div className="h-screen"></div>,
-  ssr: true
+  ssr: true,
 });
 
 /*const Events = dynamic(() => import("@/components/Events"), {
@@ -35,12 +35,12 @@ const ResortFeatures = dynamic(() => import("@/components/ResortFeatures"), {
 
 const Grid = dynamic(() => import("@/components/grid1"), {
   loading: () => <div className="h-screen"></div>,
-  ssr: true
+  ssr: true,
 });
 
 const SpecialEvents = dynamic(() => import("@/components/SpecialEvents"), {
   loading: () => <div className="h-screen"></div>,
-  ssr: true
+  ssr: true,
 });
 
 import LoadingScreen from "@/components/LoadingScreen";
@@ -48,7 +48,7 @@ import BookingWidget from "@/components/BookingWidget";
 
 const Footer = dynamic(() => import("@/components/Footer"), {
   loading: () => <div className="h-32"></div>,
-  ssr: true
+  ssr: true,
 });
 
 const HomePage = () => {
@@ -69,26 +69,26 @@ const HomePage = () => {
       src: "/video1.webm",
       safariSrc: "/video1.mp4",
       type: "video",
-      poster: "/images/poster1.avif"
+      poster: "/images/poster1.avif",
     },
     {
       src: "/video2.webm",
       safariSrc: "/video2.mp4",
       type: "video",
-      poster: "/images/poster2.avif"
+      poster: "/images/poster2.avif",
     },
     {
       src: "/video3.webm",
       safariSrc: "/video3.mp4",
       type: "video",
-      poster: "/images/poster3.avif"
+      poster: "/images/poster3.avif",
     },
     {
       src: "/last_video.mp4",
       safariSrc: "/last_video.mp4",
       type: "video",
-      poster: "/images/poster5.avif"
-    }
+      poster: "/images/poster5.avif",
+    },
   ];
 
   const Parallax1Ref = useRef(null);
@@ -102,7 +102,7 @@ const HomePage = () => {
         video.currentTime = 0;
         await video.play();
       } catch (error) {
-        console.warn('Error playing video:', error);
+        console.warn("Error playing video:", error);
       }
     };
 
@@ -116,7 +116,7 @@ const HomePage = () => {
     };
 
     const currentVideo = videoRefs.current[activeSection];
-    if (currentVideo && mediaResources[activeSection].type === 'video') {
+    if (currentVideo && mediaResources[activeSection].type === "video") {
       pauseOtherVideos(activeSection);
       playVideo(currentVideo);
     }
@@ -129,14 +129,15 @@ const HomePage = () => {
 
       const ua = navigator.userAgent.toLowerCase();
       const isSafariBrowser =
-        (ua.includes('safari') && !ua.includes('chrome')) ||
-        (ua.includes('iphone') || ua.includes('ipad'));
+        (ua.includes("safari") && !ua.includes("chrome")) ||
+        ua.includes("iphone") ||
+        ua.includes("ipad");
       setIsSafari(isSafariBrowser);
     };
 
     checkDevice();
-    window.addEventListener('resize', checkDevice);
-    return () => window.removeEventListener('resize', checkDevice);
+    window.addEventListener("resize", checkDevice);
+    return () => window.removeEventListener("resize", checkDevice);
   }, []);
 
   useEffect(() => {
@@ -152,10 +153,10 @@ const HomePage = () => {
                 Parallax1Ref.current,
                 Parallax2Ref.current,
                 Parallax3Ref.current,
-                Parallax5Ref.current
+                Parallax5Ref.current,
               ];
 
-              const index = refs.findIndex(ref => ref === entry.target);
+              const index = refs.findIndex((ref) => ref === entry.target);
               if (index !== -1) {
                 setActiveSection(index);
               }
@@ -165,7 +166,7 @@ const HomePage = () => {
       },
       {
         threshold: [0.1, 0.2, 0.3, 0.4],
-        rootMargin: "-5% 0px -5% 0px"
+        rootMargin: "-5% 0px -5% 0px",
       }
     );
 
@@ -173,10 +174,10 @@ const HomePage = () => {
       Parallax1Ref.current,
       Parallax2Ref.current,
       Parallax3Ref.current,
-      Parallax5Ref.current
+      Parallax5Ref.current,
     ];
 
-    refs.forEach(ref => {
+    refs.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
@@ -190,7 +191,6 @@ const HomePage = () => {
     setIsLoading(false);
     setContentOpacity(1);
   };
-
 
   return (
     <div className="min-h-screen relative">
@@ -207,10 +207,11 @@ const HomePage = () => {
             style={{
               zIndex: activeSection === index ? 10 : 1,
               opacity: activeSection === index ? 1 : 0,
-              visibility: Math.abs(activeSection - index) <= 1 ? 'visible' : 'hidden'
+              visibility:
+                Math.abs(activeSection - index) <= 1 ? "visible" : "hidden",
             }}
           >
-            {media.type === 'image' ? (
+            {media.type === "image" ? (
               <img
                 src={media.src}
                 alt="Background"
@@ -219,7 +220,7 @@ const HomePage = () => {
               />
             ) : (
               <video
-                ref={el => {
+                ref={(el) => {
                   if (el) videoRefs.current[index] = el;
                 }}
                 playsInline
@@ -233,7 +234,11 @@ const HomePage = () => {
               >
                 <source
                   src={isSafari ? media.safariSrc : media.src}
-                  type={isSafari || media.src.endsWith('.mp4') ? 'video/mp4' : 'video/webm'}
+                  type={
+                    isSafari || media.src.endsWith(".mp4")
+                      ? "video/mp4"
+                      : "video/webm"
+                  }
                 />
               </video>
             )}
@@ -259,7 +264,10 @@ const HomePage = () => {
           <Parallax1 />
         </section>
 
-        <section id="" className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]">
+        <section
+          id=""
+          className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]"
+        >
           <div className="px-4 sm:px-6 lg:px-8 py-[12%] md:py-[8%] max-w-7xl mx-auto text-white">
             <div
               data-aos="fade-up"
@@ -276,9 +284,15 @@ const HomePage = () => {
 
               <div className="col-span-5 space-y-6 text-white leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
-                  Redescubran la magia de estar juntos en un entorno diseñado para el amor. Despierten con el sonido de las olas, contemplen atardeceres espectaculares desde su habitación y disfruten de cenas íntimas bajo las estrellas. El romance no es un extra, es nuestra esencia.
+                  Redescubran la magia de estar juntos. Despierten con el sonido
+                  del mar, cenen bajo las estrellas y vivan cada instante como
+                  si el tiempo se detuviera. El romance no es un extra: es
+                  nuestra esencia.
                 </p>
-                <button onClick={() => window.open("/rooms", "_blank")} className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
+                <button
+                  onClick={() => window.open("/activities")}
+                  className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh"
+                >
                   Ver Más
                   <FaArrowRight />
                 </button>
@@ -291,7 +305,10 @@ const HomePage = () => {
           <Parallax2 />
         </section>
 
-        <section id="" className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#F1ECE3]">
+        <section
+          id=""
+          className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#F1ECE3]"
+        >
           <div className="px-4 sm:px-6 lg:px-8 py-[12%] md:py-[8%]  max-w-7xl mx-auto text-black">
             <div
               data-aos="fade-up"
@@ -308,23 +325,30 @@ const HomePage = () => {
 
               <div className="col-span-5 space-y-6 text-black leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
-                  Sumérgete en la belleza natural de Costa Rica. Nuestras instalaciones se integran perfectamente con el paisaje, permitiéndote disfrutar de la exuberante vegetación tropical y el océano desde cada rincón, donde el atardecer pinta el cielo con colores indescriptibles, convirtiendo cada día en una experiencia inolvidable.
+                  Sumergete en un mundo donde el oceano y la jungla son tus
+                  anfitriones. Disfruta del atardecer que pinta el cielo, de
+                  senderos escondidos y de la energia vibrante de Playa Lagarto.
                 </p>
-                <a href="#espacios" className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-black text-black px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white hover:border-[#3D4F27] font-kumbh">
+                <button
+                  onClick={() => window.open("/activities")}
+                  className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-[#3D4F27] text-[#3D4F27] px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh"
+                >
                   Ver Más
                   <FaArrowRight />
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </section>
 
-
         <section id="" ref={Parallax3Ref}>
           <Parallax3 />
         </section>
 
-        <section id="" className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]">
+        <section
+          id=""
+          className="relative h-screen md:h-[40rem] flex justify-center items-center md:items-start overflow-hidden bg-[#3D4F27]"
+        >
           <div className="px-4 sm:px-6 lg:px-8 py-[12%] md:py-[8%] max-w-7xl mx-auto text-white">
             <div
               data-aos="fade-up"
@@ -341,11 +365,17 @@ const HomePage = () => {
 
               <div className="col-span-5 space-y-6 text-white leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
-                  Descubre un espacio diseñado para la relajación y la renovación. Con el mar a tu alrededor y naturaleza en cada rincón, reconéctate contigo mismo a través del ejercicio, la meditación y la tranquilidad absoluta. Aquí, cada momento es una oportunidad para el bienestar y la transformación.</p>
-                <a href="#Eventos" className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh">
+                  Cuerpo, mente y espiritu en perfecta armonia. A traves de la
+                  meditacion, el yoga y los rituales holisticos, cada instante
+                  es una oportunidad para reconectar contigo mismo.
+                </p>
+                <button
+                  onClick={() => window.open("/activities")}
+                  className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh"
+                >
                   Ver Más
                   <FaArrowRight />
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -371,7 +401,7 @@ const HomePage = () => {
           <Grid />
         </section>
 
-       {/* <section id="">
+        {/* <section id="">
           <Events />
         </section>*/}
 

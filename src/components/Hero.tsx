@@ -29,8 +29,8 @@ export default function Hero() {
           </h1>
 
           <p className="text-white text-[1.25rem] mb-8 text-right font-kumbh font-light leading-tight">
-            13 kilómetros de playa virgen y atardeceres inolvidables te
-            esperan en el paraíso costarricense.
+          En el corazon de 13 kilometros de playa virgen. <br />The Bohemian Lagarto te invita a un retiro de lujo intimo,
+          donde el alma encuentra refugio y la naturaleza abraza cada despertar.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 w-full items-end justify-end">
