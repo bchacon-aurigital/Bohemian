@@ -1,16 +1,19 @@
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const ProgramSection = () => {
+  const { t } = useTranslation();
+  
   return (
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="relative z-10 text-center text-white px-4">
           <h2 className="text-4xl md:text-6xl font-bold leading-tight font-tanNimbus">
-            <span className="inline md:block mb-6">Sumérgete en</span>
-            <span className="inline md:block">la belleza</span>
+            <span className="inline md:block mb-6">{t('parallax.beauty.title1')}</span>
+            <span className="inline md:block">{t('parallax.beauty.title2')}</span>
           </h2>
           <p className="text-lg md:text-2xl font-semibold font-kumbh">
-            Naturaleza y confort en<br /> perfecta armonía
+            {t('parallax.beauty.subtitle')}
           </p>
         </div>
 

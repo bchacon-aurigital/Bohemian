@@ -7,6 +7,7 @@ import { FaUmbrellaBeach } from "react-icons/fa";
 import { BiFoodMenu } from "react-icons/bi";
 import { TbRulerMeasure } from "react-icons/tb";
 import { GiTowel } from "react-icons/gi";
+import { useTranslation } from 'react-i18next';
 
 // Mapa de iconos disponibles
 const iconMap = {
@@ -28,11 +29,11 @@ const iconMap = {
 };
 
 interface RoomType {
-    title: string;
-    capacity: string;
+    titleKey: string;
+    capacityKey: string;
     amenities: {
         icon: keyof typeof iconMap;
-        text: string;
+        textKey: string;
     }[];
 }
 
@@ -55,53 +56,54 @@ interface RoomDetailsProps {
 }
 
 const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
+    const { t } = useTranslation();
     const [openRoom, setOpenRoom] = useState<number | null>(0);
 
-    // Datos de las habitaciones para el acordeón
+    // Datos de las habitaciones para el acordeón utilizando las claves de traducción
     const roomTypes: RoomType[] = [
         {
-            title: "Suite Deluxe",
-            capacity: "Espacio 1-3 personas",
+            titleKey: "roomDetails.rooms.deluxeSuite.title",
+            capacityKey: "roomDetails.rooms.deluxeSuite.capacity",
             amenities: [
-                { icon: 'bath', text: 'Baño Privado' },
-                { icon: 'bed', text: '1 Habitación con Cama Queen' },
-                { icon: 'view', text: 'Vistas al Mar' },
-                { icon: 'towels', text: 'Toallas y artículos de aseo' },
-                { icon: 'fridge', text: 'Nevera' },
-                { icon: 'sofa', text: 'Sofá Cama' },
-                { icon: 'coffee', text: 'Cafetera' },
-                { icon: 'breakfast', text: 'Desayuno gratuito' },
-                { icon: 'size', text: '23 m2 de espacio' }
+                { icon: 'bath', textKey: 'roomDetails.amenities.privateBathroom' },
+                { icon: 'bed', textKey: 'roomDetails.amenities.queenBed' },
+                { icon: 'view', textKey: 'roomDetails.amenities.oceanViews' },
+                { icon: 'towels', textKey: 'roomDetails.amenities.towels' },
+                { icon: 'fridge', textKey: 'roomDetails.amenities.refrigerator' },
+                { icon: 'sofa', textKey: 'roomDetails.amenities.sofaBed' },
+                { icon: 'coffee', textKey: 'roomDetails.amenities.coffeeMaker' },
+                { icon: 'breakfast', textKey: 'roomDetails.amenities.breakfast' },
+                { icon: 'size', textKey: 'roomDetails.amenities.size' }
             ]
         },
         {
-            title: "Suite Deluxe con cama extragrande",
-            capacity: "Espacio 1-3 personas",
+            titleKey: "roomDetails.rooms.kingDeluxeSuite.title",
+            capacityKey: "roomDetails.rooms.kingDeluxeSuite.capacity",
             amenities: [
-                { icon: 'bath', text: 'Baño Privado' },
-                { icon: 'bed', text: '1 Habitación con Cama King' },
-                { icon: 'view', text: 'Vistas al Mar' },
-                { icon: 'towels', text: 'Toallas y Artículos de Aseo' },
-                { icon: 'fridge', text: 'Nevera' },
-                { icon: 'sofa', text: 'Sofá Cama' },
-                { icon: 'coffee', text: 'Cafetera' },
-                { icon: 'ac', text: 'Aire Acondicionado' },
-                { icon: 'size', text: '23 m2 de espacio' }
+                { icon: 'bath', textKey: 'roomDetails.amenities.privateBathroom' },
+                { icon: 'bed', textKey: 'roomDetails.amenities.kingBed' },
+                { icon: 'view', textKey: 'roomDetails.amenities.oceanViews' },
+                { icon: 'towels', textKey: 'roomDetails.amenities.towelsLux' },
+                { icon: 'fridge', textKey: 'roomDetails.amenities.refrigerator' },
+                { icon: 'sofa', textKey: 'roomDetails.amenities.sofaBed' },
+                { icon: 'coffee', textKey: 'roomDetails.amenities.coffeeMaker' },
+                { icon: 'ac', textKey: 'roomDetails.amenities.ac' },
+                { icon: 'size', textKey: 'roomDetails.amenities.size' }
             ]
         },
         {
-            title: "Suite Cuádruple con vistas al mar",
-            capacity: "Espacio 2-4 personas",
+            titleKey: "roomDetails.rooms.quadSuite.title",
+            capacityKey: "roomDetails.rooms.quadSuite.capacity",
             amenities: [
-                { icon: 'bath', text: 'Baño Privado' },
-                { icon: 'bed', text: '1 Habitación con 2 Camas' },
-                { icon: 'view', text: 'Vistas al Mar' },
-                { icon: 'towels', text: 'Toallas y Artículos de Aseo' },
-                { icon: 'fridge', text: 'Nevera' },
-                { icon: 'sofa', text: 'Sofá Cama' },
-                { icon: 'coffee', text: 'Cafetera' },
-                { icon: 'ac', text: 'Aire Acondicionado' },
-                { icon: 'size', text: '23 m2 de espacio' }
+                { icon: 'bath', textKey: 'roomDetails.amenities.privateBathroom' },
+                { icon: 'bed', textKey: 'roomDetails.amenities.twoBeds' },
+                { icon: 'view', textKey: 'roomDetails.amenities.oceanViews' },
+                { icon: 'towels', textKey: 'roomDetails.amenities.towelsLux' },
+                { icon: 'fridge', textKey: 'roomDetails.amenities.refrigerator' },
+                { icon: 'sofa', textKey: 'roomDetails.amenities.sofaBed' },
+                { icon: 'coffee', textKey: 'roomDetails.amenities.coffeeMaker' },
+                { icon: 'ac', textKey: 'roomDetails.amenities.ac' },
+                { icon: 'size', textKey: 'roomDetails.amenities.size' }
             ]
         }
     ];
@@ -115,10 +117,10 @@ const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
         return (
             <div className="bg-[#F1ECE3] p-6 md:p-8 lg:p-10 max-w-4xl mx-auto">
                 <div className="mb-8">
-                    <h3 className="text-[#969696] text-lg font-kumbh mb-1">Instalaciones</h3>
-                    <h2 className="text-[#3D4F27] text-4xl font-kumbh mb-6 font-bold">Tu refugio en el paraíso</h2>
+                    <h3 className="text-[#969696] text-lg font-kumbh mb-1">{t('roomDetails.facilities')}</h3>
+                    <h2 className="text-[#3D4F27] text-4xl font-kumbh mb-6 font-bold">{t('roomDetails.refugeTitle')}</h2>
                     <p className="text-[#8D8372] font-kumbh leading-relaxed mb-6 ">
-                    Diseñadas bajo el concepto Boho Glam, nuestras habitaciones fusionan la estética minimalista con materiales naturales locales, ofreciendo privacidad absoluta, vistas panorámicas y terrazas privadas para contemplar la inmensidad del Pacífico.
+                    {t('roomDetails.description')}
                     </p>
                 </div>
 
@@ -129,7 +131,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
                                 className="py-5 flex justify-between items-center cursor-pointer"
                                 onClick={() => toggleRoom(index)}
                             >
-                                <h3 className="text-[#8D8372] text-2xl font-kumbh font-medium py-5">{room.title}</h3>
+                                <h3 className="text-[#8D8372] text-2xl font-kumbh font-medium py-5">{t(room.titleKey)}</h3>
                                 <div className="text-[#3D4F27]">
                                     {openRoom === index ? <IoChevronUp size={20} /> : <IoChevronDown size={20} />}
                                 </div>
@@ -137,7 +139,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
                             
                             {openRoom === index && (
                                 <div className="pb-6 animate-fadeIn">
-                                    <p className="text-[#8D8372] font-kumbh mb-4">{room.capacity}</p>
+                                    <p className="text-[#8D8372] font-kumbh mb-4">{t(room.capacityKey)}</p>
                                     <div className="grid grid-cols-2 gap-4">
                                     {room.amenities.map((amenity, amenityIndex) => (
                                         <div
@@ -148,7 +150,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
                                                 {iconMap[amenity.icon]}
                                             </div>
                                             <span className="text-[#8D8372] text-xl font-kumbh">
-                                                {amenity.text}
+                                                {t(amenity.textKey)}
                                             </span>
                                         </div>
                                     ))}
@@ -167,7 +169,7 @@ const RoomDetails: React.FC<RoomDetailsProps> = (props) => {
                         className="bg-[#3D4F27] text-white px-8 py-3 rounded-full 
                                 hover:bg-[#2a3a1b] transition-colors duration-300 font-kumbh"
                     >
-                        Reservar espacio
+                        {t('roomDetails.bookSpace')}
                     </a>
                 </div>
             </div>

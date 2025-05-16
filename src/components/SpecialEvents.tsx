@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Define the interface for each activity item
 interface ActividadData {
   id: string;
-  title: string;
-  description: string;
-  buttonText: string;
+  titleKey: string;
+  descriptionKey: string;
+  buttonTextKey: string;
   image: string;
   alt: string;
   bgColor: string;
@@ -30,6 +31,7 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [blink, setBlink] = useState<boolean>(false);
 
@@ -53,11 +55,11 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
       <div className="border-t border-b border-gray-200 py-2">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4">
           <div>
-            <div className={`text-lg font-kumbh ${actividadesData[currentSlide].textSecondaryColor}`}>Eventos</div>
-            <h2 className={`text-4xl font-kumbh font-semibold ${actividadesData[currentSlide].textPrimaryColor}`}>Actividades especiales</h2>
+            <div className={`text-lg font-kumbh ${actividadesData[currentSlide].textSecondaryColor}`}>{t('specialEvents.events')}</div>
+            <h2 className={`text-4xl font-kumbh font-semibold ${actividadesData[currentSlide].textPrimaryColor}`}>{t('specialEvents.title')}</h2>
           </div>
           <div className={`md:text-right text-lg mt-6 lg:mt-0 md:text-md font-kumbh w-full md:w-[514px] ${actividadesData[currentSlide].textSecondaryColor}`}>
-            Desde bodas frente al mar hasta celebraciones privadas, transformamos tus eventos en experiencias extraordinarias, diseñadas con elegancia y exclusividad.
+            {t('specialEvents.description')}
           </div>
         </div>
       </div>
@@ -104,20 +106,20 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
                 </div>
                 
                 <div className={`w-full ${actividad.bgColor} p-8 flex flex-col justify-center`}>
-                  <h2 className={`text-2xl font-tanNimbus font-normal ${actividad.titleColor} mb-4`}>{actividad.title}</h2>
-                  <p className={`${actividad.descriptionColor} font-kumbh text-sm mb-8`}>{actividad.description}</p>
+                  <h2 className={`text-2xl font-tanNimbus font-normal ${actividad.titleColor} mb-4`}>{t(actividad.titleKey)}</h2>
+                  <p className={`${actividad.descriptionColor} font-kumbh text-sm mb-8`}>{t(actividad.descriptionKey)}</p>
                   <button className={`${actividad.buttonBgColor} ${actividad.buttonTextColor} font-kumbh px-6 py-3 rounded-full text-sm w-fit transition-all duration-300 hover:${actividad.buttonHoverBgColor} hover:${actividad.buttonHoverTextColor}`} onClick={() => window.open("https://reservations.orbebooking.com/Search/Init/Sa63l/es", "_blank")}>
-                    {actividad.buttonText}
+                    {t(actividad.buttonTextKey)}
                   </button>
                 </div>
               </div>
               
               <div className="hidden md:flex">
                 <div className={`w-2/5 ${actividad.bgColor} p-12 flex flex-col justify-center`}>
-                  <h2 className={`text-2xl font-tanNimbus font-bold ${actividad.titleColor} mb-4`}>{actividad.title}</h2>
-                  <p className={`${actividad.descriptionColor} font-kumbh text-sm mb-8`}>{actividad.description}</p>
+                  <h2 className={`text-2xl font-tanNimbus font-bold ${actividad.titleColor} mb-4`}>{t(actividad.titleKey)}</h2>
+                  <p className={`${actividad.descriptionColor} font-kumbh text-sm mb-8`}>{t(actividad.descriptionKey)}</p>
                   <button className={`${actividad.buttonBgColor} ${actividad.buttonTextColor} font-kumbh px-6 py-3 rounded-full text-sm w-fit transition-all duration-300 hover:${actividad.buttonHoverBgColor} hover:${actividad.buttonHoverTextColor}`} onClick={() => window.open("https://reservations.orbebooking.com/Search/Init/Sa63l/es", "_blank")}>
-                    {actividad.buttonText}
+                    {t(actividad.buttonTextKey)}
                   </button>
                 </div>
                 
@@ -193,12 +195,13 @@ const Carousel: React.FC<CarouselProps> = ({ actividadesData }) => {
 };
 
 const Events: React.FC = () => {
+  const { t } = useTranslation();
   const actividadesData: ActividadData[] = [
     {
       id: "01",
-      title: "Bodas Destino",
-      description: "Imagine intercambiar votos con los pies en la arena y el océano como testigo, donde nuestro equipo especializado transformará su visión en una ceremonia íntima e inolvidable en uno de los escenarios naturales más bellos de Costa Rica.",
-      buttonText: "Apartar espacio",
+      titleKey: "specialEvents.eventTypes.destinationWeddings.title",
+      descriptionKey: "specialEvents.eventTypes.destinationWeddings.description",
+      buttonTextKey: "specialEvents.bookSpace",
       image: "/images/Events1.avif",
       alt: "Pareja en una playa durante una propuesta de matrimonio",
       bgColor: "bg-[#53603f]", 
@@ -219,9 +222,9 @@ const Events: React.FC = () => {
     },
     {
       id: "02",
-      title: "Luxury Buyouts",
-      description: "Convierta nuestro santuario en su residencia privada temporal, donde cada rincón, cada servicio y cada atardecer pertenece únicamente a usted y sus invitados. Una experiencia incomparable de libertad absoluta, privacidad sin compromisos y atención personalizada que redefine el concepto de lujo.",
-      buttonText: "Apartar espacio",
+      titleKey: "specialEvents.eventTypes.luxuryBuyouts.title",
+      descriptionKey: "specialEvents.eventTypes.luxuryBuyouts.description",
+      buttonTextKey: "specialEvents.bookSpace",
       image: "/images/Events2.avif",
       alt: "Pareja camniando por the bohemian lagarto",
       bgColor: "bg-[#0D0D0D]",
@@ -242,32 +245,32 @@ const Events: React.FC = () => {
     },
     {
       id: "03",
-      title: "Eventos Corporativos",
-      description: "Fusione negocios y placer en un escenario inspirador, ideal para encuentros exclusivos, incentivos y lanzamientos memorables. Un entorno donde las grandes ideas florecen naturalmente, lejos de las distracciones cotidianas.",
-      buttonText: "Apartar espacio",
+      titleKey: "specialEvents.eventTypes.corporateEvents.title",
+      descriptionKey: "specialEvents.eventTypes.corporateEvents.description",
+      buttonTextKey: "specialEvents.bookSpace",
       image: "/images/Events3.avif",
       alt: "Grupo cooporativo conversando",
       bgColor: "bg-[#C1B7A3]",
-      titleColor: "text-[#766E5E]",
-      descriptionColor: "text-[#766E5E]",
-      buttonBgColor: "bg-[#766E5E]",
-      buttonHoverBgColor: "bg-[#3D4F27]",
-      buttonTextColor: "text-[#C1B7A3]",
-      buttonHoverTextColor: "text-gray-200",
-      navButtonBgColor: "bg-white/60",
-      navButtonHoverBgColor: "bg-white/80",
-      navButtonTextColor: "text-gray-700",
-      navButtonHoverTextColor: "text-gray-900",
-      bulletActiveColor: "bg-[#A19888]",
+      titleColor: "text-[#3D4F27]",
+      descriptionColor: "text-[#3D4F27]",
+      buttonBgColor: "bg-[#3D4F27]",
+      buttonHoverBgColor: "bg-[#2a3a1b]",
+      buttonTextColor: "text-white",
+      buttonHoverTextColor: "text-white",
+      navButtonBgColor: "bg-[#3D4F27]/60",
+      navButtonHoverBgColor: "bg-[#3D4F27]/80",
+      navButtonTextColor: "text-white",
+      navButtonHoverTextColor: "text-white",
+      bulletActiveColor: "bg-[#3D4F27]", 
       bulletInactiveColor: "bg-gray-300",
       textPrimaryColor: "text-[#3D4F27]",
       textSecondaryColor: "text-[#969696]"
     },
     {
       id: "04",
-      title: "Retiros de Bienestar",
-      description: "Sumérjase en un viaje transformativo en conexión profunda con la naturaleza y su ser interior. Nuestros retiros especializados, desde ceremonias ancestrales con plantas sagradas hasta ayunos terapéuticos y prácticas holísticas, ofrecen un espacio seguro para la reconexión espiritual y la sanación bajo la guía de facilitadores expertos.",
-      buttonText: "Apartar espacio",
+      titleKey: "specialEvents.eventTypes.retreats.title",
+      descriptionKey: "specialEvents.eventTypes.retreats.description",
+      buttonTextKey: "specialEvents.bookSpace",
       image: "/images/Events4.avif",
       alt: "Mujer en la playa con atardecer",
       bgColor: "bg-[#53603f]", 

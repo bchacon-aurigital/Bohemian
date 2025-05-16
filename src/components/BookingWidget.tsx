@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Globe2, Users, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface BookingWidgetProps {
   mode?: 'navbar' | 'mobile';
 }
 
 const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
+  const { t, i18n } = useTranslation();
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
-  const [selectedLang, setSelectedLang] = useState<'es' | 'en'>('es');
+  const [selectedLang, setSelectedLang] = useState<'es' | 'en'>(i18n.language as 'es' | 'en');
   const [isOpen, setIsOpen] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [showCheckInModal, setShowCheckInModal] = useState(false);
   const [showCheckOutModal, setShowCheckOutModal] = useState(false);
+  
+  useEffect(() => {
+    // Sincronizar el idioma del widget con el idioma de la aplicación
+    setSelectedLang(i18n.language as 'es' | 'en');
+  }, [i18n.language]);
   
   // Detectar si es un dispositivo iOS
   useEffect(() => {
@@ -246,7 +253,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
               className="bg-[#3D4F27] text-white px-4 py-2 rounded-full text-sm font-medium"
               disabled={!selectedDate}
             >
-              Confirmar
+              {t('bookingWidget.confirm')}
             </button>
           </div>
         </div>
@@ -276,7 +283,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
             style={{ zIndex: 9999 }}
           >
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium text-[#3D4F27] font-kumbh">Reservar</h3>
+              <h3 className="text-lg font-medium text-[#3D4F27] font-kumbh">{t('bookingWidget.title')}</h3>
               <button 
                 onClick={() => setIsOpen(false)}
                 className="text-gray-500 hover:text-gray-700"
@@ -291,18 +298,22 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
                 <Globe2 className="text-[#3D4F27] w-5 h-5" />
                 <select 
                   value={selectedLang}
-                  onChange={(e) => setSelectedLang(e.target.value as 'es' | 'en')}
+                  onChange={(e) => {
+                    const newLang = e.target.value as 'es' | 'en';
+                    setSelectedLang(newLang);
+                    i18n.changeLanguage(newLang);
+                  }}
                   className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-sm"
                 >
-                  <option value="es">Español</option>
-                  <option value="en">English</option>
+                  <option value="es">{t('bookingWidget.languages.es')}</option>
+                  <option value="en">{t('bookingWidget.languages.en')}</option>
                 </select>
               </div>
             </div>
             
             {/* Check-in */}
             <div className="mb-4">
-              <label className="text-xs text-gray-500 mb-1 font-kumbh">Check-in</label>
+              <label className="text-xs text-gray-500 mb-1 font-kumbh">{t('bookingWidget.checkIn')}</label>
               {isIOS ? (
                 <div 
                   className="flex items-center gap-2 p-2 border border-gray-200 rounded-lg"
@@ -310,7 +321,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
                 >
                   <Calendar className="text-[#3D4F27] w-5 h-5" />
                   <div className="w-full text-gray-700 font-kumbh">
-                    {checkIn ? formatDateForDisplay(checkIn) : 'Seleccionar fecha'}
+                    {checkIn ? formatDateForDisplay(checkIn) : t('bookingWidget.selectDate')}
                   </div>
                 </div>
               ) : (
@@ -328,7 +339,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
             
             {/* Check-out */}
             <div className="mb-4">
-              <label className="text-xs text-gray-500 mb-1 font-kumbh">Check-out</label>
+              <label className="text-xs text-gray-500 mb-1 font-kumbh">{t('bookingWidget.checkOut')}</label>
               {isIOS ? (
                 <div 
                   className="flex items-center gap-2 p-2 border border-gray-200 rounded-lg"
@@ -336,7 +347,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
                 >
                   <Calendar className="text-[#3D4F27] w-5 h-5" />
                   <div className="w-full text-gray-700 font-kumbh">
-                    {checkOut ? formatDateForDisplay(checkOut) : 'Seleccionar fecha'}
+                    {checkOut ? formatDateForDisplay(checkOut) : t('bookingWidget.selectDate')}
                   </div>
                 </div>
               ) : (
@@ -354,7 +365,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
             
             {/* Huéspedes */}
             <div className="mb-6">
-              <label className="text-xs text-gray-500 mb-1 font-kumbh">Huéspedes</label>
+              <label className="text-xs text-gray-500 mb-1 font-kumbh">{t('bookingWidget.guests')}</label>
               <div className="flex items-center gap-2 p-2 border border-gray-200 rounded-lg">
                 <Users className="text-[#3D4F27] w-5 h-5" />
                 <div className="flex items-center gap-2 w-full">
@@ -364,7 +375,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
                     className="bg-transparent text-gray-700 focus:outline-none font-kumbh flex-1"
                   >
                     {[1, 2, 3, 4, 5, 6].map(num => (
-                      <option key={num} value={num}>{num} {num === 1 ? 'adulto' : 'adultos'}</option>
+                      <option key={num} value={num}>{num} {num === 1 ? t('bookingWidget.adults') : t('bookingWidget.adultsPlural')}</option>
                     ))}
                   </select>
                   <span className="text-gray-300">|</span>
@@ -374,7 +385,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
                     className="bg-transparent text-gray-700 focus:outline-none font-kumbh flex-1"
                   >
                     {[0, 1, 2, 3, 4].map(num => (
-                      <option key={num} value={num}>{num} {num === 1 ? 'niño' : 'niños'}</option>
+                      <option key={num} value={num}>{num} {num === 1 ? t('bookingWidget.child') : t('bookingWidget.children')}</option>
                     ))}
                   </select>
                 </div>
@@ -386,7 +397,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
               onClick={handleReservation}
               className="w-full bg-[#3D4F27] text-white py-3 rounded-full font-kumbh hover:bg-[#2a371b] transition-colors duration-300 flex items-center justify-center"
             >
-              Reservar Ahora
+              {t('common.bookNow')}
             </button>
             
             {/* Modales personalizados para iOS */}
@@ -394,14 +405,14 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
               visible={showCheckInModal} 
               onClose={() => setShowCheckInModal(false)} 
               onSelect={(date) => handleDateSelect(date, 'checkin')}
-              label="Seleccionar fecha de llegada"
+              label={t('bookingWidget.arrivalDate')}
             />
             
             <DateSelector 
               visible={showCheckOutModal} 
               onClose={() => setShowCheckOutModal(false)} 
               onSelect={(date) => handleDateSelect(date, 'checkout')}
-              label="Seleccionar fecha de salida"
+              label={t('bookingWidget.departureDate')}
             />
           </div>
         )}
@@ -416,7 +427,11 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
       <div className="border-r border-gray-200 pr-2 mr-2">
         <select 
           value={selectedLang}
-          onChange={(e) => setSelectedLang(e.target.value as 'es' | 'en')}
+          onChange={(e) => {
+            const newLang = e.target.value as 'es' | 'en';
+            setSelectedLang(newLang);
+            i18n.changeLanguage(newLang);
+          }}
           className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-xs"
         >
           <option value="es">ES</option>
@@ -432,7 +447,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
           value={checkIn}
           onChange={(e) => setCheckIn(e.target.value)}
           className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-xs w-28"
-          placeholder="Check-in"
+          placeholder={t('bookingWidget.checkIn')}
         />
       </div>
       
@@ -444,7 +459,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
           value={checkOut}
           onChange={(e) => setCheckOut(e.target.value)}
           className="bg-transparent text-gray-700 focus:outline-none font-kumbh text-xs w-28"
-          placeholder="Check-out"
+          placeholder={t('bookingWidget.checkOut')}
         />
       </div>
       
@@ -479,7 +494,7 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ mode = 'navbar' }) => {
         onClick={handleReservation}
         className="bg-[#3D4F27] text-white px-3 py-1 rounded-full font-kumbh text-xs hover:bg-[#2a371b] transition-colors duration-300 flex items-center justify-center"
       >
-        Reservar
+        {t('bookingWidget.book')}
       </button>
     </div>
   );

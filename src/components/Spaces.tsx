@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 const Spaces = () => {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(0);
   
   const images = [
@@ -59,16 +61,16 @@ const Spaces = () => {
         <div className="flex flex-row gap-6">
           <div className="hidden lg:flex min-w-96 flex-col justify-center ">
             <h2 className="text-4xl font-semibold font-kumbh text-[#3D4F27] mb-4">
-              Nuestros espacios
+              {t('spaces.title')}
             </h2>
             <p className="text-[#969696] font-light mb-4">
-              Nuestras instalaciones han sido diseñadas para quienes buscan exclusividad, confort y conexión con el entorno.
+              {t('spaces.description')}
             </p>
             <div className="flex justify-start mt-8">
               <a 
                 href="/rooms"
                 className="bg-[#3D4F27] text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#2C3B1C] font-kumbh">
-                Ver espacios
+                {t('spaces.viewSpaces')}
               </a>
             </div>
           </div>
@@ -101,16 +103,16 @@ const Spaces = () => {
 
         <div className='block lg:hidden text-center mt-10'>
           <h2 className="text-4xl font-semibold font-kumbh text-[#3D4F27] mb-4">
-            Nuestros espacios
+            {t('spaces.title')}
           </h2>
           <p className="text-[#969696] font-light font-kumbh mb-4 text-xl">
-            Nuestras instalaciones han sido diseñadas para quienes buscan exclusividad, confort y conexión con el entorno.
+            {t('spaces.description')}
           </p>
           <a
             href='/rooms'
             className="bg-[#4a6148] font-extralight font-kumbh text-md hover:bg-[#3c4e3a] text-[#F1ECE3] rounded-full px-8 py-3 w-fit transition-colors duration-500"
           >
-            Ver espacios
+            {t('spaces.viewSpaces')}
           </a>
         </div>
       </div>

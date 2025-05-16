@@ -4,6 +4,7 @@ import { LuBath } from "react-icons/lu";
 import { MdKitchen, MdOutlineChair, MdCoffeeMaker, MdMusicNote } from "react-icons/md";
 import { FaUmbrellaBeach } from "react-icons/fa";
 import { BiFoodMenu } from "react-icons/bi";
+import { useTranslation } from 'react-i18next';
 
 interface Amenity {
     icon: React.ReactNode;
@@ -17,7 +18,7 @@ interface RestaurantDetailsProps {
     description: string;
     amenities: {
         icon: keyof typeof iconMap;
-        text: string;
+        textKey: string;
     }[];
     ctaButton: {
         text: string;
@@ -49,6 +50,8 @@ const RestaurantDetails: React.FC<RestaurantDetailsProps> = ({
     amenities,
     ctaButton
 }) => {
+    const { t } = useTranslation();
+    
     return (
         <div className="p-8 bg-[#F1ECE3] rounded-lg max-w-2xl">
             {/* Encabezado */}
@@ -61,7 +64,7 @@ const RestaurantDetails: React.FC<RestaurantDetailsProps> = ({
             {/* Línea divisoria */}
             <div className="border-t border-b border-[#A49C8D] py-6 mb-8">
                 {/* Instalaciones */}
-                <h3 className="text-[#8D8372] text-lg font-kumbh mb-4 font-semibold">Instalaciones</h3>
+                <h3 className="text-[#8D8372] text-lg font-kumbh mb-4 font-semibold">{t('restaurantDetails.facilities')}</h3>
                 <div className="grid grid-cols-1 gap-4">
                     {amenities.map((amenity, index) => (
                         <div
@@ -72,7 +75,7 @@ const RestaurantDetails: React.FC<RestaurantDetailsProps> = ({
                                 {iconMap[amenity.icon]}
                             </div>
                             <span className="text-[#8D8372] text-xl font-kumbh">
-                                {amenity.text}
+                                {t(amenity.textKey)}
                             </span>
                         </div>
                     ))}

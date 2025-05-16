@@ -3,10 +3,12 @@ import React, { useState, useRef } from 'react'
 import { HiChevronDown } from 'react-icons/hi'
 import { FaWhatsapp } from 'react-icons/fa'
 import emailjs from '@emailjs/browser'
+import { useTranslation } from 'react-i18next'
 
 const EventContactForm = () => {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
-    eventType: 'Bodas Destino',
+    eventType: t('eventContactForm.eventTypeOptions.destinationWeddings'),
     tentativeDate: '',
     peopleCount: '',
     specialRequirements: '',
@@ -41,25 +43,25 @@ const EventContactForm = () => {
     const newErrors = {}
     
     if (!formData.name.trim()) {
-      newErrors.name = 'El nombre es requerido'
+      newErrors.name = t('eventContactForm.validation.nameRequired')
     }
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Correo electrónico inválido'
+      newErrors.email = t('eventContactForm.validation.invalidEmail')
     }
     
     if (!formData.phone.trim()) {
-      newErrors.phone = 'El teléfono es requerido'
+      newErrors.phone = t('eventContactForm.validation.phoneRequired')
     }
     
     if (!formData.tentativeDate) {
-      newErrors.tentativeDate = 'La fecha es requerida'
+      newErrors.tentativeDate = t('eventContactForm.validation.dateRequired')
     }
     
     const peopleCount = parseInt(formData.peopleCount)
     if (isNaN(peopleCount) || peopleCount <= 0) {
-      newErrors.peopleCount = 'Debe ingresar un número válido de personas'
+      newErrors.peopleCount = t('eventContactForm.validation.invalidPeopleCount')
     }
     
     setErrors(newErrors)
@@ -93,7 +95,7 @@ const EventContactForm = () => {
         console.log('SUCCESS!', result.text)
         setSubmitStatus('success')
         setFormData({
-          eventType: 'Bodas Destino',
+          eventType: t('eventContactForm.eventTypeOptions.destinationWeddings'),
           tentativeDate: '',
           peopleCount: '',
           specialRequirements: '',
@@ -144,24 +146,22 @@ const EventContactForm = () => {
       <div className="w-full md:w-[40%] p-6 md:p-10 space-y-8" data-aos="fade-right">
         <header className="space-y-4">
           <h2 className="text-[1.62rem] font-semibold leading-tight font-kumbh">
-            Contacte con nuestro coordinador de eventos especiales
+            {t('eventContactForm.title')}
           </h2>
           <p className="text-sm text-gray-700 max-w-md font-kumbh">
-            Entendemos que cada evento es único y merece una atención
-            personalizada. Nuestro equipo especializado está listo para ayudarle a
-            crear la experiencia perfecta adaptada a sus necesidades específicas.
+            {t('eventContactForm.description')}
           </p>
         </header>
 
         <form ref={formRef} className="flex flex-col space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label className="block mb-1 font-medium">Nombre completo</label>
+            <label className="block mb-1 font-medium">{t('eventContactForm.fullName')}</label>
             <input
               name="name"
               type="text"
               value={formData.name}
               onChange={handleChange}
-              placeholder="Escriba su nombre completo"
+              placeholder={t('eventContactForm.fullNamePlaceholder')}
               className={`w-full border ${errors.name ? 'border-red-500' : 'border-black/70'} rounded-xl py-3 px-5 placeholder-gray-500 bg-transparent focus:outline-none focus:ring-2 focus:ring-black`}
               required
             />
@@ -169,13 +169,13 @@ const EventContactForm = () => {
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Correo electrónico</label>
+            <label className="block mb-1 font-medium">{t('eventContactForm.email')}</label>
             <input
               name="email"
               type="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Su correo electrónico"
+              placeholder={t('eventContactForm.emailPlaceholder')}
               className={`w-full border ${errors.email ? 'border-red-500' : 'border-black/70'} rounded-xl py-3 px-5 placeholder-gray-500 bg-transparent focus:outline-none focus:ring-2 focus:ring-black`}
               required
             />
@@ -183,13 +183,13 @@ const EventContactForm = () => {
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Teléfono</label>
+            <label className="block mb-1 font-medium">{t('eventContactForm.phone')}</label>
             <input
               name="phone"
               type="tel"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="Su número de teléfono"
+              placeholder={t('eventContactForm.phonePlaceholder')}
               className={`w-full border ${errors.phone ? 'border-red-500' : 'border-black/70'} rounded-xl py-3 px-5 placeholder-gray-500 bg-transparent focus:outline-none focus:ring-2 focus:ring-black`}
               required
             />
@@ -209,7 +209,7 @@ const EventContactForm = () => {
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Tipo de evento</label>
+            <label className="block mb-1 font-medium">{t('eventContactForm.eventType')}</label>
             <div className="relative">
               <select
                 name="eventType"
@@ -221,17 +221,25 @@ const EventContactForm = () => {
                   backgroundImage: 'none'
                 }}
               >
-                <option value="Bodas Destino" style={{backgroundColor: '#7B8E6A', color: 'white'}}>Bodas Destino</option>
-                <option value="Eventos Corporativos" style={{backgroundColor: '#7B8E6A', color: 'white'}}>Eventos Corporativos</option>
-                <option value="Luxury buyots" style={{backgroundColor: '#7B8E6A', color: 'white'}}>Luxury buyots</option>
-                <option value="Retiros de Bienestar" style={{backgroundColor: '#7B8E6A', color: 'white'}}>Retiros de Bienestar</option>
+                <option value={t('eventContactForm.eventTypeOptions.destinationWeddings')} style={{backgroundColor: '#7B8E6A', color: 'white'}}>
+                  {t('eventContactForm.eventTypeOptions.destinationWeddings')}
+                </option>
+                <option value={t('eventContactForm.eventTypeOptions.corporateEvents')} style={{backgroundColor: '#7B8E6A', color: 'white'}}>
+                  {t('eventContactForm.eventTypeOptions.corporateEvents')}
+                </option>
+                <option value={t('eventContactForm.eventTypeOptions.luxuryBuyouts')} style={{backgroundColor: '#7B8E6A', color: 'white'}}>
+                  {t('eventContactForm.eventTypeOptions.luxuryBuyouts')}
+                </option>
+                <option value={t('eventContactForm.eventTypeOptions.wellnessRetreats')} style={{backgroundColor: '#7B8E6A', color: 'white'}}>
+                  {t('eventContactForm.eventTypeOptions.wellnessRetreats')}
+                </option>
               </select>
               <HiChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500" />
             </div>
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Fechas tentativas</label>
+            <label className="block mb-1 font-medium">{t('eventContactForm.tentativeDates')}</label>
             <input
               name="tentativeDate"
               type="date"
@@ -245,7 +253,7 @@ const EventContactForm = () => {
 
           <div>
             <label className="block mb-1 font-medium">
-              Número aproximado de personas
+              {t('eventContactForm.approxPeople')}
             </label>
             <input
               name="peopleCount"
@@ -253,7 +261,7 @@ const EventContactForm = () => {
               min="1"
               value={formData.peopleCount}
               onChange={handleChange}
-              placeholder="Ingrese el número aquí…"
+              placeholder={t('eventContactForm.approxPeoplePlaceholder')}
               className={`w-full border ${errors.peopleCount ? 'border-red-500' : 'border-black/70'} rounded-xl py-3 px-5 placeholder-gray-500 bg-transparent focus:outline-none focus:ring-2 focus:ring-black`}
               required
             />
@@ -261,38 +269,38 @@ const EventContactForm = () => {
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Requisitos especiales</label>
+            <label className="block mb-1 font-medium">{t('eventContactForm.specialRequirements')}</label>
             <input
               name="specialRequirements"
               type="text"
               value={formData.specialRequirements}
               onChange={handleChange}
-              placeholder="Ingrese los requisitos aquí…"
+              placeholder={t('eventContactForm.specialRequirementsPlaceholder')}
               className="w-full border border-black/70 rounded-xl py-3 px-5 placeholder-gray-500 bg-transparent focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Presupuesto estimado</label>
+            <label className="block mb-1 font-medium">{t('eventContactForm.budget')}</label>
             <input
               name="budget"
               type="text"
               value={formData.budget}
               onChange={handleChange}
-              placeholder="Escriba el presupuesto aquí…"
+              placeholder={t('eventContactForm.budgetPlaceholder')}
               className="w-full border border-black/70 rounded-xl py-3 px-5 placeholder-gray-500 bg-transparent focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
 
           {submitStatus === 'success' && (
             <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-              ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.
+              {t('eventContactForm.successMessage')}
             </div>
           )}
           
           {submitStatus === 'error' && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
-              Hubo un error al enviar el mensaje. Por favor, inténtelo de nuevo.
+              {t('eventContactForm.errorMessage')}
             </div>
           )}
 
@@ -302,7 +310,7 @@ const EventContactForm = () => {
               disabled={loading}
               className="flex-1 border border-black rounded-full py-3 font-medium hover:bg-black hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Enviando...' : 'Enviar'}
+              {loading ? t('eventContactForm.sending') : t('eventContactForm.send')}
             </button>
 
             <a

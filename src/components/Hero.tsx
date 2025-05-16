@@ -2,8 +2,11 @@ import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faAirbnb, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faBed } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section className="relative min-h-screen">
       <div className="absolute inset-0 z-0">
@@ -49,16 +52,13 @@ export default function Hero() {
             </a>
           </div>
           <h1 className="text-white text-5xl md:text-6xl xl:text-8xl space-y-4 mb-4 font-tanNimbus font-medium text-right">
-            <span className="block">Escapa.</span>
-            <span className="block">Reconecta.</span>
-            <span className="block">Renace.</span>
+            <span className="block">{t('hero.escape')}</span>
+            <span className="block">{t('hero.reconnect')}</span>
+            <span className="block">{t('hero.reborn')}</span>
           </h1>
 
           <p className="text-white text-[1.25rem] mb-8 text-right font-kumbh font-light leading-tight">
-            En el corazón de 13 kilómetros de playa virgen,{" "}
-            <br className="hidden md:flex" /> The Bohemian Lagarto te invita a
-            un retiro de lujo íntimo, donde el alma encuentra refugio y la
-            naturaleza abraza cada despertar.
+            {t('hero.description')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 w-full items-end justify-end">
@@ -66,13 +66,13 @@ export default function Hero() {
               href="https://reservations.orbebooking.com/Search/Init/Sa63l/es"
               className="w-full sm:w-auto bg-[#44391A] text-white sm:px-8 py-3 rounded-full text-center text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh"
             >
-              Reservar Ahora
+              {t('common.bookNow')}
             </a>
             <a
               href="/#seccion1"
               className="w-full sm:w-auto border border-white bg-white text-[#44391A] sm:px-8 py-3 rounded-full text-center text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-[#3D4F27] font-kumbh"
             >
-              Conocer Más
+              {t('common.learnMore')}
             </a>
           </div>
         </div>

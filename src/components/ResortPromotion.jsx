@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ResortPromotion = () => {
+    const { t } = useTranslation();
+    
     return (
         <div className="flex flex-col md:grid md:grid-cols-7 gap-3 w-full max-w-7xl mx-auto overflow-hidden font-kumbh py-8 px-4">
             <div className="relative w-full md:col-span-5 bg-[#728F4D] rounded-xl order-1 md:order-2" data-aos="fade-up">
@@ -12,17 +15,15 @@ const ResortPromotion = () => {
 
                     <div className="absolute bottom-8 left-8 z-20 text-white pr-4">
                         <h2 className="text-[1.2rem] md:text-[1.9rem] font-kumbh font-medium leading-none max-w-md sm:max-w-md">
-                            Donde los momentos extraordinarios se convierten en recuerdos eternos
+                            {t('resortPromotion.mainTitle')}
                         </h2>
                         <p className="text-xs md:text-sm font-kumbh py-3 max-w-md sm:max-w-md">
-                            Nuestro paraíso exclusivo, enmarcado por el océano Pacífico y la exuberante
-                            naturaleza costarricense, se transforma en el lienzo perfecto para sus
-                            celebraciones más importantes.
+                            {t('resortPromotion.mainDescription')}
                         </p>
 
                         <div className="flex space-x-4">
                         <button className="bg-white text-black px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ease-in-out hover:bg-[#3D4F27] hover:text-[#f0ede4]">
-                                Reservar Ahora
+                                {t('resortPromotion.bookNow')}
                             </button>
                         </div>
                     </div>
@@ -41,11 +42,9 @@ const ResortPromotion = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10 rounded-xl"></div>
 
                     <div className="absolute bottom-8 left-6 z-20 text-white">
-                        <h2 className="text-[1.9rem] font-kumbh font-medium mb-2 leading-none">Somos más<br />que un paraíso</h2>
+                        <h2 className="text-[1.9rem] font-kumbh font-medium mb-2 leading-none">{t('resortPromotion.secondaryTitle')}</h2>
                         <p className="text-sm max-w-xs font-kumbh">
-                            En The Bohemian Lagarto entendemos que los eventos
-                            más significativos de la vida merecen un escenario que
-                            esté a su altura.
+                            {t('resortPromotion.secondaryDescription')}
                         </p>
                     </div>
                 </div>

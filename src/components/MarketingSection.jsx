@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from 'react-i18next';
 
 const MarketingSection = ({ 
   category, 
@@ -9,8 +10,11 @@ const MarketingSection = ({
   imageUrl, 
   features,
   className = "",
-  imagePosition = "left"
+  imagePosition = "left",
+  ctaButton
 }) => {
+  const { t } = useTranslation();
+  
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -71,7 +75,7 @@ const MarketingSection = ({
           data-aos="fade-up"
           data-aos-delay="700"
         >
-          {features.map((feature, index) => (
+          {features && features.map((feature, index) => (
             <div 
               key={index} 
               className="flex items-start border-b border-[#969696] pb-4"
@@ -98,6 +102,17 @@ const MarketingSection = ({
             </div>
           ))}
         </div>
+        
+        {ctaButton && (
+          <div className="mt-6">
+            <a
+              href={ctaButton.link || "#"}
+              className="bg-[#3D4F27] text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#2C3B1C] font-kumbh inline-block"
+            >
+              {ctaButton.type === 'book' ? t('marketingSection.bookNow') : t('marketingSection.viewMore')}
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

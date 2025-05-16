@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { IoExpand } from "react-icons/io5";
+import { useTranslation } from 'react-i18next';
 
 const Rooms = () => {
   const [activeImage, setActiveImage] = useState('/images/rooms.avif');
   const [activeButton, setActiveButton] = useState(0);
+  const { t } = useTranslation();
 
   const handleButtonClick = (index: number, image: string) => {
     setActiveImage(image);
@@ -26,30 +28,27 @@ const Rooms = () => {
             className="absolute bottom-4 right-4 bg-[#455c3e] text-white px-10 py-4 rounded-full 
                        hover:bg-[#3a4e35] transition-all duration-300 font-kumbh text-lg"
           >
-            Conocer Más
+            {t('common.learnMore')}
           </a>
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h2 className="text-[#455c3e] text-4xl md:text-5xl font-semibold mb-3 font-kumbh">
-            Habitaciones
+            {t('rooms.title')}
           </h2>
           
           <p className="text-[#969696] mb-10 leading-relaxed font-kumbh font-light text-md">
-            Cada una de nuestras exclusivas habitaciones ofrece vistas panorámicas al océano 
-            Pacífico, donde el azul del mar se funde con el cielo en el horizonte. Diseñadas con 
-            elegancia minimalista y elementos naturales, son su santuario personal de 
-            tranquilidad y lujo.
+            {t('rooms.description')}
           </p>
           
           <div className="space-y-8">
             <div>
               <div className="flex justify-between items-center">
                 <div className="flex flex-row gap-3">
-                  <span className="text-[#455c3e] text-lg font-kumbh font-bold">01</span>
-                  <h3 className="text-[#455c3e] text-xl md:text-2xl font-kumbh font-medium leading-tight">
-                    Vistas panorámicas<br />al océano Pacífico
-                  </h3>
+                  <span className="text-[#455c3e] text-lg font-kumbh font-bold">{t('rooms.feature1.number')}</span>
+                  <h3 className="text-[#455c3e] text-xl md:text-2xl font-kumbh font-medium leading-tight"
+                      dangerouslySetInnerHTML={{ __html: t('rooms.feature1.title') }}
+                  ></h3>
                 </div>
                 <button 
                   onClick={() => handleButtonClick(0, '/images/rooms.avif')}
@@ -69,10 +68,10 @@ const Rooms = () => {
             <div className="border-t border-[#d2d3ce] pt-6">
               <div className="flex justify-between items-center">
                 <div className="flex flex-row gap-3">
-                  <span className="text-[#455c3e] text-lg font-kumbh font-bold">02</span>
-                  <h3 className="text-[#455c3e] text-xl md:text-2xl font-kumbh font-medium leading-tight">
-                    Diseñadas con elegancia<br />minimalista
-                  </h3>
+                  <span className="text-[#455c3e] text-lg font-kumbh font-bold">{t('rooms.feature2.number')}</span>
+                  <h3 className="text-[#455c3e] text-xl md:text-2xl font-kumbh font-medium leading-tight"
+                      dangerouslySetInnerHTML={{ __html: t('rooms.feature2.title') }}
+                  ></h3>
                 </div>
                 <button 
                   onClick={() => handleButtonClick(1, '/images/rooms2.avif')}
@@ -92,10 +91,10 @@ const Rooms = () => {
             <div className="border-b border-t border-[#d2d3ce] py-6">
               <div className="flex justify-between items-center">
                 <div className="flex flex-row gap-3">
-                  <span className="text-[#455c3e] text-lg font-kumbh font-bold">03</span>
-                  <h3 className="text-[#455c3e] text-xl md:text-2xl leading-tight font-kumbh font-medium">
-                    Completamente equipadas<br />para tus necesidades
-                  </h3>
+                  <span className="text-[#455c3e] text-lg font-kumbh font-bold">{t('rooms.feature3.number')}</span>
+                  <h3 className="text-[#455c3e] text-xl md:text-2xl leading-tight font-kumbh font-medium"
+                      dangerouslySetInnerHTML={{ __html: t('rooms.feature3.title') }}
+                  ></h3>
                 </div>
                 <button 
                   onClick={() => handleButtonClick(2, '/images/rooms3.avif')}

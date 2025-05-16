@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
 }
 
 export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
+  const { t } = useTranslation();
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
       <div className="relative w-32 h-32 mb-8">
         <Image
           src="/images/logo.svg"
-          alt="The Bohemian Logo"
+          alt={t('loadingScreen.altText')}
           fill
           className="object-contain animate-pulse"
           priority

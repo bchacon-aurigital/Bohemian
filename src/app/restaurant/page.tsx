@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useTranslation } from "react-i18next";
 
 import Navbar from "@/components/Navbar";
 import ScrollBentoBox from "@/components/ScrollBentoBox";
@@ -9,6 +10,8 @@ import RestaurantDetails from "@/components/RestaurantDetails";
 import Footer from "@/components/Footer";
 
 const RestaurantPage = () => {
+  const { t } = useTranslation();
+  
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -17,27 +20,27 @@ const RestaurantPage = () => {
   }, []);
 
   const roomImages = [
-    { src: "/images/restaurantpage1.avif", alt: "Habitación de lujo con vista al mar" },
-    { src: "/images/restaurantpage2.avif", alt: "Suite presidencial con terraza" },
-    { src: "/images/restaurantpage3.avif", alt: "Vista panorámica de la habitación" },
-    { src: "/images/restaurantpage4.avif", alt: "Baño de lujo" },
-    { src: "/images/restaurantpage5.avif", alt: "Área de descanso" },
-    { src: "/images/restaurantpage6.avif", alt: "Terraza privada" },
-    { src: "/images/restaurantpage7.avif", alt: "Dormitorio principal" },
-    { src: "/images/restaurantpage8.avif", alt: "Vista al océano" },
-    { src: "/images/restaurantpage9.avif", alt: "Sala de estar" }
+    { src: "/images/restaurantpage1.avif", alt: t('restaurant.page.images.alt1') },
+    { src: "/images/restaurantpage2.avif", alt: t('restaurant.page.images.alt2') },
+    { src: "/images/restaurantpage3.avif", alt: t('restaurant.page.images.alt3') },
+    { src: "/images/restaurantpage4.avif", alt: t('restaurant.page.images.alt4') },
+    { src: "/images/restaurantpage5.avif", alt: t('restaurant.page.images.alt5') },
+    { src: "/images/restaurantpage6.avif", alt: t('restaurant.page.images.alt6') },
+    { src: "/images/restaurantpage7.avif", alt: t('restaurant.page.images.alt7') },
+    { src: "/images/restaurantpage8.avif", alt: t('restaurant.page.images.alt8') },
+    { src: "/images/restaurantpage9.avif", alt: t('restaurant.page.images.alt9') }
   ];
 
   const restaurantDetailsData = {
-    title: "La Joya de Lagarto",
-    subtitle: "Restaurante",
-    secondaryText: "Coctelería - Bar - Restaurante",
-    description: "Sumérgete en el lujo, la comodidad y la serenidad de nuestras exclusivas habitaciones. Cada espacio ha sido diseñado para ofrecer una experiencia única, fusionando elegancia y el encanto natural de nuestro entorno.",
+    title: t('restaurant.page.details.title'),
+    subtitle: t('restaurant.page.details.subtitle'),
+    secondaryText: t('restaurant.page.details.secondaryText'),
+    description: t('restaurant.page.details.description'),
     amenities: [
-      { icon: "breakfast" as const, text: "Desayuno Incluido Cada Mañana" }
+      { icon: "breakfast" as const, textKey: 'restaurant.page.details.amenities.breakfast' }
     ],
     ctaButton: {
-      text: "Reservar espacio",
+      text: t('restaurant.page.details.bookButton'),
       onClick: () => window.open("https://reservations.orbebooking.com/Search/Init/Sa63l/es", "_blank")
     }
   };

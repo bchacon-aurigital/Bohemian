@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import dynamic from "next/dynamic";
 import { FaArrowRight } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -52,6 +53,8 @@ const Footer = dynamic(() => import("@/components/Footer"), {
 });
 
 const HomePage = () => {
+  const { t } = useTranslation();
+  
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -275,25 +278,22 @@ const HomePage = () => {
             >
               <div className="col-span-3">
                 <h2 className="text-4xl text-white mb-2 leading-tight font-tanNimbus">
-                  Escape
+                  {t('page.romanticEscape.title1')}
                 </h2>
                 <h2 className="text-4xl text-white mb-6 leading-tight font-tanNimbus">
-                  Romántico
+                  {t('page.romanticEscape.title2')}
                 </h2>
               </div>
 
               <div className="col-span-5 space-y-6 text-white leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
-                  Redescubran la magia de estar juntos. Despierten con el sonido
-                  del mar, cenen bajo las estrellas y vivan cada instante como
-                  si el tiempo se detuviera. El romance no es un extra: es
-                  nuestra esencia.
+                  {t('page.romanticEscape.description')}
                 </p>
                 <button
                   onClick={() => window.open("/activities")}
                   className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh"
                 >
-                  Ver Más
+                  {t('common.viewMore')}
                   <FaArrowRight />
                 </button>
               </div>
@@ -316,22 +316,22 @@ const HomePage = () => {
             >
               <div className="col-span-5 md:col-span-3">
                 <h2 className="text-4xl text-black mb-2 leading-tight font-tanNimbus">
-                  Conexión con
+                  {t('page.natureConnection.title1')}
                 </h2>
                 <h2 className="text-4xl text-black mb-6 leading-tight font-tanNimbus">
-                  la Naturaleza
+                  {t('page.natureConnection.title2')}
                 </h2>
               </div>
 
               <div className="col-span-5 space-y-6 text-black leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
-                Sumérgete en un mundo donde el océano y la jungla son tus anfitriones. Disfruta del atardecer que pinta el cielo, de senderos escondidos y de la energía vibrante de Playa Lagarto.
+                  {t('page.natureConnection.description')}
                 </p>
                 <button
                   onClick={() => window.open("/activities")}
                   className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-[#3D4F27] text-[#3D4F27] px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh"
                 >
-                  Ver Más
+                  {t('common.viewMore')}
                   <FaArrowRight />
                 </button>
               </div>
@@ -354,22 +354,22 @@ const HomePage = () => {
             >
               <div className="col-span-3">
                 <h2 className="text-4xl text-white mb-2 leading-none font-tanNimbus">
-                  Bienestar
+                  {t('page.wellness.title1')}
                 </h2>
                 <h2 className="text-4xl text-white mb-6 leading-tight font-tanNimbus">
-                  Integral
+                  {t('page.wellness.title2')}
                 </h2>
               </div>
 
               <div className="col-span-5 space-y-6 text-white leading-relaxed font-kumbh">
                 <p className="text-base md:text-2xl font-medium mb-8">
-                Cuerpo, mente y espíritu en perfecta armonía. A través de la meditación, el yoga y los rituales holísticos, cada instante es una oportunidad para reconectar contigo mismo.
+                  {t('page.wellness.description')}
                 </p>
                 <button
                   onClick={() => window.open("/activities")}
                   className="flex flex-row justify-center items-center gap-2 w-2/3 md:w-1/2 border border-white text-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-black font-kumbh"
                 >
-                  Ver Más
+                  {t('common.viewMore')}
                   <FaArrowRight />
                 </button>
               </div>

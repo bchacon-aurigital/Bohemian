@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ImageData {
     src: string;
@@ -10,6 +11,8 @@ interface ScrollBentoBoxProps {
 }
 
 const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
+    const { t } = useTranslation();
+    
     // Función para renderizar imágenes de forma segura
     const renderImage = (index: number) => {
         if (index < images.length) {
@@ -24,7 +27,7 @@ const ScrollBentoBox: React.FC<ScrollBentoBoxProps> = ({ images }) => {
         // Placeholder si no hay imagen
         return (
             <div className="w-full h-full bg-[#E4DED0] flex items-center justify-center">
-                <span className="text-[#8D8372]">Imagen no disponible</span>
+                <span className="text-[#8D8372]">{t('scrollBentoBox.imageNotAvailable')}</span>
             </div>
         );
     };

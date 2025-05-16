@@ -1,28 +1,31 @@
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const AboutSection2 = () => {
+  const { t } = useTranslation();
+  
   return (
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="relative z-10 text-center text-white px-4">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center text-white px-4">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight font-tanNimbus">
-            Visita el <br className="hidden md:inline" /> paraíso
+            {t('parallax.paradise.title')}
           </h2>
           <p className="text-lg md:text-2xl font-medium font-kumbh">
-            No esperes mas y guarda tu <br /> lugar hoy mismo
+            {t('parallax.paradise.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mt-6">
           <a
               href="https://reservations.orbebooking.com/Search/Init/Sa63l/es"
               className="w-full sm:w-auto bg-[#44391A] text-white sm:px-8 py-3 rounded-full text-center text-lg font-medium transition-colors duration-300 hover:bg-[#3D4F27] hover:text-white font-kumbh"
             >
-              Reservar Ahora
+              {t('parallax.paradise.bookNow')}
             </a>
             <a
               href="/#seccion1"
               className="w-full sm:w-auto border border-white bg-white text-[#44391A] sm:px-8 py-3 rounded-full text-center text-lg font-medium transition-colors duration-300 hover:bg-white hover:text-[#3D4F27] font-kumbh"
             >
-              Conocer Más
+              {t('parallax.paradise.learnMore')}
             </a>
           </div>
         </div>

@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Carousel = () => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [blink, setBlink] = useState(false);
 
   const slides = [
     {
       id: "01",
-      title: "Un destino dentro de un destino. La Joya de Lagarto es la esencia de la exclusividad, un rincón reservado solo para quienes buscan lo extraordinario.",
+      titleKey: "restaurant.slides.slide1.title",
       image: "/images/Carrusel1JoyaDelLagarto.avif",
       alt: "Bebida con una rodaja de naranja y un aperitivo"
     },
     {
       id: "02",
-      title: "Disfrute de una experiencia gastronómica extraordinaria mientras contemplas el horizonte infinito, con el sonido de las olas como única banda sonora.",
+      titleKey: "restaurant.slides.slide2.title",
       image: "/images/Carrusel2JoyaDelLagarto.avif",
       alt: "Vista al horizonte desde el restaurante"
     },
     {
       id: "03",
-      title: "En La Joya de Lagarto, cada plato cuenta una historia de tradición local elevada a la excelencia culinaria, utilizando ingredientes frescos y de temporada.",
+      titleKey: "restaurant.slides.slide3.title",
       image: "/images/Carrusel3JoyaDelLagarto.avif",
       alt: "Plato gourmet del restaurante"
     }
@@ -45,11 +47,11 @@ const Carousel = () => {
       <div className="border-t border-b border-gray-200 py-2">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4">
           <div>
-            <div className="text-[#969696] text-lg font-kumbh">Gastronomía</div>
-            <h2 className="text-4xl font-kumbh font-semibold text-[#3D4F27]">La Joya de Lagarto</h2>
+            <div className="text-[#969696] text-lg font-kumbh">{t('restaurant.category')}</div>
+            <h2 className="text-4xl font-kumbh font-semibold text-[#3D4F27]">{t('restaurant.title')}</h2>
           </div>
           <div className="md:text-right text-lg mt-6 lg:mt-0 md:text-md font-kumbh w-full md:w-[474px] text-[#969696]">
-            Disfrute de una experiencia gastronómica extraordinaria mientras contempla el horizonte infinito, con el sonido de las olas como única banda sonora.
+            {t('restaurant.description')}
           </div>
         </div>
       </div>
@@ -78,7 +80,7 @@ const Carousel = () => {
                   <div className="flex flex-row justify-between items-end">
                     <div className="flex flex-row items-center justify-center">
                       <span className="text-6xl font-bold mr-4 font-kumbh">{slide.id}</span>
-                      <p className="text-sm max-w-xl font-light font-kumbh">{slide.title}</p>
+                      <p className="text-sm max-w-xl font-light font-kumbh">{t(slide.titleKey)}</p>
                     </div>
                     <div className="flex space-x-3">
                       <button
@@ -147,7 +149,7 @@ const Carousel = () => {
         </div>
         
         <div className="mt-4 px-4 text-lg text-center font-light font-kumbh text-gray-700">
-          {slides[currentSlide].title}
+          {t(slides[currentSlide].titleKey)}
         </div>
       </div>
 
