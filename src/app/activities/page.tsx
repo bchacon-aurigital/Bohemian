@@ -10,7 +10,7 @@ import MarketingSection from "@/components/MarketingSection";
 import EventContactForm from "@/components/EventContactForm";
 import Footer from "@/components/Footer";
 
-const RoomsPage = () => {
+const ActivitiesPage = () => {
   const { t } = useTranslation();
   
   useEffect(() => {
@@ -21,22 +21,22 @@ const RoomsPage = () => {
   }, []);
 
   const weddingData = {
-    category: t('activities.wedding.category'),
-    title: t('activities.wedding.title'),
-    description: t('activities.wedding.description'),
+    category: t('page.activities.wedding.category'),
+    title: t('page.activities.wedding.title'),
+    description: t('page.activities.wedding.description'),
     imageUrl: "/images/weddingData.avif",
     features: [
       {
         iconSrc: "/images/iconosActividades/weddingData1.svg",
-        text: t('activities.wedding.features.feature1')
+        text: t('page.activities.wedding.features.feature1')
       },
       {
         iconSrc: "/images/iconosActividades/weddingData2.svg",
-        text: t('activities.wedding.features.feature2')
+        text: t('page.activities.wedding.features.feature2')
       },
       {
         iconSrc: "/images/iconosActividades/weddingData3.svg",
-        text: t('activities.wedding.features.feature3')
+        text: t('page.activities.wedding.features.feature3')
       }
     ],
     ctaButton: {
@@ -46,22 +46,22 @@ const RoomsPage = () => {
   };
 
   const luxuryData = {
-    category: t('activities.luxury.category'),
-    title: t('activities.luxury.title'),
-    description: t('activities.luxury.description'),
+    category: t('page.activities.luxury.category'),
+    title: t('page.activities.luxury.title'),
+    description: t('page.activities.luxury.description'),
     imageUrl: "/images/luxuryData.avif",
     features: [
       {
         iconSrc: "/images/iconosActividades/luxuryData1.svg",
-        text: t('activities.luxury.features.feature1')
+        text: t('page.activities.luxury.features.feature1')
       },
       {
         iconSrc: "/images/iconosActividades/luxuryData3.svg",
-        text: t('activities.luxury.features.feature2')
+        text: t('page.activities.luxury.features.feature2')
       },
       {
         iconSrc: "/images/iconosActividades/luxuryData2.svg",
-        text: t('activities.luxury.features.feature3')
+        text: t('page.activities.luxury.features.feature3')
       }
     ],
     ctaButton: {
@@ -71,22 +71,22 @@ const RoomsPage = () => {
   };
 
   const wellnessData = {
-    category: t('activities.wellness.category'),
-    title: t('activities.wellness.title'),
-    description: t('activities.wellness.description'),
+    category: t('page.activities.wellness.category'),
+    title: t('page.activities.wellness.title'),
+    description: t('page.activities.wellness.description'),
     imageUrl: "/images/wellnessData.avif",
     features: [
       {
         iconSrc: "/images/iconosActividades/wellnessData1.svg",
-        text: t('activities.wellness.features.feature1')
+        text: t('page.activities.wellness.features.feature1')
       },
       {
         iconSrc: "/images/iconosActividades/wellnessData2.svg",
-        text: t('activities.wellness.features.feature2')
+        text: t('page.activities.wellness.features.feature2')
       },
       {
         iconSrc: "/images/iconosActividades/wellnessData3.svg",
-        text: t('activities.wellness.features.feature3')
+        text: t('page.activities.wellness.features.feature3')
       }
     ],
     ctaButton: {
@@ -96,22 +96,22 @@ const RoomsPage = () => {
   };
 
   const corporateData = {
-    category: t('activities.corporate.category'),
-    title: t('activities.corporate.title'),
-    description: t('activities.corporate.description'),
+    category: t('page.activities.corporate.category'),
+    title: t('page.activities.corporate.title'),
+    description: t('page.activities.corporate.description'),
     imageUrl: "/images/corporateData.avif",
     features: [
       {
         iconSrc: "/images/iconosActividades/corporateData1.svg",
-        text: t('activities.corporate.features.feature1')
+        text: t('page.activities.corporate.features.feature1')
       },
       {
         iconSrc: "/images/iconosActividades/corporateData2.svg",
-        text: t('activities.corporate.features.feature2')
+        text: t('page.activities.corporate.features.feature2')
       },
       {
         iconSrc: "/images/iconosActividades/corporateData3.svg",
-        text: t('activities.corporate.features.feature3')
+        text: t('page.activities.corporate.features.feature3')
       }
     ],
     ctaButton: {
@@ -138,4 +138,4 @@ const RoomsPage = () => {
   );
 };
 
-export default RoomsPage; 
+export default ActivitiesPage;
