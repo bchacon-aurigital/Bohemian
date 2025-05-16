@@ -34,3 +34,36 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Internacionalización
+
+El proyecto ahora cuenta con soporte para múltiples idiomas utilizando i18next. Actualmente, se soportan español e inglés.
+
+### Archivos de traducción
+
+Los archivos de traducción se encuentran en:
+- `public/locales/es/common.json` - Español (idioma predeterminado)
+- `public/locales/en/common.json` - Inglés
+
+### Cómo usar traducciones
+
+Para usar traducciones en los componentes, usa el hook useTranslation:
+
+```jsx
+import { useTranslation } from 'react-i18next';
+
+export default function MyComponent() {
+  const { t } = useTranslation();
+  
+  return (
+    <div>
+      <h1>{t('common.title')}</h1>
+      <p>{t('common.description')}</p>
+    </div>
+  );
+}
+```
+
+### Cambio de idioma
+
+El componente `LanguageSwitcher` permite a los usuarios cambiar entre idiomas disponibles.

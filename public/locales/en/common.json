@@ -1,0 +1,36 @@
+{
+  "welcomeSection": {
+    "welcome": "Welcome to",
+    "title": "The Bohemian Lagarto.",
+    "description": "More than a boutique hotel, The Bohemian Lagarto is a sanctuary for free souls. Steps away from an immaculate beach, we create experiences that awaken the bohemian essence: genuine connection, freedom to be, and the simple beauty of each moment.",
+    "quote": "\"We are creatures of the night who recharge under the sun. We find peace in the waves and in the vastness of nature.\" <br/> In each stay, authentic luxury and nature intertwine to offer you more than a rest: a transformation."
+  },
+  "footer": {
+    "tagline": "\"Where luxury meets<br/>nature\"",
+    "information": "Information",
+    "rooms": "Rooms",
+    "services": "Services",
+    "restaurant": "Restaurant",
+    "bookSpace": "Book Space",
+    "socialMedia": "Social Media",
+    "copyright": "© 2025 The Bohemian Lagarto. All rights reserved.",
+    "designedBy": "Design and Development by :"
+  },
+  "navbar": {
+    "home": "Home",
+    "rooms": "Rooms",
+    "experiences": "Experiences",
+    "restaurant": "Restaurant",
+    "events": "Events",
+    "book": "Book"
+  },
+  "common": {
+    "bookNow": "Book Now",
+    "learnMore": "Learn More",
+    "viewMore": "View More",
+    "view": "View",
+    "contact": "Contact",
+    "send": "Send",
+    "readMore": "Read More"
+  }
+} 

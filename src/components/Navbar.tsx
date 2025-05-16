@@ -3,10 +3,13 @@ import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
 import Image from "next/image";
 import BookingWidget from "./BookingWidget";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const { t } = useTranslation();
   
   useEffect(() => {
     const checkMobile = () => {
@@ -24,12 +27,12 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navSections = [
-    { name: "Inicio", href: "/" },
-    { name: "Habitaciones", href: "/rooms" },
-   /* { name: "Restaurante", href: "/restaurant" },*/
-    { name: "Servicios", href: "/activities" },
-    { name: "Actividades", href: "/#Eventos" },
-    { name: "Contacto", href: "/#Contacto" },
+    { name: t("navbar.home"), href: "/" },
+    { name: t("navbar.rooms"), href: "/rooms" },
+   /* { name: t("navbar.restaurant"), href: "/restaurant" },*/
+    { name: t("navbar.services"), href: "/activities" },
+    { name: t("navbar.experiences"), href: "/#Eventos" },
+    { name: t("navbar.contact"), href: "/#Contacto" },
   ];
 
   return (
@@ -77,8 +80,11 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden lg:block flex-shrink-0 ml-4">
-            <BookingWidget mode="navbar" />
+          <div className="hidden lg:flex items-center">
+            <LanguageSwitcher />
+            <div className="ml-6">
+              <BookingWidget mode="navbar" />
+            </div>
           </div>
 
           <button
@@ -138,7 +144,7 @@ export default function Navbar() {
           ))}
           
           <div className="flex flex-col items-center space-y-3">
-            <div className="text-sm text-white/80 font-kumbh">Reservar Ahora</div>
+            <div className="text-sm text-white/80 font-kumbh">{t("common.bookNow")}</div>
             <div className="flex space-x-4">
               <a 
                 href="https://reservations.orbebooking.com/Search/Init/Sa63l/es"
@@ -155,6 +161,7 @@ export default function Navbar() {
                 EN
               </a>
             </div>
+            <LanguageSwitcher />
           </div>
         </div>
       </div>

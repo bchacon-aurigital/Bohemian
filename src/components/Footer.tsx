@@ -3,8 +3,11 @@ import Link from "next/link";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { RiTiktokLine } from "react-icons/ri";
 import { TbPhoneCall, TbBrandBooking, TbBrandAirbnb } from "react-icons/tb";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="relative bg-[#3D4F27] text-white overflow-hidden">
       {/* Background patterns for mobile */}
@@ -64,28 +67,28 @@ export default function Footer() {
                 alt="The Bohemian Logo"
               />
             </div>
-            <p className="text-lg italic font-montserrat font-bold text-center hidden lg:block">
-              "Donde el lujo se encuentra<br />con la naturaleza"
-            </p>
+            <p className="text-lg italic font-montserrat font-bold text-center hidden lg:block"
+               dangerouslySetInnerHTML={{ __html: t('footer.tagline') }}
+            ></p>
           </div>
 
           {/* Información */}
           <div className="flex flex-col items-center lg:items-start">
-            <h3 className="text-xl font-light mb-6 font-tanNimbus">Información</h3>
+            <h3 className="text-xl font-light mb-6 font-tanNimbus">{t('footer.information')}</h3>
             <ul className="space-y-4">
               <li>
                 <Link href="/rooms" className="hover:text-gray-300 transition font-montserrat">
-                  Habitaciones
+                  {t('footer.rooms')}
                 </Link>
               </li>
               <li>
                 <Link href="/#Servicios" className="hover:text-gray-300 transition font-montserrat">
-                  Servicios
+                  {t('footer.services')}
                 </Link>
               </li>
               <li>
               {/*  <Link href="/restaurant" className="hover:text-gray-300 transition font-montserrat">
-                  Restaurante
+                  {t('footer.restaurant')}
                 </Link>*/}
               </li>
             </ul>
@@ -93,7 +96,7 @@ export default function Footer() {
 
           {/* Agendar espacio */}
           <div className="flex flex-col items-center lg:items-start">
-            <h3 className="text-xl font-light mb-6 font-tanNimbus">Agendar Espacio</h3>
+            <h3 className="text-xl font-light mb-6 font-tanNimbus">{t('footer.bookSpace')}</h3>
             <ul className="space-y-4">
               <li className="flex items-center justify-center lg:justify-start gap-2 font-montserrat">
                 <TbPhoneCall className="text-xl" />
@@ -126,7 +129,7 @@ export default function Footer() {
 
           {/* Redes Sociales */}
           <div className="flex flex-col items-center lg:items-start">
-            <h3 className="text-xl font-light mb-6 font-tanNimbus">Redes Sociales</h3>
+            <h3 className="text-xl font-light mb-6 font-tanNimbus">{t('footer.socialMedia')}</h3>
             <ul className="space-y-4">
               <li>
                 <a 
@@ -164,7 +167,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 text-center md:text-right text-sm font-montserrat text-[#F1ECE3] font-extralight">
-          <p>© 2025 The Bohemian Lagarto. Todos los derechos reservados.</p>
+          <p>{t('footer.copyright')}</p>
         </div>
       </div>
 
@@ -175,7 +178,7 @@ export default function Footer() {
           className="flex justify-center mx-auto w-full"
         >
           <p className="text-white uppercase text-[8px] text-center p-1 hover:text-[#28C0F5] ">
-            Design and Development by :
+            {t('footer.designedBy')}
           </p>
           <img
             src="/isotipo.avif"
