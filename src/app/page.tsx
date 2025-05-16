@@ -13,11 +13,7 @@ import Parallax1 from "@/components/Parallax1";
 import Parallax2 from "@/components/Parallax2";
 import Parallax3 from "@/components/Parallax3";
 import Parallax5 from "@/components/Parallax5";
-
-const Spaces = dynamic(() => import("@/components/Spaces"), {
-  loading: () => <div className="h-screen"></div>,
-  ssr: true,
-});
+import Spaces from "@/components/Spaces";
 
 const Rooms = dynamic(() => import("@/components/Rooms"), {
   loading: () => <div className="h-screen"></div>,

@@ -144,7 +144,7 @@ export default function Navbar() {
           ))}
           
           <div className="flex flex-col items-center space-y-3">
-            <div className="text-sm text-white/80 font-kumbh">{t("common.bookNow")}</div>
+            <div className="text-sm text-white font-kumbh">{t("common.bookNow")}</div>
             <div className="flex space-x-4">
               <a 
                 href="https://reservations.orbebooking.com/Search/Init/Sa63l/es"

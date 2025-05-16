@@ -13,16 +13,16 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center space-x-2 bg-white rounded-md p-1">
       <button
-        className={`text-sm font-medium ${currentLang === 'es' ? 'text-black' : 'text-gray-500'}`}
+        className={`text-sm font-medium ${currentLang === 'es' ? 'text-[#3D4F27]' : 'text-black'}`}
         onClick={() => changeLanguage('es')}
       >
         ES
       </button>
       <span className="text-gray-400">|</span>
       <button
-        className={`text-sm font-medium ${currentLang === 'en' ? 'text-black' : 'text-gray-500'}`}
+        className={`text-sm font-medium ${currentLang === 'en' ? 'text-[#3D4F27]' : 'text-black'}`}
         onClick={() => changeLanguage('en')}
       >
         EN
