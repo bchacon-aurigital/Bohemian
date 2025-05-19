@@ -3,7 +3,6 @@ import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
 import Image from "next/image";
 import BookingWidget from "./BookingWidget";
-import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
@@ -81,8 +80,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center">
-            <LanguageSwitcher />
-            <div className="ml-6">
+            <div>
               <BookingWidget mode="navbar" />
             </div>
           </div>
@@ -161,7 +159,6 @@ export default function Navbar() {
                 EN
               </a>
             </div>
-            <LanguageSwitcher />
           </div>
         </div>
       </div>

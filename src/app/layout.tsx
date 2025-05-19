@@ -3,6 +3,7 @@ import "./globals.css";
 import "aos/dist/aos.css";
 import I18nProvider from "@/components/I18nProvider";
 import Script from "next/script";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export const metadata: Metadata = {
   title: "The Bohemian Lagarto | Hotel Playa Lagarto en Costa Rica",
@@ -95,7 +96,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <I18nProvider>{children}</I18nProvider>
+        <I18nProvider>
+          {children}
+          <LanguageSwitcher />
+        </I18nProvider>
         
         {/* Google Analytics */}
         <Script

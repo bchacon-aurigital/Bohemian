@@ -221,6 +221,10 @@ const resources = {
           "corporateEvents": {
             "title": "Eventos Corporativos",
             "description": "Transforme sus reuniones de trabajo en experiencias productivas y memorables. Lejos del ruido urbano y las distracciones cotidianas, The Bohemian Lagarto ofrece un entorno donde las grandes ideas emergen con la misma naturalidad que las olas del océano."
+          },
+          "retreats": {
+            "title": "Retiros de Bienestar",
+            "description": "Sumérgase en un viaje transformativo en conexión profunda con la naturaleza y su ser interior. Nuestros retiros especializados, desde ceremonias ancestrales con plantas sagradas hasta ayunos terapéuticos y prácticas holísticas, ofrecen un espacio seguro para la reconexión espiritual y la sanación bajo la guía de facilitadores expertos."
           }
         }
       },
@@ -653,6 +657,10 @@ const resources = {
           "corporateEvents": {
             "title": "Corporate Events",
             "description": "Combine business and pleasure in an inspiring setting, ideal for exclusive meetings, incentives, and memorable launches. An environment where great ideas naturally flourish, away from everyday distractions."
+          },
+          "retreats": {
+            "title": "Wellness Retreats",
+            "description": "Immerse yourself in a transformative journey in deep connection with nature and your inner being. Our specialized retreats, from ancestral ceremonies with sacred plants to therapeutic fasting and holistic practices, offer a safe space for spiritual reconnection and healing under the guidance of expert facilitators."
           }
         }
       },
