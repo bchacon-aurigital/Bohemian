@@ -19,7 +19,7 @@ export default function LanguageSwitcher() {
 
   if (isFixed) {
     return (
-      <div className="fixed bottom-5 right-5 z-[9999]">
+      <div className="fixed bottom-5 left-5 z-[9999]">
         <div className="flex items-center justify-center w-16 h-16 bg-[#3D4F27] rounded-full shadow-lg text-white cursor-pointer hover:bg-[#4e6234] transition-all duration-300 animate-pulse hover:animate-none">
           <button
             className="w-full h-full flex items-center justify-center font-bold text-base"
